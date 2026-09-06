@@ -3,9 +3,11 @@
 A hybrid sorting algorithm that combines an **adaptive merge sort** with **insertion sort**,
 plus a [Manim](https://www.manim.community/) walkthrough of how it works.
 
-## The algorithm
+## The adaptive variant
 
-[`sortfusion.py`](sortfusion.py)
+[`sortfusion.py`](sortfusion.py) — an exploratory run-detecting sort, kept separate
+from the assignment's hybrid in [`hybrid.py`](hybrid.py). Its `S` thresholds the
+*number of sorted runs*, not the subarray size.
 
 | Function | What it does |
 | --- | --- |
@@ -28,6 +30,48 @@ already sorted and is never split, while the right half recurses all the way dow
 ```
 
 `split_v2` on that array returns `5` — one run for `[1, 4, 6, 9]` and four singletons.
+
+## Project 1 parts
+
+| Part | File | Status |
+| --- | --- | --- |
+| (a) hybrid algorithm | [`hybrid.py`](hybrid.py) | done |
+| (b) input data | [`datagen.py`](datagen.py) | done |
+| (c) comparison counts and plots | - | not started |
+| (d) comparison against original merge sort | - | not started |
+
+### (a) `hybrid.py`
+
+`hybrid(arr, S)` is merge sort that hands a subarray to insertion sort as soon as
+its length is `<= S`. The switch happens inside the recursion, independently on
+every branch. `mergesort(arr)` is the plain textbook version kept as the baseline
+for part (d), and `insertsort(arr)` is a standalone insertion sort.
+
+All three return `(sorted_list, key_comparisons)`. A key comparison is one
+comparison between two array elements; loop bounds such as `j >= 0` and the
+`len(arr) <= S` size test are not counted.
+
+Running the file executes its self-checks: all three sorts agree with `sorted()`,
+`hybrid(arr, 1)` reports exactly the same comparison count as `mergesort(arr)`,
+and insertion sort is confirmed adaptive (999 comparisons on a sorted array of
+1000, 499500 on a reversed one).
+
+### (b) `datagen.py`
+
+`generate(n, seed, x)` returns `n` random integers in `[1, x]`, with `x` defaulting
+to `MAXVALUE = 10_000_000`. `SIZES` is the size ladder from 1,000 to 10,000,000 in
+a 1-2-5 progression, which spreads evenly on the log axes part (c) needs.
+
+Arrays are rebuilt from the seed rather than stored, so a run is reproducible from
+one integer instead of a few hundred megabytes of data files. numpy is used when
+present because it is roughly 3x faster; the pure-stdlib fallback produces a
+different but equally valid array.
+
+For a fixed seed the smaller arrays are prefixes of the larger ones. That is
+deliberate: it isolates the effect of `n` in part (c)(i) instead of mixing it with
+sampling noise. Pass a different `seed` per repetition when averaging.
+
+At n = 10 million a sort takes roughly 20 seconds and peaks around 0.65 GB.
 
 ## The animation
 
