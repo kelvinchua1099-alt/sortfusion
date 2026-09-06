@@ -1,3 +1,5 @@
+# Keep results/*.csv tracked; they are small and part of the report
+
 # Rendered output
 out/
 media/

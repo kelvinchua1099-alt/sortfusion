@@ -1,30 +1,47 @@
 # timing harness for parts (c) and (d)
 # process_time() is CPU time, which is what the assignment asks for.
-# perf_counter() wall time is also recorded so we can tell if the machine
-# was doing something else during a run.
+# comparison counts are deterministic for a given array and S, so they are
+# measured once. only the timings are repeated, and the median is reported
+# because a single run picks up whatever else the machine was doing.
 
 import time
 import sys
+import statistics
 from datagen import generate,SIZES
 from hybrid import hybrid,mergesort
 
 S_DEFAULT=16
 
-def timeit(fn,arr,repeat=1):
-    best_cpu=None
-    best_wall=None
+S_GRID=[1,2,3,4,5,6,8,10,12,14,16,20,24,32,40,48,64,96,128,192,256,512]
+
+def leafsizes(n,S):
+    # the subarray sizes insertion sort actually receives.
+    # only two distinct sizes exist per level, so this stays O(log n).
+    seen=set()
+    out=set()
+    stack=[n]
+    while stack:
+        m=stack.pop()
+        if m in seen:
+            continue
+        seen.add(m)
+        if m<=S:
+            out.add(m)
+        else:
+            mid=m//2
+            stack.append(mid)
+            stack.append(m-mid)
+    return sorted(out)
+
+def runtimes(fn,arr,repeat):
+    times=[]
     count=0
     for _ in range(repeat):
         c0=time.process_time()
-        w0=time.perf_counter()
         out,count=fn(arr)
-        cpu=time.process_time()-c0
-        wall=time.perf_counter()-w0
+        times.append(time.process_time()-c0)
         del out
-        if best_cpu is None or cpu<best_cpu:
-            best_cpu=cpu
-            best_wall=wall
-    return count,best_cpu,best_wall
+    return count,times
 
 def repeats_for(n):
     if n<=10000:
@@ -36,41 +53,66 @@ def repeats_for(n):
 def sweep_n(sizes,S=S_DEFAULT,seed=0):
     print("comparisons and CPU time over n, S=%d"%S)
     print("%10s %14s %10s %14s %10s %9s"%("n","hybrid cmps","cpu s","merge cmps","cpu s","speedup"))
-    rows=[]
     for n in sizes:
         a=generate(n,seed)
         r=repeats_for(n)
-        hc,ht,hw=timeit(lambda x:hybrid(x,S),a,r)
-        mc,mt,mw=timeit(mergesort,a,r)
-        speed=mt/ht if ht>0 else float("nan")
-        print("%10d %14d %10.4f %14d %10.4f %8.2fx"%(n,hc,ht,mc,mt,speed))
-        rows.append((n,hc,ht,mc,mt))
+        hc,ht=runtimes(lambda x:hybrid(x,S),a,r)
+        mc,mt=runtimes(mergesort,a,r)
+        ht=min(ht)
+        mt=min(mt)
+        print("%10d %14d %10.4f %14d %10.4f %8.2fx"%(n,hc,ht,mc,mt,mt/ht))
         del a
-    return rows
 
-def sweep_S(n,values,seed=0):
-    print("\ncomparisons and CPU time over S, n=%d"%n)
-    print("%6s %14s %10s"%("S","cmps","cpu s"))
+def sweep_S(n,values=None,seed=0,repeat=5,csv=None):
+    if values is None:
+        values=S_GRID
     a=generate(n,seed)
-    mc,mt,mw=timeit(mergesort,a,1)
+    mc,mt=runtimes(mergesort,a,repeat)
+    m_med=statistics.median(mt)
+
+    print("n=%d, seed=%d, %d timing repeats per row"%(n,seed,repeat))
+    print("plain merge sort: %d comparisons, %.4fs median CPU\n"%(mc,m_med))
+    head="%5s %12s %14s %8s %10s %10s %9s"%("S","leaf sizes","key cmps","vs merge","cpu med s","cpu min s","speedup")
+    print(head)
+    print("-"*len(head))
     rows=[]
+    prev=None
     for S in values:
-        c,t,w=timeit(lambda x:hybrid(x,S),a,1)
-        print("%6d %14d %10.4f"%(S,c,t))
-        rows.append((S,c,t))
-    print("%6s %14d %10.4f   <- plain merge sort"%("-",mc,mt))
+        c,t=runtimes(lambda x:hybrid(x,S),a,repeat)
+        med=statistics.median(t)
+        ls=leafsizes(n,S)
+        lab="%d-%d"%(ls[0],ls[-1]) if len(ls)>1 else str(ls[0])
+        # rows sharing a comparison count are the same algorithm, separate them
+        if prev is not None and c!=prev:
+            print("- "*(len(head)//2))
+        prev=c
+        rows.append((S,lab,c,c/mc,med,min(t),m_med/med))
+        print("%5d %12s %14d %7.2fx %10.4f %10.4f %8.2fx"%(S,lab,c,c/mc,med,min(t),m_med/med))
     del a
+
+    best=min(rows,key=lambda r:r[4])
+    spread=[r for r in rows if r[4]<=best[4]*1.01]
+    print("\nfastest S=%d (leaf %s) at %.4fs"%(best[0],best[1],best[4]))
+    print("within 1%% of it: S in %s"%[r[0] for r in spread])
+    print("  those cover leaf sizes %s"%sorted(set(r[1] for r in spread)))
+    fewest=min(rows,key=lambda r:r[2])
+    print("fewest comparisons: S=%d at %d"%(fewest[0],fewest[2]))
+
+    if csv:
+        with open(csv,"w") as f:
+            f.write("S,leaf_sizes,key_comparisons,ratio_vs_merge,cpu_median_s,cpu_min_s,speedup_vs_merge\n")
+            for r in rows:
+                f.write("%d,%s,%d,%.6f,%.6f,%.6f,%.6f\n"%r)
+            f.write("merge,1,%d,1.0,%.6f,%.6f,1.0\n"%(mc,m_med,min(mt)))
+        print("wrote %s"%csv)
     return rows
 
 if __name__=="__main__":
-    quick="quick" in sys.argv
-    if quick:
-        sizes=[n for n in SIZES if n<=200000]
-        big=100000
+    if "table" in sys.argv:
+        sweep_S(1000000,repeat=5,csv="results/S_sweep_n1000000.csv")
+    elif "quick" in sys.argv:
+        sweep_n([n for n in SIZES if n<=200000])
+        sweep_S(100000,repeat=3)
     else:
-        sizes=SIZES
-        big=1000000
-    t0=time.perf_counter()
-    sweep_n(sizes)
-    sweep_S(big,[1,2,4,8,16,32,64,128,256,512])
-    print("\ntotal %.1fs"%(time.perf_counter()-t0))
+        sweep_n(SIZES)
+        sweep_S(1000000,repeat=5,csv="results/S_sweep_n1000000.csv")
