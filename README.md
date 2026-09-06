@@ -37,8 +37,8 @@ already sorted and is never split, while the right half recurses all the way dow
 | --- | --- | --- |
 | (a) hybrid algorithm | [`hybrid.py`](hybrid.py) | done |
 | (b) input data | [`datagen.py`](datagen.py) | done |
-| (c) comparison counts and plots | - | not started |
-| (d) comparison against original merge sort | - | not started |
+| (c) comparison counts and plots | [`bench.py`](bench.py) | measurements done, plots and write-up pending |
+| (d) comparison against original merge sort | [`bench.py`](bench.py) | measurements done, write-up pending |
 
 ### (a) `hybrid.py`
 
@@ -72,6 +72,17 @@ deliberate: it isolates the effect of `n` in part (c)(i) instead of mixing it wi
 sampling noise. Pass a different `seed` per repetition when averaging.
 
 At n = 10 million a sort takes roughly 20 seconds and peaks around 0.65 GB.
+
+### Timing — `bench.py`
+
+`python3 bench.py` sweeps the full size ladder and then sweeps `S` at n = 1,000,000;
+`python3 bench.py quick` stops at n = 200,000 and sweeps `S` at n = 100,000.
+
+CPU time comes from `time.process_time()`, which is what part (d) asks for.
+`time.perf_counter()` wall time is recorded alongside it so a run disturbed by other
+activity on the machine can be spotted. Small inputs are timed several times and the
+fastest run is kept; inputs above 200,000 are timed once because they are slow enough
+that startup noise does not matter.
 
 ## The animation
 
