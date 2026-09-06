@@ -37,7 +37,7 @@ already sorted and is never split, while the right half recurses all the way dow
 | --- | --- | --- |
 | (a) hybrid algorithm | [`hybrid.py`](hybrid.py) | done |
 | (b) input data | [`datagen.py`](datagen.py) | done |
-| (c) comparison counts and plots | [`bench.py`](bench.py) | measurements done, plots and write-up pending |
+| (c) comparison counts and plots | [`bench.py`](bench.py), [`plots.py`](plots.py) | (c)(ii) done, (c)(i) and (c)(iii) pending |
 | (d) comparison against original merge sort | [`bench.py`](bench.py) | measurements done, write-up pending |
 
 ### (a) `hybrid.py`
@@ -83,6 +83,14 @@ CPU time comes from `time.process_time()`, which is what part (d) asks for.
 activity on the machine can be spotted. Small inputs are timed several times and the
 fastest run is kept; inputs above 200,000 are timed once because they are slow enough
 that startup noise does not matter.
+
+### Figures - `plots.py`
+
+`python3 plots.py` reads `results/S_sweep_n1000000.csv` and writes the matching PNG.
+
+Comparison counts and CPU times are on unrelated scales, so they get one panel each
+rather than a twin y-axis, which would invite reading a crossover that is only an
+artefact of where the two scales were pinned.
 
 ## The animation
 
