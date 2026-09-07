@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg class="viz" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 604.8 547.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-07T14:59:26.205311</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="fig_S_sweep_figure_1">
+  <g id="fig_S_sweep_patch_1">
+   <path d="M 0 547.2 
+L 604.8 547.2 
+L 604.8 0 
+L 0 0 
+z
+" style="fill: var(--viz-surface)"/>
+  </g>
+  <g id="fig_S_sweep_axes_1">
+   <g id="fig_S_sweep_patch_2">
+    <path d="M 53.46 278.258675 
+L 594 278.258675 
+L 594 89.2736 
+L 53.46 89.2736 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_S_sweep_patch_3">
+    <path d="M 235.886298 278.258675 
+L 323.869279 278.258675 
+L 323.869279 89.2736 
+L 235.886298 89.2736 
+z
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: var(--viz-band)"/>
+   </g>
+   <g id="fig_S_sweep_matplotlib.axis_1">
+    <g id="fig_S_sweep_xtick_1">
+     <g id="fig_S_sweep_line2d_1">
+      <path d="M 69.353055 278.258675 
+L 69.353055 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_2">
+      <defs>
+       <path id="fig_S_sweep_me897fb6463" d="M 0 0 
+L 0 6 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="69.353055" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_2">
+     <g id="fig_S_sweep_line2d_3">
+      <path d="M 124.864136 278.258675 
+L 124.864136 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_4">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="124.864136" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_3">
+     <g id="fig_S_sweep_line2d_5">
+      <path d="M 180.375217 278.258675 
+L 180.375217 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_6">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="180.375217" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_4">
+     <g id="fig_S_sweep_line2d_7">
+      <path d="M 235.886298 278.258675 
+L 235.886298 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_8">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="235.886298" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_5">
+     <g id="fig_S_sweep_line2d_9">
+      <path d="M 291.397379 278.258675 
+L 291.397379 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_10">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="291.397379" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_6">
+     <g id="fig_S_sweep_line2d_11">
+      <path d="M 346.90846 278.258675 
+L 346.90846 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_12">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="346.90846" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_7">
+     <g id="fig_S_sweep_line2d_13">
+      <path d="M 402.419541 278.258675 
+L 402.419541 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_14">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="402.419541" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_8">
+     <g id="fig_S_sweep_line2d_15">
+      <path d="M 457.930622 278.258675 
+L 457.930622 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_16">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="457.930622" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_9">
+     <g id="fig_S_sweep_line2d_17">
+      <path d="M 513.441702 278.258675 
+L 513.441702 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_18">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="513.441702" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_10">
+     <g id="fig_S_sweep_line2d_19">
+      <path d="M 568.952783 278.258675 
+L 568.952783 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_20">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="568.952783" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="fig_S_sweep_matplotlib.axis_2">
+    <g id="fig_S_sweep_ytick_1">
+     <g id="fig_S_sweep_line2d_21">
+      <path d="M 53.46 261.216079 
+L 594 261.216079 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_22">
+      <defs>
+       <path id="fig_S_sweep_m0aec69ad0d" d="M 0 0 
+L -6 0 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="261.216079" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_1">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="265.152876" transform="rotate(-0 43.96 265.152876)">20</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_2">
+     <g id="fig_S_sweep_line2d_23">
+      <path d="M 53.46 230.24867 
+L 594 230.24867 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_24">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="230.24867" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_2">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="234.185466" transform="rotate(-0 43.96 234.185466)">30</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_3">
+     <g id="fig_S_sweep_line2d_25">
+      <path d="M 53.46 191.234347 
+L 594 191.234347 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_26">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="191.234347" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_3">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="195.171144" transform="rotate(-0 43.96 195.171144)">50</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_4">
+     <g id="fig_S_sweep_line2d_27">
+      <path d="M 53.46 155.337806 
+L 594 155.337806 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_28">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="155.337806" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_4">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="159.274602" transform="rotate(-0 43.96 159.274602)">80</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_5">
+     <g id="fig_S_sweep_line2d_29">
+      <path d="M 53.46 118.257131 
+L 594 118.257131 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_30">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="118.257131" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_5">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="122.193928" transform="rotate(-0 43.96 122.193928)">130</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_text_6">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="19.083281" y="183.766137" transform="rotate(-90 19.083281 183.766137)">key comparisons (millions)</text>
+    </g>
+   </g>
+   <g id="fig_S_sweep_line2d_31">
+    <path d="M 53.46 266.453119 
+L 594 266.453119 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: var(--viz-base); stroke-width: 1.5"/>
+   </g>
+   <g id="fig_S_sweep_patch_4">
+    <path d="M 53.46 278.258675 
+L 53.46 89.2736 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_S_sweep_patch_5">
+    <path d="M 53.46 278.258675 
+L 594 278.258675 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_S_sweep_line2d_32">
+    <path d="M 69.353055 266.453119 
+L 124.864136 266.453119 
+L 157.336036 266.453315 
+L 180.375217 266.235432 
+L 198.245793 266.235432 
+L 212.847117 266.235432 
+L 235.886298 264.83907 
+L 253.756874 264.83907 
+L 268.358198 264.83907 
+L 280.703442 264.83907 
+L 291.397379 260.372073 
+L 309.267955 260.372073 
+L 323.869279 260.372073 
+L 346.90846 249.923477 
+L 364.779036 249.923477 
+L 379.38036 249.923477 
+L 402.419541 230.553545 
+L 434.891441 230.553545 
+L 457.930622 200.676531 
+L 490.402522 200.676531 
+L 513.441702 161.565671 
+L 568.952783 116.040032 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_S_sweep_m1afd18565a" d="M 0 2.75 
+C 0.729309 2.75 1.428845 2.460243 1.944544 1.944544 
+C 2.460243 1.428845 2.75 0.729309 2.75 0 
+C 2.75 -0.729309 2.460243 -1.428845 1.944544 -1.944544 
+C 1.428845 -2.460243 0.729309 -2.75 0 -2.75 
+C -0.729309 -2.75 -1.428845 -2.460243 -1.944544 -1.944544 
+C -2.460243 -1.428845 -2.75 -0.729309 -2.75 0 
+C -2.75 0.729309 -2.460243 1.428845 -1.944544 1.944544 
+C -1.428845 2.460243 -0.729309 2.75 0 2.75 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.2"/>
+    </defs>
+    <g clip-path="url(#fig_S_sweep_p905e70437b)">
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="69.353055" y="266.453119" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="124.864136" y="266.453119" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="157.336036" y="266.453315" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="180.375217" y="266.235432" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="198.245793" y="266.235432" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="212.847117" y="266.235432" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="235.886298" y="264.83907" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="253.756874" y="264.83907" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="268.358198" y="264.83907" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="280.703442" y="264.83907" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="291.397379" y="260.372073" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="309.267955" y="260.372073" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="323.869279" y="260.372073" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="346.90846" y="249.923477" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="364.779036" y="249.923477" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="379.38036" y="249.923477" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="402.419541" y="230.553545" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="434.891441" y="230.553545" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="457.930622" y="200.676531" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="490.402522" y="200.676531" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="513.441702" y="161.565671" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="568.952783" y="116.040032" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+    </g>
+   </g>
+   <g id="fig_S_sweep_text_7">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-base)" x="554.974696" y="260.83255" transform="rotate(-0 554.974696 260.83255)">plain merge sort  18.7M</text>
+   </g>
+   <g id="fig_S_sweep_text_8">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="69.353055" y="253.453119" transform="rotate(-0 69.353055 253.453119)">leaf 1</text>
+   </g>
+   <g id="fig_S_sweep_text_9">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="235.886298" y="251.83907" transform="rotate(-0 235.886298 251.83907)">leaf 7-8</text>
+   </g>
+   <g id="fig_S_sweep_text_10">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="346.90846" y="236.923477" transform="rotate(-0 346.90846 236.923477)">leaf 30-31</text>
+   </g>
+   <g id="fig_S_sweep_text_11">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="457.930622" y="187.676531" transform="rotate(-0 457.930622 187.676531)">leaf 122-123</text>
+   </g>
+   <g id="fig_S_sweep_text_12">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="558.952783" y="120.040032" transform="rotate(-0 558.952783 120.040032)">leaf 488-489</text>
+   </g>
+   <g id="fig_S_sweep_text_13">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-series)" x="279.877789" y="100.340487" transform="rotate(-0 279.877789 100.340487)">fastest band  S=8..24</text>
+   </g>
+   <g id="fig_S_sweep_text_14">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="53.46" y="63.2736" transform="rotate(-0 53.46 63.2736)">Key comparisons only ever rise with S</text>
+   </g>
+  </g>
+  <g id="fig_S_sweep_axes_2">
+   <g id="fig_S_sweep_patch_6">
+    <path d="M 53.46 501.96375 
+L 594 501.96375 
+L 594 312.978675 
+L 53.46 312.978675 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_S_sweep_patch_7">
+    <path d="M 235.886298 501.96375 
+L 323.869279 501.96375 
+L 323.869279 312.978675 
+L 235.886298 312.978675 
+z
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: var(--viz-band)"/>
+   </g>
+   <g id="fig_S_sweep_matplotlib.axis_3">
+    <g id="fig_S_sweep_xtick_11">
+     <g id="fig_S_sweep_line2d_33">
+      <path d="M 69.353055 501.96375 
+L 69.353055 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_34">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="69.353055" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_15">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="69.353055" y="519.337344" transform="rotate(-0 69.353055 519.337344)">1</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_12">
+     <g id="fig_S_sweep_line2d_35">
+      <path d="M 124.864136 501.96375 
+L 124.864136 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_36">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="124.864136" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_16">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="124.864136" y="519.337344" transform="rotate(-0 124.864136 519.337344)">2</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_13">
+     <g id="fig_S_sweep_line2d_37">
+      <path d="M 180.375217 501.96375 
+L 180.375217 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_38">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="180.375217" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_17">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="180.375217" y="519.337344" transform="rotate(-0 180.375217 519.337344)">4</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_14">
+     <g id="fig_S_sweep_line2d_39">
+      <path d="M 235.886298 501.96375 
+L 235.886298 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_40">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="235.886298" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_18">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="235.886298" y="519.337344" transform="rotate(-0 235.886298 519.337344)">8</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_15">
+     <g id="fig_S_sweep_line2d_41">
+      <path d="M 291.397379 501.96375 
+L 291.397379 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_42">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="291.397379" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_19">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="291.397379" y="519.337344" transform="rotate(-0 291.397379 519.337344)">16</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_16">
+     <g id="fig_S_sweep_line2d_43">
+      <path d="M 346.90846 501.96375 
+L 346.90846 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_44">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="346.90846" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_20">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="346.90846" y="519.337344" transform="rotate(-0 346.90846 519.337344)">32</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_17">
+     <g id="fig_S_sweep_line2d_45">
+      <path d="M 402.419541 501.96375 
+L 402.419541 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_46">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="402.419541" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_21">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="402.419541" y="519.337344" transform="rotate(-0 402.419541 519.337344)">64</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_18">
+     <g id="fig_S_sweep_line2d_47">
+      <path d="M 457.930622 501.96375 
+L 457.930622 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_48">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="457.930622" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_22">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="457.930622" y="519.337344" transform="rotate(-0 457.930622 519.337344)">128</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_19">
+     <g id="fig_S_sweep_line2d_49">
+      <path d="M 513.441702 501.96375 
+L 513.441702 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_50">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="513.441702" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_23">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="513.441702" y="519.337344" transform="rotate(-0 513.441702 519.337344)">256</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_20">
+     <g id="fig_S_sweep_line2d_51">
+      <path d="M 568.952783 501.96375 
+L 568.952783 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_52">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="568.952783" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_24">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="568.952783" y="519.337344" transform="rotate(-0 568.952783 519.337344)">512</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_text_25">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="323.73" y="534.259219" transform="rotate(-0 323.73 534.259219)">S   (switch to insertion sort once a subarray is &lt;= S)</text>
+    </g>
+   </g>
+   <g id="fig_S_sweep_matplotlib.axis_4">
+    <g id="fig_S_sweep_ytick_6">
+     <g id="fig_S_sweep_line2d_53">
+      <path d="M 53.46 490.5775 
+L 594 490.5775 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_54">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="490.5775" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_26">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="494.514296" transform="rotate(-0 43.96 494.514296)">1.4</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_7">
+     <g id="fig_S_sweep_line2d_55">
+      <path d="M 53.46 454.741998 
+L 594 454.741998 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_56">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="454.741998" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_27">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="458.678795" transform="rotate(-0 43.96 458.678795)">2.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_8">
+     <g id="fig_S_sweep_line2d_57">
+      <path d="M 53.46 414.004499 
+L 594 414.004499 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_58">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="414.004499" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_28">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="417.941296" transform="rotate(-0 43.96 417.941296)">3.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_9">
+     <g id="fig_S_sweep_line2d_59">
+      <path d="M 53.46 385.100783 
+L 594 385.100783 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_60">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="385.100783" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_29">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="389.03758" transform="rotate(-0 43.96 389.03758)">4.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_10">
+     <g id="fig_S_sweep_line2d_61">
+      <path d="M 53.46 362.681319 
+L 594 362.681319 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_62">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="362.681319" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_30">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="366.618116" transform="rotate(-0 43.96 366.618116)">5.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_11">
+     <g id="fig_S_sweep_line2d_63">
+      <path d="M 53.46 328.875605 
+L 594 328.875605 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_64">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="328.875605" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_31">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="332.812402" transform="rotate(-0 43.96 332.812402)">7.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_text_32">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="22.144375" y="407.471212" transform="rotate(-90 22.144375 407.471212)">CPU time, median of 5 (s)</text>
+    </g>
+   </g>
+   <g id="fig_S_sweep_line2d_65">
+    <path d="M 53.46 472.780992 
+L 594 472.780992 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: var(--viz-base); stroke-width: 1.5"/>
+   </g>
+   <g id="fig_S_sweep_patch_8">
+    <path d="M 53.46 501.96375 
+L 53.46 312.978675 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_S_sweep_patch_9">
+    <path d="M 53.46 501.96375 
+L 594 501.96375 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_S_sweep_line2d_66">
+    <path d="M 69.353055 468.006525 
+L 124.864136 477.772169 
+L 157.336036 478.956493 
+L 180.375217 485.223103 
+L 198.245793 485.205414 
+L 212.847117 485.607108 
+L 235.886298 489.239137 
+L 253.756874 489.663366 
+L 268.358198 488.717451 
+L 280.703442 488.787713 
+L 291.397379 489.507318 
+L 309.267955 487.958144 
+L 323.869279 489.590073 
+L 346.90846 484.797866 
+L 364.779036 482.925114 
+L 379.38036 481.46967 
+L 402.419541 469.069787 
+L 434.891441 468.438425 
+L 457.930622 438.991845 
+L 490.402522 438.291086 
+L 513.441702 397.002253 
+L 568.952783 333.333154 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+    <g clip-path="url(#fig_S_sweep_p191162dca1)">
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="69.353055" y="468.006525" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="124.864136" y="477.772169" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="157.336036" y="478.956493" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="180.375217" y="485.223103" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="198.245793" y="485.205414" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="212.847117" y="485.607108" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="235.886298" y="489.239137" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="253.756874" y="489.663366" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="268.358198" y="488.717451" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="280.703442" y="488.787713" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="291.397379" y="489.507318" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="309.267955" y="487.958144" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="323.869279" y="489.590073" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="346.90846" y="484.797866" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="364.779036" y="482.925114" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="379.38036" y="481.46967" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="402.419541" y="469.069787" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="434.891441" y="468.438425" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="457.930622" y="438.991845" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="490.402522" y="438.291086" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="513.441702" y="397.002253" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="568.952783" y="333.333154" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+    </g>
+   </g>
+   <g id="fig_S_sweep_text_33">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-base)" x="554.974696" y="465.032436" transform="rotate(-0 554.974696 465.032436)">plain merge sort  1.67s</text>
+   </g>
+   <g id="fig_S_sweep_text_34">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-series)" x="242.756874" y="482.663366" transform="rotate(-0 242.756874 482.663366)">1.41s</text>
+   </g>
+   <g id="fig_S_sweep_text_35">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="53.46" y="302.978675" transform="rotate(-0 53.46 302.978675)">CPU time dips, but the whole band S=8..24 is one flat optimum</text>
+   </g>
+  </g>
+  <g id="fig_S_sweep_text_36">
+   <text style="font-weight: 600; font-size: 13px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="6.048" y="20.28775" transform="rotate(-0 6.048 20.28775)">Hybrid merge sort, n = 1,000,000: the two metrics disagree</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="fig_S_sweep_p905e70437b">
+   <rect x="53.46" y="89.2736" width="540.54" height="188.985075"/>
+  </clipPath>
+  <clipPath id="fig_S_sweep_p191162dca1">
+   <rect x="53.46" y="312.978675" width="540.54" height="188.985075"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg class="viz" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 604.8 352.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-07T14:59:26.350422</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="fig_optimal_S_figure_1">
+  <g id="fig_optimal_S_patch_1">
+   <path d="M 0 352.8 
+L 604.8 352.8 
+L 604.8 0 
+L 0 0 
+z
+" style="fill: var(--viz-surface)"/>
+  </g>
+  <g id="fig_optimal_S_axes_1">
+   <g id="fig_optimal_S_patch_2">
+    <path d="M 50.54625 307.62 
+L 594 307.62 
+L 594 28.72 
+L 50.54625 28.72 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_optimal_S_matplotlib.axis_1">
+    <g id="fig_optimal_S_xtick_1">
+     <g id="fig_optimal_S_line2d_1">
+      <path d="M 65.361291 307.62 
+L 65.361291 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_2">
+      <defs>
+       <path id="fig_optimal_S_m161515a096" d="M 0 0 
+L 0 6 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="65.361291" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_1">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="65.361291" y="324.993594" transform="rotate(-0 65.361291 324.993594)">1</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_2">
+     <g id="fig_optimal_S_line2d_3">
+      <path d="M 128.547802 307.62 
+L 128.547802 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_4">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="128.547802" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_2">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="128.547802" y="324.993594" transform="rotate(-0 128.547802 324.993594)">2</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_3">
+     <g id="fig_optimal_S_line2d_5">
+      <path d="M 191.734313 307.62 
+L 191.734313 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_6">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="191.734313" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_3">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="191.734313" y="324.993594" transform="rotate(-0 191.734313 324.993594)">4</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_4">
+     <g id="fig_optimal_S_line2d_7">
+      <path d="M 254.920824 307.62 
+L 254.920824 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_8">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="254.920824" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_4">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="254.920824" y="324.993594" transform="rotate(-0 254.920824 324.993594)">8</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_5">
+     <g id="fig_optimal_S_line2d_9">
+      <path d="M 318.107334 307.62 
+L 318.107334 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_10">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="318.107334" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_5">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="318.107334" y="324.993594" transform="rotate(-0 318.107334 324.993594)">16</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_6">
+     <g id="fig_optimal_S_line2d_11">
+      <path d="M 381.293845 307.62 
+L 381.293845 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_12">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="381.293845" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_6">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="381.293845" y="324.993594" transform="rotate(-0 381.293845 324.993594)">32</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_7">
+     <g id="fig_optimal_S_line2d_13">
+      <path d="M 444.480356 307.62 
+L 444.480356 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_14">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="444.480356" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_7">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="444.480356" y="324.993594" transform="rotate(-0 444.480356 324.993594)">64</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_8">
+     <g id="fig_optimal_S_line2d_15">
+      <path d="M 507.666867 307.62 
+L 507.666867 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_16">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="507.666867" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_8">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="507.666867" y="324.993594" transform="rotate(-0 507.666867 324.993594)">128</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_text_9">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="322.273125" y="339.769219" transform="rotate(-0 322.273125 339.769219)">S</text>
+    </g>
+   </g>
+   <g id="fig_optimal_S_matplotlib.axis_2">
+    <g id="fig_optimal_S_ytick_1">
+     <g id="fig_optimal_S_line2d_17">
+      <path d="M 50.54625 302.328628 
+L 594 302.328628 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_18">
+      <defs>
+       <path id="fig_optimal_S_md57a98eff0" d="M 0 0 
+L -6 0 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="302.328628" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_10">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="306.265425" transform="rotate(-0 41.04625 306.265425)">0.7</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_2">
+     <g id="fig_optimal_S_line2d_19">
+      <path d="M 50.54625 257.811735 
+L 594 257.811735 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_20">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="257.811735" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_11">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="261.748532" transform="rotate(-0 41.04625 261.748532)">0.8</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_3">
+     <g id="fig_optimal_S_line2d_21">
+      <path d="M 50.54625 213.294843 
+L 594 213.294843 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_22">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="213.294843" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_12">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="217.231639" transform="rotate(-0 41.04625 217.231639)">0.9</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_4">
+     <g id="fig_optimal_S_line2d_23">
+      <path d="M 50.54625 168.77795 
+L 594 168.77795 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_24">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="168.77795" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_13">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="172.714747" transform="rotate(-0 41.04625 172.714747)">1.0</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_5">
+     <g id="fig_optimal_S_line2d_25">
+      <path d="M 50.54625 124.261057 
+L 594 124.261057 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_26">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="124.261057" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_14">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="128.197854" transform="rotate(-0 41.04625 128.197854)">1.1</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_6">
+     <g id="fig_optimal_S_line2d_27">
+      <path d="M 50.54625 79.744164 
+L 594 79.744164 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_28">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="79.744164" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_15">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="83.680961" transform="rotate(-0 41.04625 83.680961)">1.2</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_7">
+     <g id="fig_optimal_S_line2d_29">
+      <path d="M 50.54625 35.227271 
+L 594 35.227271 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_30">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="35.227271" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_16">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="39.164068" transform="rotate(-0 41.04625 39.164068)">1.3</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_text_17">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="19.230625" y="168.17" transform="rotate(-90 19.230625 168.17)">speedup over plain merge sort</text>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_31">
+    <path d="M 65.361291 193.617791 
+L 128.547802 144.909395 
+L 165.509541 117.107841 
+L 191.734313 113.602899 
+L 228.696052 74.240788 
+L 254.920824 68.945173 
+L 291.882563 41.397273 
+L 318.107334 41.397273 
+L 355.069074 56.422459 
+L 381.293845 66.74576 
+L 418.255584 143.809266 
+L 444.480356 123.503323 
+L 481.442095 239.044916 
+L 507.666867 238.678712 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_optimal_S_mc8ae8652e9" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="65.361291" y="193.617791" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="128.547802" y="144.909395" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="165.509541" y="117.107841" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="191.734313" y="113.602899" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="228.696052" y="74.240788" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="254.920824" y="68.945173" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="291.882563" y="41.397273" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="318.107334" y="41.397273" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="355.069074" y="56.422459" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="381.293845" y="66.74576" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="418.255584" y="143.809266" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="444.480356" y="123.503323" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="481.442095" y="239.044916" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="507.666867" y="238.678712" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_32">
+    <defs>
+     <path id="fig_optimal_S_m9025a81554" d="M 0 5.5 
+C 1.458617 5.5 2.857689 4.920485 3.889087 3.889087 
+C 4.920485 2.857689 5.5 1.458617 5.5 0 
+C 5.5 -1.458617 4.920485 -2.857689 3.889087 -3.889087 
+C 2.857689 -4.920485 1.458617 -5.5 0 -5.5 
+C -1.458617 -5.5 -2.857689 -4.920485 -3.889087 -3.889087 
+C -4.920485 -2.857689 -5.5 -1.458617 -5.5 0 
+C -5.5 1.458617 -4.920485 2.857689 -3.889087 3.889087 
+C -2.857689 4.920485 -1.458617 5.5 0 5.5 
+z
+" style="stroke: var(--viz-series); stroke-width: 1.8"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m9025a81554" x="291.882563" y="41.397273" style="fill-opacity: 0; stroke: var(--viz-series); stroke-width: 1.8"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_33">
+    <path d="M 65.361291 190.397433 
+L 128.547802 160.359095 
+L 165.509541 120.180172 
+L 191.734313 117.613713 
+L 228.696052 99.363366 
+L 254.920824 93.338021 
+L 291.882563 84.681456 
+L 318.107334 88.488836 
+L 355.069074 103.417705 
+L 381.293845 111.301762 
+L 418.255584 118.103785 
+L 444.480356 169.25663 
+L 481.442095 168.894195 
+L 507.666867 272.455461 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-series2); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_optimal_S_me80cd261c8" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="65.361291" y="190.397433" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="128.547802" y="160.359095" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="165.509541" y="120.180172" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="191.734313" y="117.613713" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="228.696052" y="99.363366" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="254.920824" y="93.338021" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="291.882563" y="84.681456" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="318.107334" y="88.488836" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="355.069074" y="103.417705" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="381.293845" y="111.301762" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="418.255584" y="118.103785" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="444.480356" y="169.25663" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="481.442095" y="168.894195" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="507.666867" y="272.455461" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_34">
+    <defs>
+     <path id="fig_optimal_S_m7e3858958e" d="M 0 5.5 
+C 1.458617 5.5 2.857689 4.920485 3.889087 3.889087 
+C 4.920485 2.857689 5.5 1.458617 5.5 0 
+C 5.5 -1.458617 4.920485 -2.857689 3.889087 -3.889087 
+C 2.857689 -4.920485 1.458617 -5.5 0 -5.5 
+C -1.458617 -5.5 -2.857689 -4.920485 -3.889087 -3.889087 
+C -4.920485 -2.857689 -5.5 -1.458617 -5.5 0 
+C -5.5 1.458617 -4.920485 2.857689 -3.889087 3.889087 
+C -2.857689 4.920485 -1.458617 5.5 0 5.5 
+z
+" style="stroke: var(--viz-series2); stroke-width: 1.8"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m7e3858958e" x="291.882563" y="84.681456" style="fill-opacity: 0; stroke: var(--viz-series2); stroke-width: 1.8"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_35">
+    <path d="M 65.361291 192.916906 
+L 128.547802 156.676539 
+L 191.734313 132.49721 
+L 228.696052 129.861565 
+L 254.920824 116.066575 
+L 291.882563 109.902127 
+L 318.107334 115.49001 
+L 355.069074 115.612811 
+L 381.293845 138.08248 
+L 418.255584 137.283506 
+L 444.480356 198.137388 
+L 507.666867 294.942727 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-series3); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_optimal_S_m565a9fd3af" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="65.361291" y="192.916906" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="128.547802" y="156.676539" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="191.734313" y="132.49721" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="228.696052" y="129.861565" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="254.920824" y="116.066575" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="291.882563" y="109.902127" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="318.107334" y="115.49001" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="355.069074" y="115.612811" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="381.293845" y="138.08248" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="418.255584" y="137.283506" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="444.480356" y="198.137388" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="507.666867" y="294.942727" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_36">
+    <defs>
+     <path id="fig_optimal_S_mae6684e02a" d="M 0 5.5 
+C 1.458617 5.5 2.857689 4.920485 3.889087 3.889087 
+C 4.920485 2.857689 5.5 1.458617 5.5 0 
+C 5.5 -1.458617 4.920485 -2.857689 3.889087 -3.889087 
+C 2.857689 -4.920485 1.458617 -5.5 0 -5.5 
+C -1.458617 -5.5 -2.857689 -4.920485 -3.889087 -3.889087 
+C -4.920485 -2.857689 -5.5 -1.458617 -5.5 0 
+C -5.5 1.458617 -4.920485 2.857689 -3.889087 3.889087 
+C -2.857689 4.920485 -1.458617 5.5 0 5.5 
+z
+" style="stroke: var(--viz-series3); stroke-width: 1.8"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_mae6684e02a" x="291.882563" y="109.902127" style="fill-opacity: 0; stroke: var(--viz-series3); stroke-width: 1.8"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_37">
+    <path d="M 128.547802 158.470006 
+L 191.734313 147.93119 
+L 254.920824 134.745376 
+L 318.107334 108.479683 
+L 381.293845 117.040992 
+L 444.480356 146.140479 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-series4); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_optimal_S_m1a05d3991d" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="128.547802" y="158.470006" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="191.734313" y="147.93119" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="254.920824" y="134.745376" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="318.107334" y="108.479683" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="381.293845" y="117.040992" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="444.480356" y="146.140479" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_38">
+    <defs>
+     <path id="fig_optimal_S_m4846d737c4" d="M 0 5.5 
+C 1.458617 5.5 2.857689 4.920485 3.889087 3.889087 
+C 4.920485 2.857689 5.5 1.458617 5.5 0 
+C 5.5 -1.458617 4.920485 -2.857689 3.889087 -3.889087 
+C 2.857689 -4.920485 1.458617 -5.5 0 -5.5 
+C -1.458617 -5.5 -2.857689 -4.920485 -3.889087 -3.889087 
+C -4.920485 -2.857689 -5.5 -1.458617 -5.5 0 
+C -5.5 1.458617 -4.920485 2.857689 -3.889087 3.889087 
+C -2.857689 4.920485 -1.458617 5.5 0 5.5 
+z
+" style="stroke: var(--viz-series4); stroke-width: 1.8"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m4846d737c4" x="318.107334" y="108.479683" style="fill-opacity: 0; stroke: var(--viz-series4); stroke-width: 1.8"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_39">
+    <path d="M 50.54625 168.77795 
+L 594 168.77795 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: var(--viz-base); stroke-width: 1.5"/>
+   </g>
+   <g id="fig_optimal_S_patch_3">
+    <path d="M 50.54625 307.62 
+L 50.54625 28.72 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_optimal_S_patch_4">
+    <path d="M 50.54625 307.62 
+L 594 307.62 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_optimal_S_text_18">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series)" x="516.666867" y="241.678712" transform="rotate(-0 516.666867 241.678712)">n = 10,000</text>
+   </g>
+   <g id="fig_optimal_S_text_19">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series2)" x="516.666867" y="275.455461" transform="rotate(-0 516.666867 275.455461)">n = 100,000</text>
+   </g>
+   <g id="fig_optimal_S_text_20">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series3)" x="516.666867" y="297.942727" transform="rotate(-0 516.666867 297.942727)">n = 1,000,000</text>
+   </g>
+   <g id="fig_optimal_S_text_21">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series4)" x="453.480356" y="149.140479" transform="rotate(-0 453.480356 149.140479)">n = 10,000,000</text>
+   </g>
+   <g id="fig_optimal_S_text_22">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-base)" x="585.311632" y="164.657886" transform="rotate(-0 585.311632 164.657886)">plain merge sort</text>
+   </g>
+   <g id="fig_optimal_S_text_23">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink2)" x="69.808947" y="293.42525" transform="rotate(-0 69.808947 293.42525)">rings mark the fastest S for each n</text>
+   </g>
+   <g id="fig_optimal_S_text_24">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="50.54625" y="18.72" transform="rotate(-0 50.54625 18.72)">The best S lands in the same place at every size</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="fig_optimal_S_pad52077861">
+   <rect x="50.54625" y="28.72" width="543.45375" height="278.9"/>
+  </clipPath>
+ </defs>
+</svg>

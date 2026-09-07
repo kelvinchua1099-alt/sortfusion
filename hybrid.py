@@ -58,6 +58,54 @@ def hybrid(arr,S):
     new,c3=merge(left,right)
     return new,c1+c2+c3
 
+# uncounted twins, used only for CPU timing.
+# carrying the comparison counter costs about 15% of the runtime because every
+# level packs and unpacks a tuple, so timings must not be taken from the
+# counting versions above.
+
+def merge_nc(a,b):
+    i=0
+    j=0
+    new=[]
+    while i<len(a) and j<len(b):
+        if a[i]<=b[j]:
+            new.append(a[i])
+            i+=1
+        else:
+            new.append(b[j])
+            j+=1
+    if i<len(a):
+        new.extend(a[i:])
+    if j<len(b):
+        new.extend(b[j:])
+    return new
+
+def insertsort_nc(arr):
+    arr=list(arr)
+    for i in range(1,len(arr)):
+        key=arr[i]
+        j=i-1
+        while j>=0:
+            if arr[j]>key:
+                arr[j+1]=arr[j]
+                j-=1
+            else:
+                break
+        arr[j+1]=key
+    return arr
+
+def mergesort_nc(arr):
+    if len(arr)<2:
+        return list(arr)
+    mid=len(arr)//2
+    return merge_nc(mergesort_nc(arr[:mid]),mergesort_nc(arr[mid:]))
+
+def hybrid_nc(arr,S):
+    if len(arr)<=S:
+        return insertsort_nc(arr)
+    mid=len(arr)//2
+    return merge_nc(hybrid_nc(arr[:mid],S),hybrid_nc(arr[mid:],S))
+
 if __name__=="__main__":
     import random
     random.seed(20260906)

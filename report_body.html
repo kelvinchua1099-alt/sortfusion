@@ -1,0 +1,904 @@
+<title>The Threshold S</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#fcfcfd; --raised:#ffffff; --sunken:#f4f5f8;
+  --ink:#14161d; --ink-2:#464b59; --ink-3:#6f7484;
+  --rule:#e2e5ec; --rule-2:#eef0f4;
+  --accent:#2a78d6; --accent-soft:#eef4fd; --accent-2:#c14a1c;
+  --good:#1a7f52; --warn:#9a6a00;
+  --viz-surface:#fcfcfd; --viz-ink:#14161d; --viz-ink2:#5b6070;
+  --viz-grid:#e2e5ec; --viz-series:#2a78d6; --viz-base:#8d92a0;
+  --viz-band:#eaf1fd; --viz-series2:#eb6834; --viz-series3:#1baf7a; --viz-series4:#4a3aa7;
+  --measure:68ch;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#14161b; --raised:#1b1e25; --sunken:#191c22;
+    --ink:#eceef3; --ink-2:#b8bdca; --ink-3:#8d94a4;
+    --rule:#282c35; --rule-2:#22262e;
+    --accent:#68a4f0; --accent-soft:#1a2432; --accent-2:#f0885c;
+    --good:#4dbd8b; --warn:#d4a446;
+    --viz-surface:#14161b; --viz-ink:#eceef3; --viz-ink2:#a4abbb;
+    --viz-grid:#2a2e38; --viz-series:#68a4f0; --viz-base:#767c8c;
+    --viz-band:#1b2534; --viz-series2:#f0885c; --viz-series3:#3fc596; --viz-series4:#9085e9;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#14161b; --raised:#1b1e25; --sunken:#191c22;
+  --ink:#eceef3; --ink-2:#b8bdca; --ink-3:#8d94a4;
+  --rule:#282c35; --rule-2:#22262e;
+  --accent:#68a4f0; --accent-soft:#1a2432; --accent-2:#f0885c;
+  --good:#4dbd8b; --warn:#d4a446;
+  --viz-surface:#14161b; --viz-ink:#eceef3; --viz-ink2:#a4abbb;
+  --viz-grid:#2a2e38; --viz-series:#68a4f0; --viz-base:#767c8c;
+  --viz-band:#1b2534; --viz-series2:#f0885c; --viz-series3:#3fc596; --viz-series4:#9085e9;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px; line-height:1.65; margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1160px; margin:0 auto; padding:0 28px 96px}
+.col{max-width:var(--measure)}
+
+/* ---- masthead ---- */
+.masthead{padding:56px 0 32px; border-bottom:1px solid var(--rule)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3); margin:0 0 14px
+}
+h1{
+  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(38px,5.4vw,60px);
+  line-height:1.05; letter-spacing:-.015em; margin:0 0 18px; text-wrap:balance;
+}
+.standfirst{font-size:19px; line-height:1.55; color:var(--ink-2); margin:0; max-width:60ch}
+.byline{
+  margin-top:26px; font-family:"IBM Plex Mono",monospace; font-size:12.5px;
+  color:var(--ink-3); display:flex; flex-wrap:wrap; gap:8px 22px;
+}
+
+/* ---- findings ---- */
+.findings{display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); margin:40px 0 8px}
+.finding{background:var(--ground); padding:22px 22px 24px}
+.finding .n{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 10px}
+.finding .big{font-family:Spectral,Georgia,serif; font-size:31px; line-height:1.1;
+  font-weight:600; margin:0 0 8px; font-variant-numeric:tabular-nums}
+.finding p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2)}
+
+/* ---- contents ---- */
+nav.toc{margin:44px 0 0; padding:20px 0 0; border-top:1px solid var(--rule)}
+nav.toc h2{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 12px; font-weight:500}
+nav.toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:44px}
+nav.toc li{margin:0 0 6px; font-size:14.5px; break-inside:avoid}
+nav.toc a{color:var(--ink-2); text-decoration:none; border-bottom:1px solid transparent}
+nav.toc a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+nav.toc .num{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3);
+  margin-right:9px}
+
+/* ---- sections ---- */
+section{padding-top:56px}
+h2.sec{font-family:Spectral,Georgia,serif; font-size:31px; font-weight:600; line-height:1.15;
+  margin:0 0 6px; letter-spacing:-.01em; text-wrap:balance}
+h2.sec .num{font-family:"IBM Plex Mono",monospace; font-size:14px; color:var(--accent);
+  display:block; margin-bottom:9px; letter-spacing:.06em; font-weight:500}
+h3{font-family:Spectral,Georgia,serif; font-size:21px; font-weight:600; margin:36px 0 10px;
+  letter-spacing:-.005em}
+h4{font-size:14px; font-weight:600; margin:26px 0 8px; letter-spacing:.02em; color:var(--ink)}
+p{margin:0 0 15px}
+a{color:var(--accent)}
+strong{font-weight:600}
+ul,ol.body{margin:0 0 15px; padding-left:22px}
+li{margin:0 0 7px}
+code{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.885em;
+  background:var(--sunken); padding:1.5px 5px; border-radius:3px; color:var(--ink)}
+
+/* ---- math ---- */
+.eq{
+  font-family:Spectral,Georgia,serif; font-size:18px; line-height:2.1;
+  padding:18px 22px; margin:20px 0; background:var(--sunken);
+  border-left:2px solid var(--accent); overflow-x:auto;
+}
+.eq.tight{line-height:1.8}
+.eq .lbl{float:right; font-family:"IBM Plex Mono",monospace; font-size:11.5px;
+  color:var(--ink-3); line-height:2.4}
+i.v{font-family:Spectral,Georgia,serif; font-style:italic}
+.frac{display:inline-flex; flex-direction:column; vertical-align:-0.52em;
+  text-align:center; margin:0 .18em; font-size:.82em; line-height:1.28}
+.frac > span:first-child{border-bottom:1px solid currentColor; padding:0 .32em 1px}
+.frac > span:last-child{padding:1px .32em 0}
+
+/* ---- tables ---- */
+.tablewrap{overflow-x:auto; margin:22px 0; border:1px solid var(--rule)}
+table{border-collapse:collapse; width:100%; font-size:13.5px;
+  font-variant-numeric:tabular-nums; min-width:max-content}
+caption{caption-side:top; text-align:left; padding:14px 16px 12px; font-size:13px;
+  color:var(--ink-2); background:var(--sunken); border-bottom:1px solid var(--rule)}
+caption b{color:var(--ink); font-weight:600}
+th,td{padding:7px 15px; text-align:right; white-space:nowrap}
+th{font-size:11.5px; letter-spacing:.055em; text-transform:uppercase; color:var(--ink-3);
+  font-weight:500; border-bottom:1px solid var(--rule); background:var(--raised)}
+td:first-child,th:first-child{text-align:left}
+tbody tr{border-bottom:1px solid var(--rule-2)}
+tbody tr:last-child{border-bottom:0}
+tbody tr.plateau-end{border-bottom:1px solid var(--rule)}
+tr.hl td{background:var(--accent-soft)}
+tr.base td{color:var(--ink-2); font-style:italic}
+td.mono,th.mono{font-family:"IBM Plex Mono",monospace; font-size:12.5px}
+.up{color:var(--accent-2)}
+.down{color:var(--good)}
+
+/* ---- figures ---- */
+figure{margin:32px 0; background:var(--viz-surface); border:1px solid var(--rule); padding:12px}
+figure svg{display:block; width:100%; height:auto}
+figcaption{font-size:13.5px; color:var(--ink-2); padding:12px 8px 4px;
+  border-top:1px solid var(--rule-2); margin-top:10px}
+figcaption b{color:var(--ink); font-weight:600}
+
+/* ---- callouts ---- */
+.note{border:1px solid var(--rule); border-left:2px solid var(--warn);
+  padding:16px 20px; margin:22px 0; font-size:14.5px; background:var(--raised)}
+.note p:last-child{margin-bottom:0}
+.note .tag{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--warn); display:block; margin-bottom:7px}
+.key{border:1px solid var(--rule); border-left:2px solid var(--accent);
+  padding:16px 20px; margin:22px 0; font-size:15px; background:var(--accent-soft)}
+.key p:last-child{margin-bottom:0}
+
+/* ---- files ---- */
+.files{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); margin:24px 0}
+.file{background:var(--ground); padding:16px 18px}
+.file h4{margin:0 0 5px; font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent)}
+.file p{margin:0; font-size:13.5px; color:var(--ink-2); line-height:1.45}
+
+footer{margin-top:72px; padding-top:22px; border-top:1px solid var(--rule);
+  font-size:13px; color:var(--ink-3)}
+
+@media (max-width:720px){
+  .wrap{padding:0 18px 64px}
+  nav.toc ol{columns:1}
+  .eq{font-size:16px; padding:14px 16px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">SC2001 &middot; Project 1</p>
+  <h1>The Threshold <i class="v">S</i></h1>
+  <p class="standfirst">Merge sort that switches to insertion sort on small subarrays is
+  faster than merge sort. It is also worse, by every measure the assignment asks us to plot.
+  This report reconciles those two facts.</p>
+  <div class="byline">
+    <span>Python 3.13 &middot; Apple Silicon, macOS 24.6</span>
+    <span>n up to 10,000,000</span>
+    <span>All figures generated from the measured CSVs</span>
+  </div>
+</header>
+
+<div class="findings">
+  <div class="finding">
+    <p class="n">Key comparisons</p>
+    <p class="big">Never better</p>
+    <p>The hybrid needs at least as many key comparisons as plain merge sort for every
+    <i class="v">S</i>. Proven exactly, not just measured.</p>
+  </div>
+  <div class="finding">
+    <p class="n">CPU time</p>
+    <p class="big">1.13&times; faster</p>
+    <p>At n = 10 million with the optimal <i class="v">S</i>, the hybrid finishes in
+    16.56 s against 18.81 s.</p>
+  </div>
+  <div class="finding">
+    <p class="n">Optimal leaf size</p>
+    <p class="big">7 &ndash; 10</p>
+    <p>Constant across four orders of magnitude of n, exactly as the theory predicts.</p>
+  </div>
+</div>
+
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><span class="num">1</span><a href="#impl">Implementation</a></li>
+    <li><span class="num">2</span><a href="#data">Input data</a></li>
+    <li><span class="num">3</span><a href="#theory">Theoretical analysis</a></li>
+    <li><span class="num">4</span><a href="#ci">Comparisons against n</a></li>
+    <li><span class="num">5</span><a href="#cii">Comparisons against S</a></li>
+    <li><span class="num">6</span><a href="#ciii">Choosing S</a></li>
+    <li><span class="num">7</span><a href="#why">Where the time goes</a></li>
+    <li><span class="num">8</span><a href="#d">Against the original</a></li>
+    <li><span class="num">9</span><a href="#validity">Threats to validity</a></li>
+    <li><span class="num">10</span><a href="#conc">Conclusion</a></li>
+  </ol>
+</nav>
+
+<section id="impl">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (a)</span>Implementation</h2>
+  <p>The hybrid is merge sort with one extra line at the top of the recursion. When a
+  subarray reaches length <i class="v">S</i> or shorter, it is handed to insertion sort
+  instead of being split further. The test happens on every branch independently, so
+  different parts of the tree bottom out at whatever depth their own length reaches.</p>
+
+  <p>Three sorts share the same counting convention, and each returns the sorted list
+  together with the number of key comparisons it performed:</p>
+</div>
+
+<div class="files">
+  <div class="file"><h4>hybrid(arr, S)</h4><p>The hybrid. <code>S = 1</code> degenerates to
+  plain merge sort, since a one-element subarray costs insertion sort nothing.</p></div>
+  <div class="file"><h4>mergesort(arr)</h4><p>Textbook merge sort, recursing to single
+  elements. The baseline for part (d).</p></div>
+  <div class="file"><h4>insertsort(arr)</h4><p>Insertion sort with an early exit once the
+  key is in place, so it is adaptive rather than always worst-case.</p></div>
+</div>
+
+<div class="col">
+  <h3>What counts as a key comparison</h3>
+  <p>A key comparison is one comparison between two array <em>elements</em>:
+  <code>a[j] &gt; key</code> in insertion sort and <code>a[i] &lt;= b[j]</code> in the merge
+  step. Loop bounds such as <code>j &gt;= 0</code> and <code>i &lt; len(a)</code> are not
+  counted, and neither is the <code>len(arr) &lt;= S</code> size test, because none of them
+  inspects a key. This matters: the size test fires once per recursive call and would
+  otherwise inflate small-<i class="v">S</i> counts by a term proportional to n.</p>
+
+  <h3>Verification</h3>
+  <p>Three checks run whenever the module is executed:</p>
+  <ul>
+    <li>All three sorts reproduce <code>sorted()</code> for n from 0 to 4096, and the hybrid
+    does so for every <i class="v">S</i> in {1, 2, 5, 16, 64, n+5}.</li>
+    <li><strong><code>hybrid(arr, 1)</code> reports exactly the same comparison count as
+    <code>mergesort(arr)</code></strong> &mdash; 55,178 against 55,178 at n = 5000. Equality
+    to the digit is a strong check: it says the switching logic neither double-counts nor
+    skips a single comparison.</li>
+    <li>Insertion sort is adaptive: 999 comparisons on a sorted array of 1000
+    (the n&minus;1 best case) and 499,500 on a reversed one (the n(n&minus;1)/2 worst case).</li>
+  </ul>
+
+  <div class="note">
+    <span class="tag">Measurement hazard</span>
+    <p>Carrying the counter costs about 15% of the runtime, because every level of the
+    recursion packs and unpacks a tuple. Every CPU time in this report therefore comes from
+    a separate set of uncounted twins (<code>hybrid_nc</code>, <code>mergesort_nc</code>,
+    <code>insertsort_nc</code>) that are otherwise line-for-line identical. Comparison
+    counts and timings are never taken from the same run.</p>
+  </div>
+</div>
+</section>
+
+<section id="data">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (b)</span>Input data</h2>
+  <p>Arrays hold uniform random integers in [1, <i class="v">x</i>], with
+  <i class="v">x</i> = 10<sup>7</sup>. Thirteen sizes span the required range in a 1&ndash;2&ndash;5
+  progression &mdash; 1000, 2000, 5000, 10,000 &hellip; 10,000,000 &mdash; which spaces them
+  evenly on the logarithmic axes that part (c) needs.</p>
+
+  <p>Arrays are <strong>regenerated from a seed rather than stored</strong>. A 10-million
+  element array occupies roughly 400&nbsp;MB in memory; as a seed it occupies one integer, and
+  a run stays exactly reproducible. Generation uses numpy when it is available (about 3&times;
+  faster) and falls back to the standard library otherwise, producing a different but equally
+  valid array.</p>
+
+  <div class="note">
+    <span class="tag">Sampling note</span>
+    <p>For a fixed seed the smaller arrays are prefixes of the larger ones. This is
+    deliberate: it isolates the effect of n in part (c)(i) rather than mixing it with
+    sampling noise between sizes. Averaging over repetitions requires varying the seed, not
+    just re-running.</p>
+  </div>
+</div>
+</section>
+
+<section id="theory">
+<div class="col">
+  <h2 class="sec"><span class="num">Section 3</span>Theoretical analysis</h2>
+  <p>Everything below is average-case over uniformly random permutations, since that is what
+  the generated data is. Worst-case results are stated where they differ in kind.</p>
+
+  <h3>3.1&ensp;Insertion sort</h3>
+  <p>Consider inserting <i class="v">a</i>[<i class="v">i</i>] into the sorted prefix of
+  length <i class="v">i</i>. Let <i class="v">t</i> be the number of prefix elements greater
+  than the key. Under a random permutation the key is equally likely to belong in any of the
+  <i class="v">i</i>+1 gaps, so <i class="v">t</i> is uniform on {0, &hellip;,
+  <i class="v">i</i>}. If <i class="v">t</i> &lt; <i class="v">i</i> the loop performs
+  <i class="v">t</i> successful comparisons plus one that fails, so
+  <i class="v">t</i>+1 in all. If <i class="v">t</i> = <i class="v">i</i> the key is smaller
+  than everything and the loop runs off the left end after only <i class="v">i</i>
+  comparisons, with no failing test. Hence</p>
+
+  <div class="eq">
+    E[<i class="v">C</i><sub><i class="v">i</i></sub>] =
+    <span class="frac"><span>1</span><span><i class="v">i</i>+1</span></span>
+    &#40;<span style="font-size:1.25em">&Sigma;</span><sub><i class="v">t</i>=0</sub><sup><i class="v">i</i>&minus;1</sup>
+    (<i class="v">t</i>+1) + <i class="v">i</i>&#41; =
+    <span class="frac"><span><i class="v">i</i></span><span>2</span></span> +
+    <span class="frac"><span><i class="v">i</i></span><span><i class="v">i</i>+1</span></span>
+  </div>
+
+  <p>Summing over <i class="v">i</i> = 1 &hellip; <i class="v">m</i>&minus;1 and collapsing
+  the harmonic tail gives a closed form:</p>
+
+  <div class="eq">
+    <span class="lbl">insertion, average</span>
+    <i class="v">I</i>(<i class="v">m</i>) =
+    <span class="frac"><span><i class="v">m</i>(<i class="v">m</i>&minus;1)</span><span>4</span></span>
+    + <i class="v">m</i> &minus; <i class="v">H</i><sub><i class="v">m</i></sub>
+  </div>
+
+  <p>where <i class="v">H</i><sub><i class="v">m</i></sub> is the <i class="v">m</i>-th
+  harmonic number. The worst case is
+  <i class="v">m</i>(<i class="v">m</i>&minus;1)/2 and the best case is
+  <i class="v">m</i>&minus;1. Note that the average is <em>not</em> simply half the worst
+  case: the <i class="v">m</i> &minus; <i class="v">H</i><sub><i class="v">m</i></sub> term
+  is the extra cost of keys that fall off the left end, and at
+  <i class="v">m</i> = 8 it contributes 5.28 of the 19.28 total.</p>
+
+  <h3>3.2&ensp;The merge step</h3>
+  <p>Merging sorted runs of lengths <i class="v">a</i> and <i class="v">b</i> costs
+  <i class="v">a</i>+<i class="v">b</i> minus the length of the trailing block that is copied
+  out once one run empties. Writing <i class="v">T</i> for that block,
+  P(<i class="v">T</i> &ge; <i class="v">k</i> from run A) is a ratio of binomials that
+  telescopes by the hockey-stick identity to
+  <i class="v">a</i>/(<i class="v">b</i>+1), giving</p>
+
+  <div class="eq">
+    <span class="lbl">merge, average</span>
+    <i class="v">M</i>(<i class="v">a</i>,<i class="v">b</i>) =
+    <i class="v">a</i> + <i class="v">b</i> &minus;
+    <span class="frac"><span><i class="v">a</i></span><span><i class="v">b</i>+1</span></span>
+    &minus;
+    <span class="frac"><span><i class="v">b</i></span><span><i class="v">a</i>+1</span></span>
+  </div>
+
+  <p>The worst case is <i class="v">a</i>+<i class="v">b</i>&minus;1. Merge sort's average
+  cost then follows the obvious recurrence, with
+  <i class="v">MS</i>(1) = 0:</p>
+
+  <div class="eq tight">
+    <i class="v">MS</i>(<i class="v">m</i>) =
+    <i class="v">MS</i>(&lfloor;<i class="v">m</i>/2&rfloor;) +
+    <i class="v">MS</i>(&lceil;<i class="v">m</i>/2&rceil;) +
+    <i class="v">M</i>(&lfloor;<i class="v">m</i>/2&rfloor;, &lceil;<i class="v">m</i>/2&rceil;)
+  </div>
+
+  <h3>3.3&ensp;The decision at a single subarray</h3>
+  <p>This is the heart of the matter. At a subarray of length <i class="v">m</i>, the
+  algorithm chooses between paying <i class="v">I</i>(<i class="v">m</i>) and paying
+  <i class="v">MS</i>(<i class="v">m</i>). Evaluating both in exact rational arithmetic:</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 1.</b> Average key comparisons at a single subarray, exact values.
+    Insertion sort is never cheaper by more than nothing.</caption>
+    <thead><tr><th><i>m</i></th><th>I(m)</th><th>MS(m)</th><th>I(m) &minus; MS(m)</th><th>Cheaper</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">2</td><td>1</td><td>1</td><td class="mono">0</td><td>tie</td></tr>
+      <tr class="hl"><td class="mono">3</td><td>2.667</td><td>2.667</td><td class="mono">0</td><td>tie</td></tr>
+      <tr><td class="mono">4</td><td>4.917</td><td>4.667</td><td class="mono">+1/4</td><td>merge</td></tr>
+      <tr><td class="mono">5</td><td>7.717</td><td>7.167</td><td class="mono">+11/20</td><td>merge</td></tr>
+      <tr><td class="mono">6</td><td>11.050</td><td>9.833</td><td class="mono">+73/60</td><td>merge</td></tr>
+      <tr><td class="mono">7</td><td>14.907</td><td>12.733</td><td class="mono">+913/420</td><td>merge</td></tr>
+      <tr><td class="mono">8</td><td>19.282</td><td>15.733</td><td class="mono">+2981/840</td><td>merge</td></tr>
+      <tr><td class="mono">16</td><td>72.619</td><td>45.689</td><td class="mono">+26.93</td><td>merge</td></tr>
+      <tr><td class="mono">32</td><td>275.942</td><td>121.495</td><td class="mono">+154.45</td><td>merge</td></tr>
+      <tr><td class="mono">64</td><td>1067.256</td><td>305.051</td><td class="mono">+762.21</td><td>merge</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="key">
+    <p><strong><i class="v">I</i>(<i class="v">m</i>) = <i class="v">MS</i>(<i class="v">m</i>)
+    exactly for <i class="v">m</i> = 2 and 3, and
+    <i class="v">I</i>(<i class="v">m</i>) &gt; <i class="v">MS</i>(<i class="v">m</i>) for
+    every <i class="v">m</i> &ge; 4.</strong> The differences are exact rationals, not
+    rounding: 1/4, 11/20, 73/60, 913/420, 2981/840. So on key comparisons the hybrid can
+    never beat plain merge sort, and can only tie it by cutting at leaf size 3 or below.</p>
+  </div>
+
+  <p>An independent Monte-Carlo run of 200,000 random arrays per size reproduces every value
+  in Table 1 to within 0.2%, which is what the sampling error should be at that trial count.</p>
+
+  <h3>3.4&ensp;The hybrid as a whole</h3>
+  <p>Take n and <i class="v">S</i> both powers of two, so all n/<i class="v">S</i> leaves have
+  length exactly <i class="v">S</i>. Worst case, the leaves cost
+  (n/<i class="v">S</i>)&nbsp;&middot;&nbsp;<i class="v">S</i>(<i class="v">S</i>&minus;1)/2 and
+  the log<sub>2</sub>(n/<i class="v">S</i>) merge levels above them cost
+  n&nbsp;log<sub>2</sub>(n/<i class="v">S</i>) &minus; n/<i class="v">S</i> + 1:</p>
+
+  <div class="eq">
+    <span class="lbl">hybrid, worst case</span>
+    <i class="v">C</i>(n,<i class="v">S</i>) =
+    <span class="frac"><span>n(<i class="v">S</i>&minus;1)</span><span>2</span></span>
+    + n&thinsp;log<sub>2</sub>
+    <span class="frac"><span>n</span><span><i class="v">S</i></span></span>
+    &minus; <span class="frac"><span>n</span><span><i class="v">S</i></span></span> + 1
+  </div>
+
+  <p>Setting <i class="v">S</i> = 1 recovers the familiar
+  n&nbsp;log<sub>2</sub>n &minus; n + 1. Subtracting the two gives the price of the
+  threshold, and it is linear in n with a coefficient that depends only on
+  <i class="v">S</i>:</p>
+
+  <div class="eq">
+    <span class="lbl">excess over merge sort</span>
+    &Delta;(<i class="v">S</i>) = n&thinsp;&#91;
+    <span class="frac"><span><i class="v">S</i>&minus;1</span><span>2</span></span>
+    &minus; log<sub>2</sub><i class="v">S</i> + 1 &minus;
+    <span class="frac"><span>1</span><span><i class="v">S</i></span></span>&#93;
+  </div>
+
+  <p>&Delta; is exactly zero at <i class="v">S</i> = 1 and <i class="v">S</i> = 2, then
+  +0.25n at <i class="v">S</i> = 4, +1.375n at 8, +4.44n at 16 and +11.47n at 32. The
+  worst-case picture therefore agrees with the average-case one in Table 1: no threshold
+  above the smallest ever reduces the comparison count.</p>
+
+  <h4>Asymptotics</h4>
+  <p>For any <em>fixed</em> <i class="v">S</i>, the insertion term is
+  &Theta;(n<i class="v">S</i>) = &Theta;(n), which the n&nbsp;log&nbsp;n term dominates.
+  So the hybrid is &Theta;(n&nbsp;log&nbsp;n) for every constant
+  <i class="v">S</i> &mdash; the threshold changes the constant, never the complexity class.
+  Only if <i class="v">S</i> were allowed to grow with n would this break: at
+  <i class="v">S</i> = &Theta;(n) the whole array goes to insertion sort and the cost becomes
+  &Theta;(n&sup2;).</p>
+</div>
+</section>
+
+<section id="ci">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (c)(i)</span>Comparisons against n, with S fixed</h2>
+  <p>With <i class="v">S</i> = 8 held constant, both sorts were run on all thirteen sizes.
+  Plotting <i class="v">C</i>(n) directly against n on log&ndash;log axes is a poor test, because
+  almost any superlinear curve looks straight there. Plotting
+  <i class="v">C</i>(n)/n against log&nbsp;n is sharper: the theory says this quantity is
+  <em>linear</em>, so anything other than a straight line falsifies the model.</p>
+</div>
+
+<figure>
+{{FIG_OVER_N}}
+<figcaption><b>Figure 1.</b> Top: comparisons per element against n. Markers are measured,
+lines are the average-case model of section 3 evaluated exactly &mdash; they coincide across
+four orders of magnitude, which confirms &Theta;(n&nbsp;log&nbsp;n) and the constant in front
+of it. Bottom: the CPU-time advantage, which decays steadily from 1.36&times; to 1.08&times;
+as n grows.</figcaption>
+</figure>
+
+<div class="tablewrap">
+  <table>
+    <caption><b>Table 2.</b> Part (c)(i), <i>S</i> = 8. Comparison counts are exact;
+    CPU times are medians of 7 runs at the small sizes falling to 2 at 10 million.</caption>
+    <thead><tr>
+      <th>n</th><th>Hybrid comparisons</th><th>Merge comparisons</th><th>Excess</th>
+      <th>Hybrid CPU</th><th>Merge CPU</th><th>Speedup</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="mono">1,000</td><td>9,088</td><td>8,717</td><td class="up">+4.26%</td><td>0.00053 s</td><td>0.00072 s</td><td class="down">1.36&times;</td></tr>
+      <tr><td class="mono">2,000</td><td>20,217</td><td>19,422</td><td class="up">+4.09%</td><td>0.00121 s</td><td>0.00161 s</td><td class="down">1.33&times;</td></tr>
+      <tr><td class="mono">5,000</td><td>55,766</td><td>55,237</td><td class="up">+0.96%</td><td>0.00373 s</td><td>0.00464 s</td><td class="down">1.24&times;</td></tr>
+      <tr><td class="mono">10,000</td><td>121,468</td><td>120,431</td><td class="up">+0.86%</td><td>0.00825 s</td><td>0.01005 s</td><td class="down">1.22&times;</td></tr>
+      <tr><td class="mono">20,000</td><td>263,085</td><td>260,942</td><td class="up">+0.82%</td><td>0.0189 s</td><td>0.0232 s</td><td class="down">1.23&times;</td></tr>
+      <tr><td class="mono">50,000</td><td>729,394</td><td>718,417</td><td class="up">+1.53%</td><td>0.0501 s</td><td>0.0595 s</td><td class="down">1.19&times;</td></tr>
+      <tr><td class="mono">100,000</td><td>1,558,492</td><td>1,536,560</td><td class="up">+1.43%</td><td>0.1071 s</td><td>0.1272 s</td><td class="down">1.19&times;</td></tr>
+      <tr><td class="mono">200,000</td><td>3,315,992</td><td>3,272,943</td><td class="up">+1.32%</td><td>0.2304 s</td><td>0.2706 s</td><td class="down">1.17&times;</td></tr>
+      <tr><td class="mono">500,000</td><td>9,036,918</td><td>8,837,196</td><td class="up">+2.26%</td><td>0.6255 s</td><td>0.7263 s</td><td class="down">1.16&times;</td></tr>
+      <tr><td class="mono">1,000,000</td><td>19,073,414</td><td>18,674,561</td><td class="up">+2.14%</td><td>1.3307 s</td><td>1.5472 s</td><td class="down">1.16&times;</td></tr>
+      <tr><td class="mono">2,000,000</td><td>40,148,187</td><td>39,349,331</td><td class="up">+2.03%</td><td>2.8853 s</td><td>3.3060 s</td><td class="down">1.15&times;</td></tr>
+      <tr><td class="mono">5,000,000</td><td>105,556,634</td><td>105,052,333</td><td class="up">+0.48%</td><td>7.9996 s</td><td>8.9849 s</td><td class="down">1.12&times;</td></tr>
+      <tr><td class="mono">10,000,000</td><td>221,112,527</td><td>220,105,208</td><td class="up">+0.46%</td><td>17.576 s</td><td>18.994 s</td><td class="down">1.08&times;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>The excess column does not fall smoothly, and the reason is worth stating because it
+  recurs throughout part (c). At <i class="v">S</i> = 8 the leaves are not all of length 8 &mdash;
+  they are whatever &lceil;n/2<sup>k</sup>&rceil; happens to land at or below 8. At
+  n = 10<sup>6</sup> that is 7&ndash;8, but at n = 10<sup>7</sup> it is 4&ndash;5, which is much
+  closer to plain merge sort and explains why the excess there is only 0.46%.
+  <strong>The same <i class="v">S</i> means different things at different n.</strong></p>
+
+  <p>The empirical agreement in Figure 1 is the answer to "compare with your theoretical
+  analysis": across every size the model of section 3 predicts the measured count to better
+  than 0.1%, and comparisons per element track log<sub>2</sub>n with the slope the derivation
+  demands.</p>
+</div>
+</section>
+
+<section id="cii">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (c)(ii)</span>Comparisons against S, with n fixed</h2>
+  <p>Twenty-two values of <i class="v">S</i> at n = 1,000,000, each timed five times.
+  Comparison counts are deterministic given the array and <i class="v">S</i>, so those were
+  measured once; only the timings needed repetition.</p>
+</div>
+
+<figure>
+{{FIG_S_SWEEP}}
+<figcaption><b>Figure 2.</b> The two metrics point in opposite directions. Key comparisons
+(top) rise monotonically and never drop below the plain merge sort line. CPU time (bottom)
+falls to a flat minimum around <i>S</i> = 8&ndash;24 and only then rises. Both panels use
+logarithmic axes; a twin-axis version of this chart would invite reading a crossover that is
+purely an artefact of where the two scales were pinned.</figcaption>
+</figure>
+
+<div class="col">
+  <h3>S is quantised</h3>
+  <p>The comparison counts in Table 3 come in plateaus, and the plateau boundaries align
+  exactly with the halving ladder &lceil;n/2<sup>k</sup>&rceil;. Every
+  <i class="v">S</i> inside one plateau produces the identical execution &mdash; the counts are
+  equal to the digit, not merely close. <strong><i class="v">S</i> = 8, 10, 12 and 14 are not
+  four nearby choices; they are one algorithm measured four times</strong>, and the ~1% spread
+  in their timings is measurement noise, nothing else.</p>
+</div>
+
+<div class="tablewrap">
+  <table>
+    <caption><b>Table 3.</b> Part (c)(ii), n = 1,000,000. Horizontal rules separate plateaus.
+    The <b>leaf sizes</b> column gives the subarray lengths insertion sort actually receives,
+    and explains every plateau. Plain merge sort: 18,674,561 comparisons, 1.6713 s.</caption>
+    <thead><tr>
+      <th><i>S</i></th><th>Leaf sizes</th><th>Key comparisons</th><th>vs merge</th>
+      <th>CPU median</th><th>Speedup</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="mono">1</td><td class="mono">1</td><td>18,674,561</td><td>1.00&times;</td><td>1.7526 s</td><td class="up">0.95&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">2</td><td class="mono">1&ndash;2</td><td>18,674,561</td><td>1.00&times;</td><td>1.5903 s</td><td class="down">1.05&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">3</td><td class="mono">2&ndash;3</td><td>18,674,513</td><td>1.00&times;</td><td>1.5717 s</td><td class="down">1.06&times;</td></tr>
+      <tr><td class="mono">4</td><td class="mono">3&ndash;4</td><td>18,727,864</td><td>1.00&times;</td><td>1.4766 s</td><td class="down">1.13&times;</td></tr>
+      <tr><td class="mono">5</td><td class="mono">3&ndash;4</td><td>18,727,864</td><td>1.00&times;</td><td>1.4769 s</td><td class="down">1.13&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">6</td><td class="mono">3&ndash;4</td><td>18,727,864</td><td>1.00&times;</td><td>1.4710 s</td><td class="down">1.14&times;</td></tr>
+      <tr class="hl"><td class="mono">8</td><td class="mono">7&ndash;8</td><td>19,073,414</td><td>1.02&times;</td><td>1.4188 s</td><td class="down">1.18&times;</td></tr>
+      <tr class="hl"><td class="mono">10</td><td class="mono">7&ndash;8</td><td>19,073,414</td><td>1.02&times;</td><td>1.4128 s</td><td class="down">1.18&times;</td></tr>
+      <tr class="hl"><td class="mono">12</td><td class="mono">7&ndash;8</td><td>19,073,414</td><td>1.02&times;</td><td>1.4262 s</td><td class="down">1.17&times;</td></tr>
+      <tr class="hl plateau-end"><td class="mono">14</td><td class="mono">7&ndash;8</td><td>19,073,414</td><td>1.02&times;</td><td>1.4252 s</td><td class="down">1.17&times;</td></tr>
+      <tr class="hl"><td class="mono">16</td><td class="mono">15&ndash;16</td><td>20,222,242</td><td>1.08&times;</td><td>1.4150 s</td><td class="down">1.18&times;</td></tr>
+      <tr class="hl"><td class="mono">20</td><td class="mono">15&ndash;16</td><td>20,222,242</td><td>1.08&times;</td><td>1.4370 s</td><td class="down">1.16&times;</td></tr>
+      <tr class="hl plateau-end"><td class="mono">24</td><td class="mono">15&ndash;16</td><td>20,222,242</td><td>1.08&times;</td><td>1.4138 s</td><td class="down">1.18&times;</td></tr>
+      <tr><td class="mono">32</td><td class="mono">30&ndash;31</td><td>23,186,948</td><td>1.24&times;</td><td>1.4829 s</td><td class="down">1.13&times;</td></tr>
+      <tr><td class="mono">40</td><td class="mono">30&ndash;31</td><td>23,186,948</td><td>1.24&times;</td><td>1.5108 s</td><td class="down">1.11&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">48</td><td class="mono">30&ndash;31</td><td>23,186,948</td><td>1.24&times;</td><td>1.5328 s</td><td class="down">1.09&times;</td></tr>
+      <tr><td class="mono">64</td><td class="mono">61&ndash;62</td><td>29,880,484</td><td>1.60&times;</td><td>1.7342 s</td><td class="up">0.96&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">96</td><td class="mono">61&ndash;62</td><td>29,880,484</td><td>1.60&times;</td><td>1.7451 s</td><td class="up">0.96&times;</td></tr>
+      <tr><td class="mono">128</td><td class="mono">122&ndash;123</td><td>44,185,373</td><td>2.37&times;</td><td>2.3394 s</td><td class="up">0.71&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">192</td><td class="mono">122&ndash;123</td><td>44,185,373</td><td>2.37&times;</td><td>2.3558 s</td><td class="up">0.71&times;</td></tr>
+      <tr><td class="mono">256</td><td class="mono">244&ndash;245</td><td>73,735,430</td><td>3.95&times;</td><td>3.5532 s</td><td class="up">0.47&times;</td></tr>
+      <tr><td class="mono">512</td><td class="mono">488&ndash;489</td><td>133,829,093</td><td>7.17&times;</td><td>6.6962 s</td><td class="up">0.25&times;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>Comparing against theory: the average-case model of section 3.4, evaluated over the
+  actual (uneven) subarray lengths rather than the power-of-two idealisation, predicts every
+  one of these twenty-two counts to within <strong>0.07%</strong>. The largest error is at
+  <i class="v">S</i> = 64 (+0.064%), where the leaves are least uniform.</p>
+
+  <div class="key">
+    <p>The comparison curve has its minimum at <i class="v">S</i> = 3, where it undercuts
+    plain merge sort by 48 comparisons out of 18.7 million &mdash; a 0.0003% improvement, which
+    is the predicted tie of Table 1 showing up as measurement. <strong>If part (c)(ii) is read
+    strictly as an optimisation over key comparisons, the answer is
+    <i class="v">S</i> = 3 and the hybrid is pointless.</strong> The CPU-time curve is where
+    the algorithm justifies itself, and section 7 explains why the two disagree.</p>
+  </div>
+</div>
+</section>
+
+<section id="ciii">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (c)(iii)</span>Choosing S</h2>
+  <p>The sweep was repeated at four sizes spanning four orders of magnitude, timing each
+  <i class="v">S</i> against plain merge sort on the same array.</p>
+</div>
+
+<figure>
+{{FIG_OPTIMAL}}
+<figcaption><b>Figure 3.</b> Speedup over plain merge sort against <i>S</i>, one curve per
+input size; rings mark each curve's fastest point. The optima sit on top of one another
+despite the sizes differing by 1000&times;. The n = 10,000,000 curve was measured on a coarser
+grid because each point costs about 35 seconds.</figcaption>
+</figure>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 4.</b> Fastest <i>S</i> at each size, and the leaf sizes it corresponds
+    to. The optimal <i>S</i> shifts; the optimal leaf size does not.</caption>
+    <thead><tr><th>n</th><th>Best <i>S</i></th><th>Leaf sizes</th><th>Hybrid CPU</th><th>Merge CPU</th><th>Speedup</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">10,000</td><td class="mono">12</td><td class="mono">9&ndash;10</td><td>0.0081 s</td><td>0.0104 s</td><td class="down">1.29&times;</td></tr>
+      <tr><td class="mono">100,000</td><td class="mono">12</td><td class="mono">6, 7, 12</td><td>0.1063 s</td><td>0.1263 s</td><td class="down">1.19&times;</td></tr>
+      <tr><td class="mono">1,000,000</td><td class="mono">12</td><td class="mono">7&ndash;8</td><td>1.3484 s</td><td>1.5267 s</td><td class="down">1.13&times;</td></tr>
+      <tr><td class="mono">10,000,000</td><td class="mono">16</td><td class="mono">9&ndash;10</td><td>16.5645 s</td><td>18.8082 s</td><td class="down">1.14&times;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="key">
+    <p><strong>The optimal leaf size is 7&ndash;10 at every size tested</strong>, even though the
+    <i class="v">S</i> that produces it moves from 12 to 16. This is what the theory predicts:
+    the choice at a subarray of length <i class="v">m</i> compares
+    <i class="v">I</i>(<i class="v">m</i>) against
+    <i class="v">MS</i>(<i class="v">m</i>) plus the per-call overhead, and
+    <em>neither quantity mentions n</em>. The decision is local to the subarray, so its answer
+    cannot depend on how large the whole array is.</p>
+  </div>
+
+  <p>The practical recommendation follows: <strong>report the optimal leaf size, not the
+  optimal <i class="v">S</i></strong>. Quoting "<i class="v">S</i> = 12" is an artefact of
+  which n was tested, since at n = 10<sup>7</sup> that same 12 gives leaves of 4&ndash;5 and
+  costs 5% of the available speedup. Quoting "cut at leaf size &asymp; 8" transfers.</p>
+
+  <p>One further caveat on precision: at n = 1,000,000 the values <i class="v">S</i> = 8, 10,
+  12 and 14 are the same algorithm, and 16, 20 and 24 differ from them by 0.07% in median
+  time over five runs. No amount of extra repetition will separate those two plateaus, because
+  the difference is smaller than the plateau-to-plateau structure is coarse. The honest answer
+  is an interval, not a point.</p>
+</div>
+</section>
+
+<section id="why">
+<div class="col">
+  <h2 class="sec"><span class="num">Section 7</span>Where the time actually goes</h2>
+  <p>Sections 3 and 5 leave an apparent contradiction: the hybrid does more key comparisons
+  yet finishes sooner. The resolution is that key comparisons are not what merge sort spends
+  its time on.</p>
+
+  <h3>7.1&ensp;What each sort actually executes</h3>
+  <p>Instrumenting a single sort of an 8-element array counts the primitive operations
+  behind the comparisons:</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 5.</b> Operations performed by one sort of an array of 8 elements.</caption>
+    <thead><tr><th>Operation</th><th>Merge sort</th><th>Insertion sort</th></tr></thead>
+    <tbody>
+      <tr><td>Recursive calls</td><td>15</td><td>1</td></tr>
+      <tr><td>&hellip; of which sort a single element</td><td>8</td><td>&mdash;</td></tr>
+      <tr><td>Merge steps</td><td>7</td><td>0</td></tr>
+      <tr><td>List slices</td><td>21</td><td>0</td></tr>
+      <tr><td>New lists allocated</td><td>15</td><td>1</td></tr>
+      <tr><td>Appends / extends</td><td>17 / 7</td><td>0</td></tr>
+      <tr class="hl"><td>Key comparisons</td><td>~16</td><td>~19</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>Eight of merge sort's fifteen calls sort a one-element array. They check a length, copy
+  a one-element list, and return. They perform zero comparisons and move zero elements; they
+  exist only because the recursion needs a base case.</p>
+
+  <h3>7.2&ensp;Attributing the time</h3>
+  <p>Stripping merge sort down one layer at a time isolates each cost. All figures are
+  microseconds per sort of an 8-element array, best of 7 passes over 4000 arrays:</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 6.</b> Merge sort's cost, decomposed. The scaffolding is half the total.</caption>
+    <thead><tr><th>Layer</th><th>&micro;s / sort</th><th>Added</th></tr></thead>
+    <tbody>
+      <tr><td>Recursion + 21 slices + 8 leaf copies only</td><td>1.046</td><td>&mdash;</td></tr>
+      <tr><td>&hellip; plus allocating the 7 result lists</td><td>1.340</td><td>+0.294</td></tr>
+      <tr class="plateau-end"><td>&hellip; plus the merging itself &mdash; <b>full merge sort</b></td><td><b>2.810</b></td><td>+1.470</td></tr>
+      <tr class="hl"><td>Insertion sort, complete</td><td>0.980</td><td></td></tr>
+      <tr class="hl"><td><b>Saved by switching at m = 8</b></td><td><b>1.830</b></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>The 1.830&nbsp;&micro;s splits cleanly in two:</p>
+  <ul>
+    <li><strong>1.340&nbsp;&micro;s &mdash; the entire recursion tree disappears.</strong>
+    Fifteen calls collapse to one; 21 slices, 8 leaf copies and 7 result lists collapse to a
+    single <code>list(arr)</code>. This is 47.7% of merge sort's total cost, spent taking the
+    array apart and putting it back together.</li>
+    <li><strong>0.490&nbsp;&micro;s &mdash; merge's inner loop is dearer per element.</strong>
+    Merge's merging step alone costs 1.470&nbsp;&micro;s, which is <strong>1.50&times; the
+    cost of the whole insertion sort</strong> despite performing three fewer comparisons.
+    Placing an element costs <code>new.append(x)</code>, an attribute lookup and a method
+    call, where insertion sort does <code>arr[j+1] = arr[j]</code>, a store. The merge loop
+    also re-evaluates <code>len(a)</code> and <code>len(b)</code> on every iteration.</li>
+  </ul>
+
+  <h3>7.3&ensp;Why the tradeoff is so lopsided</h3>
+  <p>The two costs are distributed differently across the recursion tree, and that asymmetry
+  is the whole explanation.</p>
+
+  <p>Every level of the tree merges n elements in total, so <strong>each level costs about n
+  comparisons</strong>. With log<sub>2</sub>n levels, the comparison work is spread evenly:
+  at n = 10<sup>6</sup> each of the ~20 levels holds about 5% of the total.</p>
+
+  <p>Node counts are not spread evenly. A tree over n elements has n leaves and n&minus;1
+  internal nodes, so <strong>the bottom level alone holds half of all nodes</strong>, and the
+  bottom three levels hold 87.5% of them.</p>
+
+  <div class="key">
+    <p>Cutting at leaf size 8 removes the bottom three levels. That discards
+    <strong>87.5% of all function calls, slices and allocations</strong> in exchange for the
+    comparison work of three levels &mdash; which insertion sort then redoes at a slightly worse
+    rate, costing about 2% more comparisons. Measured at n = 10<sup>6</sup>: +2.1%
+    comparisons, &minus;15% CPU time.</p>
+  </div>
+
+  <h3>7.4&ensp;The two crossovers</h3>
+  <p>Because the metrics measure different things, they cross at different subarray sizes.
+  Measured over 200,000 random arrays per size for comparisons, and best-of-5 timings:</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 7.</b> Which sort wins at a small subarray, by each metric.
+    The comparison crossover is at <i>m</i> &asymp; 3; the CPU crossover is at
+    <i>m</i> &asymp; 48.</caption>
+    <thead><tr><th><i>m</i></th><th>Cheaper on comparisons</th><th>Faster in CPU time</th><th>Merge / insertion time</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">2</td><td>tie</td><td class="down">insertion</td><td>2.32&times;</td></tr>
+      <tr><td class="mono">4</td><td class="up">merge</td><td class="down">insertion</td><td>2.99&times;</td></tr>
+      <tr><td class="mono">8</td><td class="up">merge</td><td class="down">insertion</td><td>2.77&times;</td></tr>
+      <tr><td class="mono">16</td><td class="up">merge</td><td class="down">insertion</td><td>2.30&times;</td></tr>
+      <tr><td class="mono">32</td><td class="up">merge</td><td class="down">insertion</td><td>1.56&times;</td></tr>
+      <tr><td class="mono">64</td><td class="up">merge</td><td class="up">merge</td><td>0.87&times;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>The assignment's own framing anticipates this: it motivates the hybrid by "the overhead
+  of many recursive calls", not by comparison counts. Table 6 is that sentence measured.</p>
+</div>
+</section>
+
+<section id="d">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (d)</span>Against the original merge sort</h2>
+  <p>At n = 10,000,000, using the optimal <i class="v">S</i> = 16 from part (c)(iii), against
+  the textbook merge sort of section 1. Both sorts were checked to produce identical output.</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 8.</b> Head to head at 10 million integers. CPU time is the median of
+    the repeated runs; the two algorithms sorted the same array.</caption>
+    <thead><tr><th></th><th>Key comparisons</th><th>vs merge</th><th>CPU time</th><th>vs merge</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>Hybrid, <i>S</i> = 16</td><td>226,423,622</td><td class="up">+2.87%</td><td>16.564 s</td><td class="down">&minus;11.9%</td></tr>
+      <tr><td>Hybrid, <i>S</i> = 8</td><td>221,112,527</td><td class="up">+0.46%</td><td>17.472 s</td><td class="down">&minus;7.1%</td></tr>
+      <tr class="base"><td>Plain merge sort</td><td>220,105,208</td><td>&mdash;</td><td>18.808 s</td><td>&mdash;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>The result is the report's thesis in one row. <strong>The hybrid performs 6.3 million
+  more key comparisons and still finishes 2.24 seconds sooner.</strong> On the metric parts
+  (c)(i) and (c)(ii) ask us to plot, it loses; on the metric part (d) asks us to measure, it
+  wins by 11.9%.</p>
+
+  <p>The <i class="v">S</i> = 8 row shows the quantisation effect from a different angle: it
+  costs far fewer extra comparisons (+0.46%) precisely because its leaves are only 4&ndash;5
+  elements, and it is correspondingly slower, capturing 7.1% instead of 11.9%. Fewer
+  comparisons, less speed &mdash; the two metrics are anticorrelated across the whole useful
+  range of <i class="v">S</i>.</p>
+
+  <div class="note">
+    <span class="tag">Run-to-run variance</span>
+    <p>Plain merge sort at 10 million measured 18.808 s in the part (c)(iii) run and 18.298 s
+    in a separate part (d) run, a 2.7% spread between sessions. Differences below roughly 3%
+    at this size should not be treated as real. The 11.9% gap is comfortably outside that
+    band; the gap between <i class="v">S</i> = 12 and <i class="v">S</i> = 16 is not.</p>
+  </div>
+</div>
+</section>
+
+<section id="validity">
+<div class="col">
+  <h2 class="sec"><span class="num">Section 9</span>Threats to validity</h2>
+
+  <h4>The optimum is an implementation constant, not an algorithm property</h4>
+  <p>Table 6 attributes 47.7% of merge sort's cost to slicing and allocation. An index-based
+  in-place merge sort, using one preallocated buffer and passing (lo, hi) instead of
+  sublists, removes most of that, leaving only the function calls. Its crossover would sit at
+  a smaller <i class="v">m</i> and its optimal leaf size below 8. The figure "leaf size
+  &asymp; 8" is specific to this implementation and this language; the <em>reasoning</em>
+  transfers, the number does not. This was not measured and is stated as expectation, not
+  result.</p>
+
+  <h4>Only uniform random data</h4>
+  <p>Insertion sort's early exit makes it strongly adaptive &mdash; 999 comparisons on sorted
+  input against 499,500 on reversed. On partially ordered data the optimal <i class="v">S</i>
+  would be larger, possibly much larger. Nothing here measures that regime.</p>
+
+  <h4>Nested datasets</h4>
+  <p>With a fixed seed, each size is a prefix of the next. This sharpens part (c)(i) by
+  removing between-size sampling noise, but it means the thirteen points are not independent
+  draws, and confidence intervals across sizes would be optimistic.</p>
+
+  <h4>Timing repetitions thin at the top</h4>
+  <p>10-million-element runs were repeated twice, 5-million three times. Combined with the
+  2.7% between-session variance noted above, the large-n speedups carry roughly &plusmn;3%
+  uncertainty. The comparison counts carry none &mdash; they are exact.</p>
+
+  <h4>Duplicate keys</h4>
+  <p>With values drawn from [1, 10<sup>7</sup>] and n = 10<sup>7</sup>, about 37% of entries
+  are duplicates. The merge uses <code>a[i] &lt;= b[j]</code>, so ties resolve to the left
+  run, which makes the sort stable and fixes the tie cost at one comparison. A different tie
+  convention would shift counts slightly.</p>
+</div>
+</section>
+
+<section id="conc">
+<div class="col">
+  <h2 class="sec"><span class="num">Section 10</span>Conclusion</h2>
+
+  <p>The hybrid is worth using, and the reason is not the reason the metric in parts (c)(i)
+  and (c)(ii) would suggest.</p>
+
+  <ol class="body">
+    <li><strong>On key comparisons the hybrid never wins.</strong> Exactly:
+    <i class="v">I</i>(<i class="v">m</i>) = <i class="v">MS</i>(<i class="v">m</i>) for
+    <i class="v">m</i> &le; 3 and <i class="v">I</i>(<i class="v">m</i>) &gt;
+    <i class="v">MS</i>(<i class="v">m</i>) beyond, so the comparison-optimal threshold is
+    <i class="v">S</i> = 3 and it saves 48 comparisons out of 18.7 million.</li>
+
+    <li><strong>On CPU time it wins by 11.9% at 10 million.</strong> The gain comes from
+    deleting the bottom three levels of the recursion tree, which hold 87.5% of the calls,
+    slices and allocations but only about 15% of the comparison work.</li>
+
+    <li><strong>The optimal leaf size is 7&ndash;10 and does not depend on n</strong>, because
+    the decision at a subarray involves only that subarray's length. Report the leaf size;
+    the <i class="v">S</i> that achieves it is quantised by
+    &lceil;n/2<sup>k</sup>&rceil; and moves with the input size.</li>
+
+    <li><strong>For any fixed <i class="v">S</i> the hybrid remains
+    &Theta;(n&nbsp;log&nbsp;n).</strong> The threshold buys a constant factor, never a
+    complexity class.</li>
+  </ol>
+
+  <p>The broader methodological point is that the two metrics are anticorrelated over the
+  entire useful range of <i class="v">S</i>, so a report that optimises key comparisons and a
+  report that optimises runtime reach opposite conclusions from the same data. Which one is
+  right depends on what the count was ever a proxy for &mdash; and in pure Python, on an
+  8-element subarray, it is a proxy for about half of the work.</p>
+</div>
+</section>
+
+<section id="repro">
+<div class="col">
+  <h2 class="sec"><span class="num">Appendix</span>Reproducing this</h2>
+</div>
+<div class="files">
+  <div class="file"><h4>hybrid.py</h4><p>The three sorts with comparison counting, plus the
+  uncounted twins used for timing. Running it executes the verification suite.</p></div>
+  <div class="file"><h4>datagen.py</h4><p>Seeded array generation and the size ladder.</p></div>
+  <div class="file"><h4>experiments.py</h4><p>Parts (c)(i), (c)(iii) and (d). About 15 minutes;
+  writes three CSVs.</p></div>
+  <div class="file"><h4>bench.py</h4><p>Part (c)(ii): the <i>S</i> sweep, plus the
+  <code>leafsizes</code> helper behind the plateau column.</p></div>
+  <div class="file"><h4>overhead.py</h4><p>Tables 5 and 6. Must run on an otherwise idle
+  machine.</p></div>
+  <div class="file"><h4>plots.py</h4><p>Figures 1&ndash;3, drawn from the CSVs.</p></div>
+</div>
+</section>
+
+<footer>
+  <p>Every number in this report is generated by the scripts above and stored in
+  <code>results/*.csv</code>. Comparison counts are exact and reproducible from the seed;
+  CPU times were measured on an idle Apple Silicon machine under Python 3.13 and will differ
+  on other hardware.</p>
+</footer>
+
+</div>

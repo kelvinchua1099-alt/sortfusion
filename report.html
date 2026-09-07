@@ -1,0 +1,2785 @@
+<title>The Threshold S</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#fcfcfd; --raised:#ffffff; --sunken:#f4f5f8;
+  --ink:#14161d; --ink-2:#464b59; --ink-3:#6f7484;
+  --rule:#e2e5ec; --rule-2:#eef0f4;
+  --accent:#2a78d6; --accent-soft:#eef4fd; --accent-2:#c14a1c;
+  --good:#1a7f52; --warn:#9a6a00;
+  --viz-surface:#fcfcfd; --viz-ink:#14161d; --viz-ink2:#5b6070;
+  --viz-grid:#e2e5ec; --viz-series:#2a78d6; --viz-base:#8d92a0;
+  --viz-band:#eaf1fd; --viz-series2:#eb6834; --viz-series3:#1baf7a; --viz-series4:#4a3aa7;
+  --measure:68ch;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#14161b; --raised:#1b1e25; --sunken:#191c22;
+    --ink:#eceef3; --ink-2:#b8bdca; --ink-3:#8d94a4;
+    --rule:#282c35; --rule-2:#22262e;
+    --accent:#68a4f0; --accent-soft:#1a2432; --accent-2:#f0885c;
+    --good:#4dbd8b; --warn:#d4a446;
+    --viz-surface:#14161b; --viz-ink:#eceef3; --viz-ink2:#a4abbb;
+    --viz-grid:#2a2e38; --viz-series:#68a4f0; --viz-base:#767c8c;
+    --viz-band:#1b2534; --viz-series2:#f0885c; --viz-series3:#3fc596; --viz-series4:#9085e9;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#14161b; --raised:#1b1e25; --sunken:#191c22;
+  --ink:#eceef3; --ink-2:#b8bdca; --ink-3:#8d94a4;
+  --rule:#282c35; --rule-2:#22262e;
+  --accent:#68a4f0; --accent-soft:#1a2432; --accent-2:#f0885c;
+  --good:#4dbd8b; --warn:#d4a446;
+  --viz-surface:#14161b; --viz-ink:#eceef3; --viz-ink2:#a4abbb;
+  --viz-grid:#2a2e38; --viz-series:#68a4f0; --viz-base:#767c8c;
+  --viz-band:#1b2534; --viz-series2:#f0885c; --viz-series3:#3fc596; --viz-series4:#9085e9;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px; line-height:1.65; margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1160px; margin:0 auto; padding:0 28px 96px}
+.col{max-width:var(--measure)}
+
+/* ---- masthead ---- */
+.masthead{padding:56px 0 32px; border-bottom:1px solid var(--rule)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3); margin:0 0 14px
+}
+h1{
+  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(38px,5.4vw,60px);
+  line-height:1.05; letter-spacing:-.015em; margin:0 0 18px; text-wrap:balance;
+}
+.standfirst{font-size:19px; line-height:1.55; color:var(--ink-2); margin:0; max-width:60ch}
+.byline{
+  margin-top:26px; font-family:"IBM Plex Mono",monospace; font-size:12.5px;
+  color:var(--ink-3); display:flex; flex-wrap:wrap; gap:8px 22px;
+}
+
+/* ---- findings ---- */
+.findings{display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); margin:40px 0 8px}
+.finding{background:var(--ground); padding:22px 22px 24px}
+.finding .n{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 10px}
+.finding .big{font-family:Spectral,Georgia,serif; font-size:31px; line-height:1.1;
+  font-weight:600; margin:0 0 8px; font-variant-numeric:tabular-nums}
+.finding p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2)}
+
+/* ---- contents ---- */
+nav.toc{margin:44px 0 0; padding:20px 0 0; border-top:1px solid var(--rule)}
+nav.toc h2{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 12px; font-weight:500}
+nav.toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:44px}
+nav.toc li{margin:0 0 6px; font-size:14.5px; break-inside:avoid}
+nav.toc a{color:var(--ink-2); text-decoration:none; border-bottom:1px solid transparent}
+nav.toc a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+nav.toc .num{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3);
+  margin-right:9px}
+
+/* ---- sections ---- */
+section{padding-top:56px}
+h2.sec{font-family:Spectral,Georgia,serif; font-size:31px; font-weight:600; line-height:1.15;
+  margin:0 0 6px; letter-spacing:-.01em; text-wrap:balance}
+h2.sec .num{font-family:"IBM Plex Mono",monospace; font-size:14px; color:var(--accent);
+  display:block; margin-bottom:9px; letter-spacing:.06em; font-weight:500}
+h3{font-family:Spectral,Georgia,serif; font-size:21px; font-weight:600; margin:36px 0 10px;
+  letter-spacing:-.005em}
+h4{font-size:14px; font-weight:600; margin:26px 0 8px; letter-spacing:.02em; color:var(--ink)}
+p{margin:0 0 15px}
+a{color:var(--accent)}
+strong{font-weight:600}
+ul,ol.body{margin:0 0 15px; padding-left:22px}
+li{margin:0 0 7px}
+code{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.885em;
+  background:var(--sunken); padding:1.5px 5px; border-radius:3px; color:var(--ink)}
+
+/* ---- math ---- */
+.eq{
+  font-family:Spectral,Georgia,serif; font-size:18px; line-height:2.1;
+  padding:18px 22px; margin:20px 0; background:var(--sunken);
+  border-left:2px solid var(--accent); overflow-x:auto;
+}
+.eq.tight{line-height:1.8}
+.eq .lbl{float:right; font-family:"IBM Plex Mono",monospace; font-size:11.5px;
+  color:var(--ink-3); line-height:2.4}
+i.v{font-family:Spectral,Georgia,serif; font-style:italic}
+.frac{display:inline-flex; flex-direction:column; vertical-align:-0.52em;
+  text-align:center; margin:0 .18em; font-size:.82em; line-height:1.28}
+.frac > span:first-child{border-bottom:1px solid currentColor; padding:0 .32em 1px}
+.frac > span:last-child{padding:1px .32em 0}
+
+/* ---- tables ---- */
+.tablewrap{overflow-x:auto; margin:22px 0; border:1px solid var(--rule)}
+table{border-collapse:collapse; width:100%; font-size:13.5px;
+  font-variant-numeric:tabular-nums; min-width:max-content}
+caption{caption-side:top; text-align:left; padding:14px 16px 12px; font-size:13px;
+  color:var(--ink-2); background:var(--sunken); border-bottom:1px solid var(--rule)}
+caption b{color:var(--ink); font-weight:600}
+th,td{padding:7px 15px; text-align:right; white-space:nowrap}
+th{font-size:11.5px; letter-spacing:.055em; text-transform:uppercase; color:var(--ink-3);
+  font-weight:500; border-bottom:1px solid var(--rule); background:var(--raised)}
+td:first-child,th:first-child{text-align:left}
+tbody tr{border-bottom:1px solid var(--rule-2)}
+tbody tr:last-child{border-bottom:0}
+tbody tr.plateau-end{border-bottom:1px solid var(--rule)}
+tr.hl td{background:var(--accent-soft)}
+tr.base td{color:var(--ink-2); font-style:italic}
+td.mono,th.mono{font-family:"IBM Plex Mono",monospace; font-size:12.5px}
+.up{color:var(--accent-2)}
+.down{color:var(--good)}
+
+/* ---- figures ---- */
+figure{margin:32px 0; background:var(--viz-surface); border:1px solid var(--rule); padding:12px}
+figure svg{display:block; width:100%; height:auto}
+figcaption{font-size:13.5px; color:var(--ink-2); padding:12px 8px 4px;
+  border-top:1px solid var(--rule-2); margin-top:10px}
+figcaption b{color:var(--ink); font-weight:600}
+
+/* ---- callouts ---- */
+.note{border:1px solid var(--rule); border-left:2px solid var(--warn);
+  padding:16px 20px; margin:22px 0; font-size:14.5px; background:var(--raised)}
+.note p:last-child{margin-bottom:0}
+.note .tag{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--warn); display:block; margin-bottom:7px}
+.key{border:1px solid var(--rule); border-left:2px solid var(--accent);
+  padding:16px 20px; margin:22px 0; font-size:15px; background:var(--accent-soft)}
+.key p:last-child{margin-bottom:0}
+
+/* ---- files ---- */
+.files{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); margin:24px 0}
+.file{background:var(--ground); padding:16px 18px}
+.file h4{margin:0 0 5px; font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent)}
+.file p{margin:0; font-size:13.5px; color:var(--ink-2); line-height:1.45}
+
+footer{margin-top:72px; padding-top:22px; border-top:1px solid var(--rule);
+  font-size:13px; color:var(--ink-3)}
+
+@media (max-width:720px){
+  .wrap{padding:0 18px 64px}
+  nav.toc ol{columns:1}
+  .eq{font-size:16px; padding:14px 16px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">SC2001 &middot; Project 1</p>
+  <h1>The Threshold <i class="v">S</i></h1>
+  <p class="standfirst">Merge sort that switches to insertion sort on small subarrays is
+  faster than merge sort. It is also worse, by every measure the assignment asks us to plot.
+  This report reconciles those two facts.</p>
+  <div class="byline">
+    <span>Python 3.13 &middot; Apple Silicon, macOS 24.6</span>
+    <span>n up to 10,000,000</span>
+    <span>All figures generated from the measured CSVs</span>
+  </div>
+</header>
+
+<div class="findings">
+  <div class="finding">
+    <p class="n">Key comparisons</p>
+    <p class="big">Never better</p>
+    <p>The hybrid needs at least as many key comparisons as plain merge sort for every
+    <i class="v">S</i>. Proven exactly, not just measured.</p>
+  </div>
+  <div class="finding">
+    <p class="n">CPU time</p>
+    <p class="big">1.13&times; faster</p>
+    <p>At n = 10 million with the optimal <i class="v">S</i>, the hybrid finishes in
+    16.56 s against 18.81 s.</p>
+  </div>
+  <div class="finding">
+    <p class="n">Optimal leaf size</p>
+    <p class="big">7 &ndash; 10</p>
+    <p>Constant across four orders of magnitude of n, exactly as the theory predicts.</p>
+  </div>
+</div>
+
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><span class="num">1</span><a href="#impl">Implementation</a></li>
+    <li><span class="num">2</span><a href="#data">Input data</a></li>
+    <li><span class="num">3</span><a href="#theory">Theoretical analysis</a></li>
+    <li><span class="num">4</span><a href="#ci">Comparisons against n</a></li>
+    <li><span class="num">5</span><a href="#cii">Comparisons against S</a></li>
+    <li><span class="num">6</span><a href="#ciii">Choosing S</a></li>
+    <li><span class="num">7</span><a href="#why">Where the time goes</a></li>
+    <li><span class="num">8</span><a href="#d">Against the original</a></li>
+    <li><span class="num">9</span><a href="#validity">Threats to validity</a></li>
+    <li><span class="num">10</span><a href="#conc">Conclusion</a></li>
+  </ol>
+</nav>
+
+<section id="impl">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (a)</span>Implementation</h2>
+  <p>The hybrid is merge sort with one extra line at the top of the recursion. When a
+  subarray reaches length <i class="v">S</i> or shorter, it is handed to insertion sort
+  instead of being split further. The test happens on every branch independently, so
+  different parts of the tree bottom out at whatever depth their own length reaches.</p>
+
+  <p>Three sorts share the same counting convention, and each returns the sorted list
+  together with the number of key comparisons it performed:</p>
+</div>
+
+<div class="files">
+  <div class="file"><h4>hybrid(arr, S)</h4><p>The hybrid. <code>S = 1</code> degenerates to
+  plain merge sort, since a one-element subarray costs insertion sort nothing.</p></div>
+  <div class="file"><h4>mergesort(arr)</h4><p>Textbook merge sort, recursing to single
+  elements. The baseline for part (d).</p></div>
+  <div class="file"><h4>insertsort(arr)</h4><p>Insertion sort with an early exit once the
+  key is in place, so it is adaptive rather than always worst-case.</p></div>
+</div>
+
+<div class="col">
+  <h3>What counts as a key comparison</h3>
+  <p>A key comparison is one comparison between two array <em>elements</em>:
+  <code>a[j] &gt; key</code> in insertion sort and <code>a[i] &lt;= b[j]</code> in the merge
+  step. Loop bounds such as <code>j &gt;= 0</code> and <code>i &lt; len(a)</code> are not
+  counted, and neither is the <code>len(arr) &lt;= S</code> size test, because none of them
+  inspects a key. This matters: the size test fires once per recursive call and would
+  otherwise inflate small-<i class="v">S</i> counts by a term proportional to n.</p>
+
+  <h3>Verification</h3>
+  <p>Three checks run whenever the module is executed:</p>
+  <ul>
+    <li>All three sorts reproduce <code>sorted()</code> for n from 0 to 4096, and the hybrid
+    does so for every <i class="v">S</i> in {1, 2, 5, 16, 64, n+5}.</li>
+    <li><strong><code>hybrid(arr, 1)</code> reports exactly the same comparison count as
+    <code>mergesort(arr)</code></strong> &mdash; 55,178 against 55,178 at n = 5000. Equality
+    to the digit is a strong check: it says the switching logic neither double-counts nor
+    skips a single comparison.</li>
+    <li>Insertion sort is adaptive: 999 comparisons on a sorted array of 1000
+    (the n&minus;1 best case) and 499,500 on a reversed one (the n(n&minus;1)/2 worst case).</li>
+  </ul>
+
+  <div class="note">
+    <span class="tag">Measurement hazard</span>
+    <p>Carrying the counter costs about 15% of the runtime, because every level of the
+    recursion packs and unpacks a tuple. Every CPU time in this report therefore comes from
+    a separate set of uncounted twins (<code>hybrid_nc</code>, <code>mergesort_nc</code>,
+    <code>insertsort_nc</code>) that are otherwise line-for-line identical. Comparison
+    counts and timings are never taken from the same run.</p>
+  </div>
+</div>
+</section>
+
+<section id="data">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (b)</span>Input data</h2>
+  <p>Arrays hold uniform random integers in [1, <i class="v">x</i>], with
+  <i class="v">x</i> = 10<sup>7</sup>. Thirteen sizes span the required range in a 1&ndash;2&ndash;5
+  progression &mdash; 1000, 2000, 5000, 10,000 &hellip; 10,000,000 &mdash; which spaces them
+  evenly on the logarithmic axes that part (c) needs.</p>
+
+  <p>Arrays are <strong>regenerated from a seed rather than stored</strong>. A 10-million
+  element array occupies roughly 400&nbsp;MB in memory; as a seed it occupies one integer, and
+  a run stays exactly reproducible. Generation uses numpy when it is available (about 3&times;
+  faster) and falls back to the standard library otherwise, producing a different but equally
+  valid array.</p>
+
+  <div class="note">
+    <span class="tag">Sampling note</span>
+    <p>For a fixed seed the smaller arrays are prefixes of the larger ones. This is
+    deliberate: it isolates the effect of n in part (c)(i) rather than mixing it with
+    sampling noise between sizes. Averaging over repetitions requires varying the seed, not
+    just re-running.</p>
+  </div>
+</div>
+</section>
+
+<section id="theory">
+<div class="col">
+  <h2 class="sec"><span class="num">Section 3</span>Theoretical analysis</h2>
+  <p>Everything below is average-case over uniformly random permutations, since that is what
+  the generated data is. Worst-case results are stated where they differ in kind.</p>
+
+  <h3>3.1&ensp;Insertion sort</h3>
+  <p>Consider inserting <i class="v">a</i>[<i class="v">i</i>] into the sorted prefix of
+  length <i class="v">i</i>. Let <i class="v">t</i> be the number of prefix elements greater
+  than the key. Under a random permutation the key is equally likely to belong in any of the
+  <i class="v">i</i>+1 gaps, so <i class="v">t</i> is uniform on {0, &hellip;,
+  <i class="v">i</i>}. If <i class="v">t</i> &lt; <i class="v">i</i> the loop performs
+  <i class="v">t</i> successful comparisons plus one that fails, so
+  <i class="v">t</i>+1 in all. If <i class="v">t</i> = <i class="v">i</i> the key is smaller
+  than everything and the loop runs off the left end after only <i class="v">i</i>
+  comparisons, with no failing test. Hence</p>
+
+  <div class="eq">
+    E[<i class="v">C</i><sub><i class="v">i</i></sub>] =
+    <span class="frac"><span>1</span><span><i class="v">i</i>+1</span></span>
+    &#40;<span style="font-size:1.25em">&Sigma;</span><sub><i class="v">t</i>=0</sub><sup><i class="v">i</i>&minus;1</sup>
+    (<i class="v">t</i>+1) + <i class="v">i</i>&#41; =
+    <span class="frac"><span><i class="v">i</i></span><span>2</span></span> +
+    <span class="frac"><span><i class="v">i</i></span><span><i class="v">i</i>+1</span></span>
+  </div>
+
+  <p>Summing over <i class="v">i</i> = 1 &hellip; <i class="v">m</i>&minus;1 and collapsing
+  the harmonic tail gives a closed form:</p>
+
+  <div class="eq">
+    <span class="lbl">insertion, average</span>
+    <i class="v">I</i>(<i class="v">m</i>) =
+    <span class="frac"><span><i class="v">m</i>(<i class="v">m</i>&minus;1)</span><span>4</span></span>
+    + <i class="v">m</i> &minus; <i class="v">H</i><sub><i class="v">m</i></sub>
+  </div>
+
+  <p>where <i class="v">H</i><sub><i class="v">m</i></sub> is the <i class="v">m</i>-th
+  harmonic number. The worst case is
+  <i class="v">m</i>(<i class="v">m</i>&minus;1)/2 and the best case is
+  <i class="v">m</i>&minus;1. Note that the average is <em>not</em> simply half the worst
+  case: the <i class="v">m</i> &minus; <i class="v">H</i><sub><i class="v">m</i></sub> term
+  is the extra cost of keys that fall off the left end, and at
+  <i class="v">m</i> = 8 it contributes 5.28 of the 19.28 total.</p>
+
+  <h3>3.2&ensp;The merge step</h3>
+  <p>Merging sorted runs of lengths <i class="v">a</i> and <i class="v">b</i> costs
+  <i class="v">a</i>+<i class="v">b</i> minus the length of the trailing block that is copied
+  out once one run empties. Writing <i class="v">T</i> for that block,
+  P(<i class="v">T</i> &ge; <i class="v">k</i> from run A) is a ratio of binomials that
+  telescopes by the hockey-stick identity to
+  <i class="v">a</i>/(<i class="v">b</i>+1), giving</p>
+
+  <div class="eq">
+    <span class="lbl">merge, average</span>
+    <i class="v">M</i>(<i class="v">a</i>,<i class="v">b</i>) =
+    <i class="v">a</i> + <i class="v">b</i> &minus;
+    <span class="frac"><span><i class="v">a</i></span><span><i class="v">b</i>+1</span></span>
+    &minus;
+    <span class="frac"><span><i class="v">b</i></span><span><i class="v">a</i>+1</span></span>
+  </div>
+
+  <p>The worst case is <i class="v">a</i>+<i class="v">b</i>&minus;1. Merge sort's average
+  cost then follows the obvious recurrence, with
+  <i class="v">MS</i>(1) = 0:</p>
+
+  <div class="eq tight">
+    <i class="v">MS</i>(<i class="v">m</i>) =
+    <i class="v">MS</i>(&lfloor;<i class="v">m</i>/2&rfloor;) +
+    <i class="v">MS</i>(&lceil;<i class="v">m</i>/2&rceil;) +
+    <i class="v">M</i>(&lfloor;<i class="v">m</i>/2&rfloor;, &lceil;<i class="v">m</i>/2&rceil;)
+  </div>
+
+  <h3>3.3&ensp;The decision at a single subarray</h3>
+  <p>This is the heart of the matter. At a subarray of length <i class="v">m</i>, the
+  algorithm chooses between paying <i class="v">I</i>(<i class="v">m</i>) and paying
+  <i class="v">MS</i>(<i class="v">m</i>). Evaluating both in exact rational arithmetic:</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 1.</b> Average key comparisons at a single subarray, exact values.
+    Insertion sort is never cheaper by more than nothing.</caption>
+    <thead><tr><th><i>m</i></th><th>I(m)</th><th>MS(m)</th><th>I(m) &minus; MS(m)</th><th>Cheaper</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">2</td><td>1</td><td>1</td><td class="mono">0</td><td>tie</td></tr>
+      <tr class="hl"><td class="mono">3</td><td>2.667</td><td>2.667</td><td class="mono">0</td><td>tie</td></tr>
+      <tr><td class="mono">4</td><td>4.917</td><td>4.667</td><td class="mono">+1/4</td><td>merge</td></tr>
+      <tr><td class="mono">5</td><td>7.717</td><td>7.167</td><td class="mono">+11/20</td><td>merge</td></tr>
+      <tr><td class="mono">6</td><td>11.050</td><td>9.833</td><td class="mono">+73/60</td><td>merge</td></tr>
+      <tr><td class="mono">7</td><td>14.907</td><td>12.733</td><td class="mono">+913/420</td><td>merge</td></tr>
+      <tr><td class="mono">8</td><td>19.282</td><td>15.733</td><td class="mono">+2981/840</td><td>merge</td></tr>
+      <tr><td class="mono">16</td><td>72.619</td><td>45.689</td><td class="mono">+26.93</td><td>merge</td></tr>
+      <tr><td class="mono">32</td><td>275.942</td><td>121.495</td><td class="mono">+154.45</td><td>merge</td></tr>
+      <tr><td class="mono">64</td><td>1067.256</td><td>305.051</td><td class="mono">+762.21</td><td>merge</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="key">
+    <p><strong><i class="v">I</i>(<i class="v">m</i>) = <i class="v">MS</i>(<i class="v">m</i>)
+    exactly for <i class="v">m</i> = 2 and 3, and
+    <i class="v">I</i>(<i class="v">m</i>) &gt; <i class="v">MS</i>(<i class="v">m</i>) for
+    every <i class="v">m</i> &ge; 4.</strong> The differences are exact rationals, not
+    rounding: 1/4, 11/20, 73/60, 913/420, 2981/840. So on key comparisons the hybrid can
+    never beat plain merge sort, and can only tie it by cutting at leaf size 3 or below.</p>
+  </div>
+
+  <p>An independent Monte-Carlo run of 200,000 random arrays per size reproduces every value
+  in Table 1 to within 0.2%, which is what the sampling error should be at that trial count.</p>
+
+  <h3>3.4&ensp;The hybrid as a whole</h3>
+  <p>Take n and <i class="v">S</i> both powers of two, so all n/<i class="v">S</i> leaves have
+  length exactly <i class="v">S</i>. Worst case, the leaves cost
+  (n/<i class="v">S</i>)&nbsp;&middot;&nbsp;<i class="v">S</i>(<i class="v">S</i>&minus;1)/2 and
+  the log<sub>2</sub>(n/<i class="v">S</i>) merge levels above them cost
+  n&nbsp;log<sub>2</sub>(n/<i class="v">S</i>) &minus; n/<i class="v">S</i> + 1:</p>
+
+  <div class="eq">
+    <span class="lbl">hybrid, worst case</span>
+    <i class="v">C</i>(n,<i class="v">S</i>) =
+    <span class="frac"><span>n(<i class="v">S</i>&minus;1)</span><span>2</span></span>
+    + n&thinsp;log<sub>2</sub>
+    <span class="frac"><span>n</span><span><i class="v">S</i></span></span>
+    &minus; <span class="frac"><span>n</span><span><i class="v">S</i></span></span> + 1
+  </div>
+
+  <p>Setting <i class="v">S</i> = 1 recovers the familiar
+  n&nbsp;log<sub>2</sub>n &minus; n + 1. Subtracting the two gives the price of the
+  threshold, and it is linear in n with a coefficient that depends only on
+  <i class="v">S</i>:</p>
+
+  <div class="eq">
+    <span class="lbl">excess over merge sort</span>
+    &Delta;(<i class="v">S</i>) = n&thinsp;&#91;
+    <span class="frac"><span><i class="v">S</i>&minus;1</span><span>2</span></span>
+    &minus; log<sub>2</sub><i class="v">S</i> + 1 &minus;
+    <span class="frac"><span>1</span><span><i class="v">S</i></span></span>&#93;
+  </div>
+
+  <p>&Delta; is exactly zero at <i class="v">S</i> = 1 and <i class="v">S</i> = 2, then
+  +0.25n at <i class="v">S</i> = 4, +1.375n at 8, +4.44n at 16 and +11.47n at 32. The
+  worst-case picture therefore agrees with the average-case one in Table 1: no threshold
+  above the smallest ever reduces the comparison count.</p>
+
+  <h4>Asymptotics</h4>
+  <p>For any <em>fixed</em> <i class="v">S</i>, the insertion term is
+  &Theta;(n<i class="v">S</i>) = &Theta;(n), which the n&nbsp;log&nbsp;n term dominates.
+  So the hybrid is &Theta;(n&nbsp;log&nbsp;n) for every constant
+  <i class="v">S</i> &mdash; the threshold changes the constant, never the complexity class.
+  Only if <i class="v">S</i> were allowed to grow with n would this break: at
+  <i class="v">S</i> = &Theta;(n) the whole array goes to insertion sort and the cost becomes
+  &Theta;(n&sup2;).</p>
+</div>
+</section>
+
+<section id="ci">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (c)(i)</span>Comparisons against n, with S fixed</h2>
+  <p>With <i class="v">S</i> = 8 held constant, both sorts were run on all thirteen sizes.
+  Plotting <i class="v">C</i>(n) directly against n on log&ndash;log axes is a poor test, because
+  almost any superlinear curve looks straight there. Plotting
+  <i class="v">C</i>(n)/n against log&nbsp;n is sharper: the theory says this quantity is
+  <em>linear</em>, so anything other than a straight line falsifies the model.</p>
+</div>
+
+<figure>
+<svg class="viz" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 604.8 532.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-07T14:59:26.304678</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="fig_over_n_figure_1">
+  <g id="fig_over_n_patch_1">
+   <path d="M 0 532.8 
+L 604.8 532.8 
+L 604.8 0 
+L 0 0 
+z
+" style="fill: var(--viz-surface)"/>
+  </g>
+  <g id="fig_over_n_axes_1">
+   <g id="fig_over_n_patch_2">
+    <path d="M 50.45625 237.588844 
+L 574.703359 237.588844 
+L 574.703359 28.72 
+L 50.45625 28.72 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_over_n_matplotlib.axis_1">
+    <g id="fig_over_n_xtick_1">
+     <g id="fig_over_n_line2d_1">
+      <path d="M 74.285664 237.588844 
+L 74.285664 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_2">
+      <defs>
+       <path id="fig_over_n_m5f1dd69f58" d="M 0 0 
+L 0 6 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="74.285664" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_2">
+     <g id="fig_over_n_line2d_3">
+      <path d="M 193.432734 237.588844 
+L 193.432734 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_4">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="193.432734" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_3">
+     <g id="fig_over_n_line2d_5">
+      <path d="M 312.579804 237.588844 
+L 312.579804 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_6">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="312.579804" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_4">
+     <g id="fig_over_n_line2d_7">
+      <path d="M 431.726875 237.588844 
+L 431.726875 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_8">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="431.726875" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_5">
+     <g id="fig_over_n_line2d_9">
+      <path d="M 550.873945 237.588844 
+L 550.873945 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_10">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="550.873945" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="fig_over_n_matplotlib.axis_2">
+    <g id="fig_over_n_ytick_1">
+     <g id="fig_over_n_line2d_11">
+      <path d="M 50.45625 209.780741 
+L 574.703359 209.780741 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_12">
+      <defs>
+       <path id="fig_over_n_m497db97409" d="M 0 0 
+L -6 0 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="209.780741" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_1">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="213.717538" transform="rotate(-0 40.95625 213.717538)">10</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_2">
+     <g id="fig_over_n_line2d_13">
+      <path d="M 50.45625 181.448956 
+L 574.703359 181.448956 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_14">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="181.448956" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_2">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="185.385753" transform="rotate(-0 40.95625 185.385753)">12</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_3">
+     <g id="fig_over_n_line2d_15">
+      <path d="M 50.45625 153.117171 
+L 574.703359 153.117171 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_16">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="153.117171" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_3">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="157.053968" transform="rotate(-0 40.95625 157.053968)">14</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_4">
+     <g id="fig_over_n_line2d_17">
+      <path d="M 50.45625 124.785387 
+L 574.703359 124.785387 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_18">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="124.785387" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_4">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="128.722183" transform="rotate(-0 40.95625 128.722183)">16</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_5">
+     <g id="fig_over_n_line2d_19">
+      <path d="M 50.45625 96.453602 
+L 574.703359 96.453602 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_20">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="96.453602" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_5">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="100.390399" transform="rotate(-0 40.95625 100.390399)">18</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_6">
+     <g id="fig_over_n_line2d_21">
+      <path d="M 50.45625 68.121817 
+L 574.703359 68.121817 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_22">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="68.121817" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_6">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="72.058614" transform="rotate(-0 40.95625 72.058614)">20</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_7">
+     <g id="fig_over_n_line2d_23">
+      <path d="M 50.45625 39.790032 
+L 574.703359 39.790032 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_24">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="39.790032" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_7">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="43.726829" transform="rotate(-0 40.95625 43.726829)">22</text>
+     </g>
+    </g>
+    <g id="fig_over_n_text_8">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="22.196563" y="133.154422" transform="rotate(-90 22.196563 133.154422)">key comparisons per element,  C(n) / n</text>
+    </g>
+   </g>
+   <g id="fig_over_n_line2d_25">
+    <path d="M 74.285664 222.127457 
+L 110.152506 207.975716 
+L 157.565892 193.479941 
+L 193.432734 179.316881 
+L 229.299576 165.152405 
+L 276.712962 144.911461 
+L 312.579804 130.745851 
+L 348.446647 116.580101 
+L 395.860033 95.425149 
+L 431.726875 81.259285 
+L 467.593717 67.093407 
+L 515.007103 52.385768 
+L 550.873945 38.219879 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="fig_over_n_line2d_26">
+    <path d="M 74.285664 228.094805 
+L 110.152506 213.943065 
+L 157.565892 194.973593 
+L 193.432734 180.810533 
+L 229.299576 166.646057 
+L 276.712962 147.965228 
+L 312.579804 133.799619 
+L 348.446647 119.633868 
+L 395.860033 101.068239 
+L 431.726875 86.902375 
+L 467.593717 72.736497 
+L 515.007103 53.813273 
+L 550.873945 39.647384 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-series2); stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="fig_over_n_patch_3">
+    <path d="M 50.45625 237.588844 
+L 50.45625 28.72 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_over_n_patch_4">
+    <path d="M 50.45625 237.588844 
+L 574.703359 237.588844 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_over_n_line2d_27">
+    <defs>
+     <path id="fig_over_n_md15fe8f50d" d="M 0 3.5 
+C 0.928211 3.5 1.81853 3.131218 2.474874 2.474874 
+C 3.131218 1.81853 3.5 0.928211 3.5 0 
+C 3.5 -0.928211 3.131218 -1.81853 2.474874 -2.474874 
+C 1.81853 -3.131218 0.928211 -3.5 0 -3.5 
+C -0.928211 -3.5 -1.81853 -3.131218 -2.474874 -2.474874 
+C -3.131218 -1.81853 -3.5 -0.928211 -3.5 0 
+C -3.5 0.928211 -3.131218 1.81853 -2.474874 2.474874 
+C -1.81853 3.131218 -0.928211 3.5 0 3.5 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.4"/>
+    </defs>
+    <g clip-path="url(#fig_over_n_pa513085107)">
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="74.285664" y="222.700035" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="110.152506" y="208.243742" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="157.565892" y="193.444634" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="193.432734" y="179.369403" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="229.299576" y="165.097975" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="276.712962" y="144.789327" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="312.579804" y="130.665365" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="348.446647" y="116.569736" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="395.860033" y="95.407649" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="431.726875" y="81.247735" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="467.593717" y="67.072216" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="515.007103" y="52.378881" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="550.873945" y="38.214038" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+    </g>
+   </g>
+   <g id="fig_over_n_line2d_28">
+    <defs>
+     <path id="fig_over_n_m80eb975349" d="M -3.25 3.25 
+L 3.25 3.25 
+L 3.25 -3.25 
+L -3.25 -3.25 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+    </defs>
+    <g clip-path="url(#fig_over_n_pa513085107)">
+     <use xlink:href="#fig_over_n_m80eb975349" x="74.285664" y="227.955581" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="110.152506" y="213.874684" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="157.565892" y="194.943385" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="193.432734" y="180.838406" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="229.299576" y="166.61585" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="276.712962" y="147.899307" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="312.579804" y="133.772229" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="348.446647" y="119.618873" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="395.860033" y="101.06613" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="431.726875" y="86.897843" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="467.593717" y="72.73047" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="515.007103" y="53.807656" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="550.873945" y="39.640996" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+    </g>
+   </g>
+   <g id="fig_over_n_text_9">
+    <text style="font-size: 9.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-series)" x="544.873945" y="31.219879" transform="rotate(-0 544.873945 31.219879)">hybrid, S=8</text>
+   </g>
+   <g id="fig_over_n_text_10">
+    <text style="font-size: 9.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series2)" x="519.007103" y="68.813273" transform="rotate(-0 519.007103 68.813273)">plain merge sort</text>
+   </g>
+   <g id="fig_over_n_text_11">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink2)" x="74.285664" y="47.436217" transform="rotate(-0 74.285664 47.436217)">lines = average-case model    markers = measured</text>
+   </g>
+   <g id="fig_over_n_text_12">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="50.45625" y="18.72" transform="rotate(-0 50.45625 18.72)">Comparisons per element grow linearly in log n, so C(n) = Θ(n log n)</text>
+   </g>
+  </g>
+  <g id="fig_over_n_axes_2">
+   <g id="fig_over_n_patch_5">
+    <path d="M 50.45625 481.177688 
+L 574.703359 481.177688 
+L 574.703359 272.308844 
+L 50.45625 272.308844 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_over_n_matplotlib.axis_3">
+    <g id="fig_over_n_xtick_6">
+     <g id="fig_over_n_line2d_29">
+      <path d="M 74.285664 481.177688 
+L 74.285664 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_30">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="74.285664" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_13">
+      <!-- $\mathdefault{10^{3}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(65.650664 502.021438)">
+       <text>
+        <tspan x="0" y="-0.799313" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.799313" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.465625" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">3</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_7">
+     <g id="fig_over_n_line2d_31">
+      <path d="M 193.432734 481.177688 
+L 193.432734 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_32">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="193.432734" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_14">
+      <!-- $\mathdefault{10^{4}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(184.797734 501.911438)">
+       <text>
+        <tspan x="0" y="-0.821188" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.821188" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.4875" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">4</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_8">
+     <g id="fig_over_n_line2d_33">
+      <path d="M 312.579804 481.177688 
+L 312.579804 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_34">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="312.579804" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_15">
+      <!-- $\mathdefault{10^{5}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(303.944804 501.911438)">
+       <text>
+        <tspan x="0" y="-0.89775" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.89775" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.564063" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">5</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_9">
+     <g id="fig_over_n_line2d_35">
+      <path d="M 431.726875 481.177688 
+L 431.726875 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_36">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="431.726875" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_16">
+      <!-- $\mathdefault{10^{6}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(423.091875 502.021438)">
+       <text>
+        <tspan x="0" y="-0.799313" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.799313" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.465625" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">6</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_10">
+     <g id="fig_over_n_line2d_37">
+      <path d="M 550.873945 481.177688 
+L 550.873945 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_38">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="550.873945" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_17">
+      <!-- $\mathdefault{10^{7}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(542.238945 501.911438)">
+       <text>
+        <tspan x="0" y="-0.89775" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.89775" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.564063" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">7</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_text_18">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="312.579804" y="516.797063" transform="rotate(-0 312.579804 516.797063)">n</text>
+    </g>
+   </g>
+   <g id="fig_over_n_matplotlib.axis_4">
+    <g id="fig_over_n_ytick_8">
+     <g id="fig_over_n_line2d_39">
+      <path d="M 50.45625 472.289652 
+L 574.703359 472.289652 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_40">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="472.289652" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_19">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="476.226448" transform="rotate(-0 40.95625 476.226448)">1.0</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_9">
+     <g id="fig_over_n_line2d_41">
+      <path d="M 50.45625 427.849472 
+L 574.703359 427.849472 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_42">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="427.849472" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_20">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="431.786269" transform="rotate(-0 40.95625 431.786269)">1.1</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_10">
+     <g id="fig_over_n_line2d_43">
+      <path d="M 50.45625 383.409293 
+L 574.703359 383.409293 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_44">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="383.409293" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_21">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="387.346089" transform="rotate(-0 40.95625 387.346089)">1.2</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_11">
+     <g id="fig_over_n_line2d_45">
+      <path d="M 50.45625 338.969113 
+L 574.703359 338.969113 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_46">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="338.969113" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_22">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="342.90591" transform="rotate(-0 40.95625 342.90591)">1.3</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_12">
+     <g id="fig_over_n_line2d_47">
+      <path d="M 50.45625 294.528934 
+L 574.703359 294.528934 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_48">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="294.528934" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_23">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="298.46573" transform="rotate(-0 40.95625 298.46573)">1.4</text>
+     </g>
+    </g>
+    <g id="fig_over_n_text_24">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="19.28125" y="376.743266" transform="rotate(-90 19.28125 376.743266)">speedup in CPU time</text>
+    </g>
+   </g>
+   <g id="fig_over_n_line2d_49">
+    <path d="M 74.285664 312.67464 
+L 110.152506 326.962211 
+L 157.565892 363.573333 
+L 193.432734 375.537771 
+L 229.299576 371.886285 
+L 276.712962 389.644054 
+L 312.579804 389.055071 
+L 348.446647 394.746563 
+L 395.860033 400.727512 
+L 431.726875 399.990709 
+L 467.593717 407.491212 
+L 515.007103 417.552166 
+L 550.873945 436.461112 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_over_n_m2b32753dce" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_over_n_pe07b37ab7b)">
+     <use xlink:href="#fig_over_n_m2b32753dce" x="74.285664" y="312.67464" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="110.152506" y="326.962211" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="157.565892" y="363.573333" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="193.432734" y="375.537771" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="229.299576" y="371.886285" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="276.712962" y="389.644054" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="312.579804" y="389.055071" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="348.446647" y="394.746563" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="395.860033" y="400.727512" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="431.726875" y="399.990709" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="467.593717" y="407.491212" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="515.007103" y="417.552166" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="550.873945" y="436.461112" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_over_n_line2d_50">
+    <path d="M 50.45625 472.289652 
+L 574.703359 472.289652 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: var(--viz-base); stroke-width: 1.5"/>
+   </g>
+   <g id="fig_over_n_patch_6">
+    <path d="M 50.45625 481.177688 
+L 50.45625 272.308844 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_over_n_patch_7">
+    <path d="M 50.45625 481.177688 
+L 574.703359 481.177688 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_over_n_text_25">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-base)" x="550.873945" y="468.173424" transform="rotate(-0 550.873945 468.173424)">no gain</text>
+   </g>
+   <g id="fig_over_n_text_26">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="50.45625" y="262.308844" transform="rotate(-0 50.45625 262.308844)">The CPU-time advantage shrinks as n grows</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="fig_over_n_pa513085107">
+   <rect x="50.45625" y="28.72" width="524.247109" height="208.868844"/>
+  </clipPath>
+  <clipPath id="fig_over_n_pe07b37ab7b">
+   <rect x="50.45625" y="272.308844" width="524.247109" height="208.868844"/>
+  </clipPath>
+ </defs>
+</svg>
+
+<figcaption><b>Figure 1.</b> Top: comparisons per element against n. Markers are measured,
+lines are the average-case model of section 3 evaluated exactly &mdash; they coincide across
+four orders of magnitude, which confirms &Theta;(n&nbsp;log&nbsp;n) and the constant in front
+of it. Bottom: the CPU-time advantage, which decays steadily from 1.36&times; to 1.08&times;
+as n grows.</figcaption>
+</figure>
+
+<div class="tablewrap">
+  <table>
+    <caption><b>Table 2.</b> Part (c)(i), <i>S</i> = 8. Comparison counts are exact;
+    CPU times are medians of 7 runs at the small sizes falling to 2 at 10 million.</caption>
+    <thead><tr>
+      <th>n</th><th>Hybrid comparisons</th><th>Merge comparisons</th><th>Excess</th>
+      <th>Hybrid CPU</th><th>Merge CPU</th><th>Speedup</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="mono">1,000</td><td>9,088</td><td>8,717</td><td class="up">+4.26%</td><td>0.00053 s</td><td>0.00072 s</td><td class="down">1.36&times;</td></tr>
+      <tr><td class="mono">2,000</td><td>20,217</td><td>19,422</td><td class="up">+4.09%</td><td>0.00121 s</td><td>0.00161 s</td><td class="down">1.33&times;</td></tr>
+      <tr><td class="mono">5,000</td><td>55,766</td><td>55,237</td><td class="up">+0.96%</td><td>0.00373 s</td><td>0.00464 s</td><td class="down">1.24&times;</td></tr>
+      <tr><td class="mono">10,000</td><td>121,468</td><td>120,431</td><td class="up">+0.86%</td><td>0.00825 s</td><td>0.01005 s</td><td class="down">1.22&times;</td></tr>
+      <tr><td class="mono">20,000</td><td>263,085</td><td>260,942</td><td class="up">+0.82%</td><td>0.0189 s</td><td>0.0232 s</td><td class="down">1.23&times;</td></tr>
+      <tr><td class="mono">50,000</td><td>729,394</td><td>718,417</td><td class="up">+1.53%</td><td>0.0501 s</td><td>0.0595 s</td><td class="down">1.19&times;</td></tr>
+      <tr><td class="mono">100,000</td><td>1,558,492</td><td>1,536,560</td><td class="up">+1.43%</td><td>0.1071 s</td><td>0.1272 s</td><td class="down">1.19&times;</td></tr>
+      <tr><td class="mono">200,000</td><td>3,315,992</td><td>3,272,943</td><td class="up">+1.32%</td><td>0.2304 s</td><td>0.2706 s</td><td class="down">1.17&times;</td></tr>
+      <tr><td class="mono">500,000</td><td>9,036,918</td><td>8,837,196</td><td class="up">+2.26%</td><td>0.6255 s</td><td>0.7263 s</td><td class="down">1.16&times;</td></tr>
+      <tr><td class="mono">1,000,000</td><td>19,073,414</td><td>18,674,561</td><td class="up">+2.14%</td><td>1.3307 s</td><td>1.5472 s</td><td class="down">1.16&times;</td></tr>
+      <tr><td class="mono">2,000,000</td><td>40,148,187</td><td>39,349,331</td><td class="up">+2.03%</td><td>2.8853 s</td><td>3.3060 s</td><td class="down">1.15&times;</td></tr>
+      <tr><td class="mono">5,000,000</td><td>105,556,634</td><td>105,052,333</td><td class="up">+0.48%</td><td>7.9996 s</td><td>8.9849 s</td><td class="down">1.12&times;</td></tr>
+      <tr><td class="mono">10,000,000</td><td>221,112,527</td><td>220,105,208</td><td class="up">+0.46%</td><td>17.576 s</td><td>18.994 s</td><td class="down">1.08&times;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>The excess column does not fall smoothly, and the reason is worth stating because it
+  recurs throughout part (c). At <i class="v">S</i> = 8 the leaves are not all of length 8 &mdash;
+  they are whatever &lceil;n/2<sup>k</sup>&rceil; happens to land at or below 8. At
+  n = 10<sup>6</sup> that is 7&ndash;8, but at n = 10<sup>7</sup> it is 4&ndash;5, which is much
+  closer to plain merge sort and explains why the excess there is only 0.46%.
+  <strong>The same <i class="v">S</i> means different things at different n.</strong></p>
+
+  <p>The empirical agreement in Figure 1 is the answer to "compare with your theoretical
+  analysis": across every size the model of section 3 predicts the measured count to better
+  than 0.1%, and comparisons per element track log<sub>2</sub>n with the slope the derivation
+  demands.</p>
+</div>
+</section>
+
+<section id="cii">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (c)(ii)</span>Comparisons against S, with n fixed</h2>
+  <p>Twenty-two values of <i class="v">S</i> at n = 1,000,000, each timed five times.
+  Comparison counts are deterministic given the array and <i class="v">S</i>, so those were
+  measured once; only the timings needed repetition.</p>
+</div>
+
+<figure>
+<svg class="viz" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 604.8 547.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-07T14:59:26.205311</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="fig_S_sweep_figure_1">
+  <g id="fig_S_sweep_patch_1">
+   <path d="M 0 547.2 
+L 604.8 547.2 
+L 604.8 0 
+L 0 0 
+z
+" style="fill: var(--viz-surface)"/>
+  </g>
+  <g id="fig_S_sweep_axes_1">
+   <g id="fig_S_sweep_patch_2">
+    <path d="M 53.46 278.258675 
+L 594 278.258675 
+L 594 89.2736 
+L 53.46 89.2736 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_S_sweep_patch_3">
+    <path d="M 235.886298 278.258675 
+L 323.869279 278.258675 
+L 323.869279 89.2736 
+L 235.886298 89.2736 
+z
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: var(--viz-band)"/>
+   </g>
+   <g id="fig_S_sweep_matplotlib.axis_1">
+    <g id="fig_S_sweep_xtick_1">
+     <g id="fig_S_sweep_line2d_1">
+      <path d="M 69.353055 278.258675 
+L 69.353055 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_2">
+      <defs>
+       <path id="fig_S_sweep_me897fb6463" d="M 0 0 
+L 0 6 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="69.353055" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_2">
+     <g id="fig_S_sweep_line2d_3">
+      <path d="M 124.864136 278.258675 
+L 124.864136 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_4">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="124.864136" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_3">
+     <g id="fig_S_sweep_line2d_5">
+      <path d="M 180.375217 278.258675 
+L 180.375217 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_6">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="180.375217" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_4">
+     <g id="fig_S_sweep_line2d_7">
+      <path d="M 235.886298 278.258675 
+L 235.886298 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_8">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="235.886298" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_5">
+     <g id="fig_S_sweep_line2d_9">
+      <path d="M 291.397379 278.258675 
+L 291.397379 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_10">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="291.397379" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_6">
+     <g id="fig_S_sweep_line2d_11">
+      <path d="M 346.90846 278.258675 
+L 346.90846 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_12">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="346.90846" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_7">
+     <g id="fig_S_sweep_line2d_13">
+      <path d="M 402.419541 278.258675 
+L 402.419541 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_14">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="402.419541" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_8">
+     <g id="fig_S_sweep_line2d_15">
+      <path d="M 457.930622 278.258675 
+L 457.930622 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_16">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="457.930622" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_9">
+     <g id="fig_S_sweep_line2d_17">
+      <path d="M 513.441702 278.258675 
+L 513.441702 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_18">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="513.441702" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_10">
+     <g id="fig_S_sweep_line2d_19">
+      <path d="M 568.952783 278.258675 
+L 568.952783 89.2736 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_20">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="568.952783" y="278.258675" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="fig_S_sweep_matplotlib.axis_2">
+    <g id="fig_S_sweep_ytick_1">
+     <g id="fig_S_sweep_line2d_21">
+      <path d="M 53.46 261.216079 
+L 594 261.216079 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_22">
+      <defs>
+       <path id="fig_S_sweep_m0aec69ad0d" d="M 0 0 
+L -6 0 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="261.216079" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_1">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="265.152876" transform="rotate(-0 43.96 265.152876)">20</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_2">
+     <g id="fig_S_sweep_line2d_23">
+      <path d="M 53.46 230.24867 
+L 594 230.24867 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_24">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="230.24867" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_2">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="234.185466" transform="rotate(-0 43.96 234.185466)">30</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_3">
+     <g id="fig_S_sweep_line2d_25">
+      <path d="M 53.46 191.234347 
+L 594 191.234347 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_26">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="191.234347" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_3">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="195.171144" transform="rotate(-0 43.96 195.171144)">50</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_4">
+     <g id="fig_S_sweep_line2d_27">
+      <path d="M 53.46 155.337806 
+L 594 155.337806 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_28">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="155.337806" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_4">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="159.274602" transform="rotate(-0 43.96 159.274602)">80</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_5">
+     <g id="fig_S_sweep_line2d_29">
+      <path d="M 53.46 118.257131 
+L 594 118.257131 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_30">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="118.257131" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_5">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="122.193928" transform="rotate(-0 43.96 122.193928)">130</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_text_6">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="19.083281" y="183.766137" transform="rotate(-90 19.083281 183.766137)">key comparisons (millions)</text>
+    </g>
+   </g>
+   <g id="fig_S_sweep_line2d_31">
+    <path d="M 53.46 266.453119 
+L 594 266.453119 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: var(--viz-base); stroke-width: 1.5"/>
+   </g>
+   <g id="fig_S_sweep_patch_4">
+    <path d="M 53.46 278.258675 
+L 53.46 89.2736 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_S_sweep_patch_5">
+    <path d="M 53.46 278.258675 
+L 594 278.258675 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_S_sweep_line2d_32">
+    <path d="M 69.353055 266.453119 
+L 124.864136 266.453119 
+L 157.336036 266.453315 
+L 180.375217 266.235432 
+L 198.245793 266.235432 
+L 212.847117 266.235432 
+L 235.886298 264.83907 
+L 253.756874 264.83907 
+L 268.358198 264.83907 
+L 280.703442 264.83907 
+L 291.397379 260.372073 
+L 309.267955 260.372073 
+L 323.869279 260.372073 
+L 346.90846 249.923477 
+L 364.779036 249.923477 
+L 379.38036 249.923477 
+L 402.419541 230.553545 
+L 434.891441 230.553545 
+L 457.930622 200.676531 
+L 490.402522 200.676531 
+L 513.441702 161.565671 
+L 568.952783 116.040032 
+" clip-path="url(#fig_S_sweep_p905e70437b)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_S_sweep_m1afd18565a" d="M 0 2.75 
+C 0.729309 2.75 1.428845 2.460243 1.944544 1.944544 
+C 2.460243 1.428845 2.75 0.729309 2.75 0 
+C 2.75 -0.729309 2.460243 -1.428845 1.944544 -1.944544 
+C 1.428845 -2.460243 0.729309 -2.75 0 -2.75 
+C -0.729309 -2.75 -1.428845 -2.460243 -1.944544 -1.944544 
+C -2.460243 -1.428845 -2.75 -0.729309 -2.75 0 
+C -2.75 0.729309 -2.460243 1.428845 -1.944544 1.944544 
+C -1.428845 2.460243 -0.729309 2.75 0 2.75 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.2"/>
+    </defs>
+    <g clip-path="url(#fig_S_sweep_p905e70437b)">
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="69.353055" y="266.453119" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="124.864136" y="266.453119" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="157.336036" y="266.453315" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="180.375217" y="266.235432" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="198.245793" y="266.235432" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="212.847117" y="266.235432" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="235.886298" y="264.83907" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="253.756874" y="264.83907" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="268.358198" y="264.83907" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="280.703442" y="264.83907" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="291.397379" y="260.372073" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="309.267955" y="260.372073" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="323.869279" y="260.372073" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="346.90846" y="249.923477" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="364.779036" y="249.923477" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="379.38036" y="249.923477" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="402.419541" y="230.553545" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="434.891441" y="230.553545" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="457.930622" y="200.676531" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="490.402522" y="200.676531" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="513.441702" y="161.565671" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="568.952783" y="116.040032" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+    </g>
+   </g>
+   <g id="fig_S_sweep_text_7">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-base)" x="554.974696" y="260.83255" transform="rotate(-0 554.974696 260.83255)">plain merge sort  18.7M</text>
+   </g>
+   <g id="fig_S_sweep_text_8">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="69.353055" y="253.453119" transform="rotate(-0 69.353055 253.453119)">leaf 1</text>
+   </g>
+   <g id="fig_S_sweep_text_9">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="235.886298" y="251.83907" transform="rotate(-0 235.886298 251.83907)">leaf 7-8</text>
+   </g>
+   <g id="fig_S_sweep_text_10">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="346.90846" y="236.923477" transform="rotate(-0 346.90846 236.923477)">leaf 30-31</text>
+   </g>
+   <g id="fig_S_sweep_text_11">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="457.930622" y="187.676531" transform="rotate(-0 457.930622 187.676531)">leaf 122-123</text>
+   </g>
+   <g id="fig_S_sweep_text_12">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="558.952783" y="120.040032" transform="rotate(-0 558.952783 120.040032)">leaf 488-489</text>
+   </g>
+   <g id="fig_S_sweep_text_13">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-series)" x="279.877789" y="100.340487" transform="rotate(-0 279.877789 100.340487)">fastest band  S=8..24</text>
+   </g>
+   <g id="fig_S_sweep_text_14">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="53.46" y="63.2736" transform="rotate(-0 53.46 63.2736)">Key comparisons only ever rise with S</text>
+   </g>
+  </g>
+  <g id="fig_S_sweep_axes_2">
+   <g id="fig_S_sweep_patch_6">
+    <path d="M 53.46 501.96375 
+L 594 501.96375 
+L 594 312.978675 
+L 53.46 312.978675 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_S_sweep_patch_7">
+    <path d="M 235.886298 501.96375 
+L 323.869279 501.96375 
+L 323.869279 312.978675 
+L 235.886298 312.978675 
+z
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: var(--viz-band)"/>
+   </g>
+   <g id="fig_S_sweep_matplotlib.axis_3">
+    <g id="fig_S_sweep_xtick_11">
+     <g id="fig_S_sweep_line2d_33">
+      <path d="M 69.353055 501.96375 
+L 69.353055 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_34">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="69.353055" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_15">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="69.353055" y="519.337344" transform="rotate(-0 69.353055 519.337344)">1</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_12">
+     <g id="fig_S_sweep_line2d_35">
+      <path d="M 124.864136 501.96375 
+L 124.864136 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_36">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="124.864136" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_16">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="124.864136" y="519.337344" transform="rotate(-0 124.864136 519.337344)">2</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_13">
+     <g id="fig_S_sweep_line2d_37">
+      <path d="M 180.375217 501.96375 
+L 180.375217 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_38">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="180.375217" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_17">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="180.375217" y="519.337344" transform="rotate(-0 180.375217 519.337344)">4</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_14">
+     <g id="fig_S_sweep_line2d_39">
+      <path d="M 235.886298 501.96375 
+L 235.886298 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_40">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="235.886298" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_18">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="235.886298" y="519.337344" transform="rotate(-0 235.886298 519.337344)">8</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_15">
+     <g id="fig_S_sweep_line2d_41">
+      <path d="M 291.397379 501.96375 
+L 291.397379 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_42">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="291.397379" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_19">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="291.397379" y="519.337344" transform="rotate(-0 291.397379 519.337344)">16</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_16">
+     <g id="fig_S_sweep_line2d_43">
+      <path d="M 346.90846 501.96375 
+L 346.90846 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_44">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="346.90846" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_20">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="346.90846" y="519.337344" transform="rotate(-0 346.90846 519.337344)">32</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_17">
+     <g id="fig_S_sweep_line2d_45">
+      <path d="M 402.419541 501.96375 
+L 402.419541 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_46">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="402.419541" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_21">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="402.419541" y="519.337344" transform="rotate(-0 402.419541 519.337344)">64</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_18">
+     <g id="fig_S_sweep_line2d_47">
+      <path d="M 457.930622 501.96375 
+L 457.930622 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_48">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="457.930622" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_22">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="457.930622" y="519.337344" transform="rotate(-0 457.930622 519.337344)">128</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_19">
+     <g id="fig_S_sweep_line2d_49">
+      <path d="M 513.441702 501.96375 
+L 513.441702 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_50">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="513.441702" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_23">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="513.441702" y="519.337344" transform="rotate(-0 513.441702 519.337344)">256</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_xtick_20">
+     <g id="fig_S_sweep_line2d_51">
+      <path d="M 568.952783 501.96375 
+L 568.952783 312.978675 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_52">
+      <g>
+       <use xlink:href="#fig_S_sweep_me897fb6463" x="568.952783" y="501.96375" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_24">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="568.952783" y="519.337344" transform="rotate(-0 568.952783 519.337344)">512</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_text_25">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="323.73" y="534.259219" transform="rotate(-0 323.73 534.259219)">S   (switch to insertion sort once a subarray is &lt;= S)</text>
+    </g>
+   </g>
+   <g id="fig_S_sweep_matplotlib.axis_4">
+    <g id="fig_S_sweep_ytick_6">
+     <g id="fig_S_sweep_line2d_53">
+      <path d="M 53.46 490.5775 
+L 594 490.5775 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_54">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="490.5775" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_26">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="494.514296" transform="rotate(-0 43.96 494.514296)">1.4</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_7">
+     <g id="fig_S_sweep_line2d_55">
+      <path d="M 53.46 454.741998 
+L 594 454.741998 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_56">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="454.741998" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_27">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="458.678795" transform="rotate(-0 43.96 458.678795)">2.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_8">
+     <g id="fig_S_sweep_line2d_57">
+      <path d="M 53.46 414.004499 
+L 594 414.004499 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_58">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="414.004499" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_28">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="417.941296" transform="rotate(-0 43.96 417.941296)">3.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_9">
+     <g id="fig_S_sweep_line2d_59">
+      <path d="M 53.46 385.100783 
+L 594 385.100783 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_60">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="385.100783" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_29">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="389.03758" transform="rotate(-0 43.96 389.03758)">4.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_10">
+     <g id="fig_S_sweep_line2d_61">
+      <path d="M 53.46 362.681319 
+L 594 362.681319 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_62">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="362.681319" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_30">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="366.618116" transform="rotate(-0 43.96 366.618116)">5.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_ytick_11">
+     <g id="fig_S_sweep_line2d_63">
+      <path d="M 53.46 328.875605 
+L 594 328.875605 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_S_sweep_line2d_64">
+      <g>
+       <use xlink:href="#fig_S_sweep_m0aec69ad0d" x="53.46" y="328.875605" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_S_sweep_text_31">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="43.96" y="332.812402" transform="rotate(-0 43.96 332.812402)">7.0</text>
+     </g>
+    </g>
+    <g id="fig_S_sweep_text_32">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="22.144375" y="407.471212" transform="rotate(-90 22.144375 407.471212)">CPU time, median of 5 (s)</text>
+    </g>
+   </g>
+   <g id="fig_S_sweep_line2d_65">
+    <path d="M 53.46 472.780992 
+L 594 472.780992 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: var(--viz-base); stroke-width: 1.5"/>
+   </g>
+   <g id="fig_S_sweep_patch_8">
+    <path d="M 53.46 501.96375 
+L 53.46 312.978675 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_S_sweep_patch_9">
+    <path d="M 53.46 501.96375 
+L 594 501.96375 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_S_sweep_line2d_66">
+    <path d="M 69.353055 468.006525 
+L 124.864136 477.772169 
+L 157.336036 478.956493 
+L 180.375217 485.223103 
+L 198.245793 485.205414 
+L 212.847117 485.607108 
+L 235.886298 489.239137 
+L 253.756874 489.663366 
+L 268.358198 488.717451 
+L 280.703442 488.787713 
+L 291.397379 489.507318 
+L 309.267955 487.958144 
+L 323.869279 489.590073 
+L 346.90846 484.797866 
+L 364.779036 482.925114 
+L 379.38036 481.46967 
+L 402.419541 469.069787 
+L 434.891441 468.438425 
+L 457.930622 438.991845 
+L 490.402522 438.291086 
+L 513.441702 397.002253 
+L 568.952783 333.333154 
+" clip-path="url(#fig_S_sweep_p191162dca1)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+    <g clip-path="url(#fig_S_sweep_p191162dca1)">
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="69.353055" y="468.006525" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="124.864136" y="477.772169" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="157.336036" y="478.956493" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="180.375217" y="485.223103" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="198.245793" y="485.205414" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="212.847117" y="485.607108" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="235.886298" y="489.239137" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="253.756874" y="489.663366" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="268.358198" y="488.717451" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="280.703442" y="488.787713" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="291.397379" y="489.507318" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="309.267955" y="487.958144" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="323.869279" y="489.590073" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="346.90846" y="484.797866" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="364.779036" y="482.925114" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="379.38036" y="481.46967" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="402.419541" y="469.069787" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="434.891441" y="468.438425" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="457.930622" y="438.991845" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="490.402522" y="438.291086" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="513.441702" y="397.002253" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+     <use xlink:href="#fig_S_sweep_m1afd18565a" x="568.952783" y="333.333154" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.2"/>
+    </g>
+   </g>
+   <g id="fig_S_sweep_text_33">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-base)" x="554.974696" y="465.032436" transform="rotate(-0 554.974696 465.032436)">plain merge sort  1.67s</text>
+   </g>
+   <g id="fig_S_sweep_text_34">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-series)" x="242.756874" y="482.663366" transform="rotate(-0 242.756874 482.663366)">1.41s</text>
+   </g>
+   <g id="fig_S_sweep_text_35">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="53.46" y="302.978675" transform="rotate(-0 53.46 302.978675)">CPU time dips, but the whole band S=8..24 is one flat optimum</text>
+   </g>
+  </g>
+  <g id="fig_S_sweep_text_36">
+   <text style="font-weight: 600; font-size: 13px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="6.048" y="20.28775" transform="rotate(-0 6.048 20.28775)">Hybrid merge sort, n = 1,000,000: the two metrics disagree</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="fig_S_sweep_p905e70437b">
+   <rect x="53.46" y="89.2736" width="540.54" height="188.985075"/>
+  </clipPath>
+  <clipPath id="fig_S_sweep_p191162dca1">
+   <rect x="53.46" y="312.978675" width="540.54" height="188.985075"/>
+  </clipPath>
+ </defs>
+</svg>
+
+<figcaption><b>Figure 2.</b> The two metrics point in opposite directions. Key comparisons
+(top) rise monotonically and never drop below the plain merge sort line. CPU time (bottom)
+falls to a flat minimum around <i>S</i> = 8&ndash;24 and only then rises. Both panels use
+logarithmic axes; a twin-axis version of this chart would invite reading a crossover that is
+purely an artefact of where the two scales were pinned.</figcaption>
+</figure>
+
+<div class="col">
+  <h3>S is quantised</h3>
+  <p>The comparison counts in Table 3 come in plateaus, and the plateau boundaries align
+  exactly with the halving ladder &lceil;n/2<sup>k</sup>&rceil;. Every
+  <i class="v">S</i> inside one plateau produces the identical execution &mdash; the counts are
+  equal to the digit, not merely close. <strong><i class="v">S</i> = 8, 10, 12 and 14 are not
+  four nearby choices; they are one algorithm measured four times</strong>, and the ~1% spread
+  in their timings is measurement noise, nothing else.</p>
+</div>
+
+<div class="tablewrap">
+  <table>
+    <caption><b>Table 3.</b> Part (c)(ii), n = 1,000,000. Horizontal rules separate plateaus.
+    The <b>leaf sizes</b> column gives the subarray lengths insertion sort actually receives,
+    and explains every plateau. Plain merge sort: 18,674,561 comparisons, 1.6713 s.</caption>
+    <thead><tr>
+      <th><i>S</i></th><th>Leaf sizes</th><th>Key comparisons</th><th>vs merge</th>
+      <th>CPU median</th><th>Speedup</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="mono">1</td><td class="mono">1</td><td>18,674,561</td><td>1.00&times;</td><td>1.7526 s</td><td class="up">0.95&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">2</td><td class="mono">1&ndash;2</td><td>18,674,561</td><td>1.00&times;</td><td>1.5903 s</td><td class="down">1.05&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">3</td><td class="mono">2&ndash;3</td><td>18,674,513</td><td>1.00&times;</td><td>1.5717 s</td><td class="down">1.06&times;</td></tr>
+      <tr><td class="mono">4</td><td class="mono">3&ndash;4</td><td>18,727,864</td><td>1.00&times;</td><td>1.4766 s</td><td class="down">1.13&times;</td></tr>
+      <tr><td class="mono">5</td><td class="mono">3&ndash;4</td><td>18,727,864</td><td>1.00&times;</td><td>1.4769 s</td><td class="down">1.13&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">6</td><td class="mono">3&ndash;4</td><td>18,727,864</td><td>1.00&times;</td><td>1.4710 s</td><td class="down">1.14&times;</td></tr>
+      <tr class="hl"><td class="mono">8</td><td class="mono">7&ndash;8</td><td>19,073,414</td><td>1.02&times;</td><td>1.4188 s</td><td class="down">1.18&times;</td></tr>
+      <tr class="hl"><td class="mono">10</td><td class="mono">7&ndash;8</td><td>19,073,414</td><td>1.02&times;</td><td>1.4128 s</td><td class="down">1.18&times;</td></tr>
+      <tr class="hl"><td class="mono">12</td><td class="mono">7&ndash;8</td><td>19,073,414</td><td>1.02&times;</td><td>1.4262 s</td><td class="down">1.17&times;</td></tr>
+      <tr class="hl plateau-end"><td class="mono">14</td><td class="mono">7&ndash;8</td><td>19,073,414</td><td>1.02&times;</td><td>1.4252 s</td><td class="down">1.17&times;</td></tr>
+      <tr class="hl"><td class="mono">16</td><td class="mono">15&ndash;16</td><td>20,222,242</td><td>1.08&times;</td><td>1.4150 s</td><td class="down">1.18&times;</td></tr>
+      <tr class="hl"><td class="mono">20</td><td class="mono">15&ndash;16</td><td>20,222,242</td><td>1.08&times;</td><td>1.4370 s</td><td class="down">1.16&times;</td></tr>
+      <tr class="hl plateau-end"><td class="mono">24</td><td class="mono">15&ndash;16</td><td>20,222,242</td><td>1.08&times;</td><td>1.4138 s</td><td class="down">1.18&times;</td></tr>
+      <tr><td class="mono">32</td><td class="mono">30&ndash;31</td><td>23,186,948</td><td>1.24&times;</td><td>1.4829 s</td><td class="down">1.13&times;</td></tr>
+      <tr><td class="mono">40</td><td class="mono">30&ndash;31</td><td>23,186,948</td><td>1.24&times;</td><td>1.5108 s</td><td class="down">1.11&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">48</td><td class="mono">30&ndash;31</td><td>23,186,948</td><td>1.24&times;</td><td>1.5328 s</td><td class="down">1.09&times;</td></tr>
+      <tr><td class="mono">64</td><td class="mono">61&ndash;62</td><td>29,880,484</td><td>1.60&times;</td><td>1.7342 s</td><td class="up">0.96&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">96</td><td class="mono">61&ndash;62</td><td>29,880,484</td><td>1.60&times;</td><td>1.7451 s</td><td class="up">0.96&times;</td></tr>
+      <tr><td class="mono">128</td><td class="mono">122&ndash;123</td><td>44,185,373</td><td>2.37&times;</td><td>2.3394 s</td><td class="up">0.71&times;</td></tr>
+      <tr class="plateau-end"><td class="mono">192</td><td class="mono">122&ndash;123</td><td>44,185,373</td><td>2.37&times;</td><td>2.3558 s</td><td class="up">0.71&times;</td></tr>
+      <tr><td class="mono">256</td><td class="mono">244&ndash;245</td><td>73,735,430</td><td>3.95&times;</td><td>3.5532 s</td><td class="up">0.47&times;</td></tr>
+      <tr><td class="mono">512</td><td class="mono">488&ndash;489</td><td>133,829,093</td><td>7.17&times;</td><td>6.6962 s</td><td class="up">0.25&times;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>Comparing against theory: the average-case model of section 3.4, evaluated over the
+  actual (uneven) subarray lengths rather than the power-of-two idealisation, predicts every
+  one of these twenty-two counts to within <strong>0.07%</strong>. The largest error is at
+  <i class="v">S</i> = 64 (+0.064%), where the leaves are least uniform.</p>
+
+  <div class="key">
+    <p>The comparison curve has its minimum at <i class="v">S</i> = 3, where it undercuts
+    plain merge sort by 48 comparisons out of 18.7 million &mdash; a 0.0003% improvement, which
+    is the predicted tie of Table 1 showing up as measurement. <strong>If part (c)(ii) is read
+    strictly as an optimisation over key comparisons, the answer is
+    <i class="v">S</i> = 3 and the hybrid is pointless.</strong> The CPU-time curve is where
+    the algorithm justifies itself, and section 7 explains why the two disagree.</p>
+  </div>
+</div>
+</section>
+
+<section id="ciii">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (c)(iii)</span>Choosing S</h2>
+  <p>The sweep was repeated at four sizes spanning four orders of magnitude, timing each
+  <i class="v">S</i> against plain merge sort on the same array.</p>
+</div>
+
+<figure>
+<svg class="viz" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 604.8 352.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-07T14:59:26.350422</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="fig_optimal_S_figure_1">
+  <g id="fig_optimal_S_patch_1">
+   <path d="M 0 352.8 
+L 604.8 352.8 
+L 604.8 0 
+L 0 0 
+z
+" style="fill: var(--viz-surface)"/>
+  </g>
+  <g id="fig_optimal_S_axes_1">
+   <g id="fig_optimal_S_patch_2">
+    <path d="M 50.54625 307.62 
+L 594 307.62 
+L 594 28.72 
+L 50.54625 28.72 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_optimal_S_matplotlib.axis_1">
+    <g id="fig_optimal_S_xtick_1">
+     <g id="fig_optimal_S_line2d_1">
+      <path d="M 65.361291 307.62 
+L 65.361291 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_2">
+      <defs>
+       <path id="fig_optimal_S_m161515a096" d="M 0 0 
+L 0 6 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="65.361291" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_1">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="65.361291" y="324.993594" transform="rotate(-0 65.361291 324.993594)">1</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_2">
+     <g id="fig_optimal_S_line2d_3">
+      <path d="M 128.547802 307.62 
+L 128.547802 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_4">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="128.547802" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_2">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="128.547802" y="324.993594" transform="rotate(-0 128.547802 324.993594)">2</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_3">
+     <g id="fig_optimal_S_line2d_5">
+      <path d="M 191.734313 307.62 
+L 191.734313 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_6">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="191.734313" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_3">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="191.734313" y="324.993594" transform="rotate(-0 191.734313 324.993594)">4</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_4">
+     <g id="fig_optimal_S_line2d_7">
+      <path d="M 254.920824 307.62 
+L 254.920824 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_8">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="254.920824" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_4">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="254.920824" y="324.993594" transform="rotate(-0 254.920824 324.993594)">8</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_5">
+     <g id="fig_optimal_S_line2d_9">
+      <path d="M 318.107334 307.62 
+L 318.107334 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_10">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="318.107334" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_5">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="318.107334" y="324.993594" transform="rotate(-0 318.107334 324.993594)">16</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_6">
+     <g id="fig_optimal_S_line2d_11">
+      <path d="M 381.293845 307.62 
+L 381.293845 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_12">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="381.293845" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_6">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="381.293845" y="324.993594" transform="rotate(-0 381.293845 324.993594)">32</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_7">
+     <g id="fig_optimal_S_line2d_13">
+      <path d="M 444.480356 307.62 
+L 444.480356 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_14">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="444.480356" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_7">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="444.480356" y="324.993594" transform="rotate(-0 444.480356 324.993594)">64</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_xtick_8">
+     <g id="fig_optimal_S_line2d_15">
+      <path d="M 507.666867 307.62 
+L 507.666867 28.72 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_16">
+      <g>
+       <use xlink:href="#fig_optimal_S_m161515a096" x="507.666867" y="307.62" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_8">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="507.666867" y="324.993594" transform="rotate(-0 507.666867 324.993594)">128</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_text_9">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="322.273125" y="339.769219" transform="rotate(-0 322.273125 339.769219)">S</text>
+    </g>
+   </g>
+   <g id="fig_optimal_S_matplotlib.axis_2">
+    <g id="fig_optimal_S_ytick_1">
+     <g id="fig_optimal_S_line2d_17">
+      <path d="M 50.54625 302.328628 
+L 594 302.328628 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_18">
+      <defs>
+       <path id="fig_optimal_S_md57a98eff0" d="M 0 0 
+L -6 0 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="302.328628" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_10">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="306.265425" transform="rotate(-0 41.04625 306.265425)">0.7</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_2">
+     <g id="fig_optimal_S_line2d_19">
+      <path d="M 50.54625 257.811735 
+L 594 257.811735 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_20">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="257.811735" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_11">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="261.748532" transform="rotate(-0 41.04625 261.748532)">0.8</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_3">
+     <g id="fig_optimal_S_line2d_21">
+      <path d="M 50.54625 213.294843 
+L 594 213.294843 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_22">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="213.294843" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_12">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="217.231639" transform="rotate(-0 41.04625 217.231639)">0.9</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_4">
+     <g id="fig_optimal_S_line2d_23">
+      <path d="M 50.54625 168.77795 
+L 594 168.77795 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_24">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="168.77795" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_13">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="172.714747" transform="rotate(-0 41.04625 172.714747)">1.0</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_5">
+     <g id="fig_optimal_S_line2d_25">
+      <path d="M 50.54625 124.261057 
+L 594 124.261057 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_26">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="124.261057" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_14">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="128.197854" transform="rotate(-0 41.04625 128.197854)">1.1</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_6">
+     <g id="fig_optimal_S_line2d_27">
+      <path d="M 50.54625 79.744164 
+L 594 79.744164 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_28">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="79.744164" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_15">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="83.680961" transform="rotate(-0 41.04625 83.680961)">1.2</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_ytick_7">
+     <g id="fig_optimal_S_line2d_29">
+      <path d="M 50.54625 35.227271 
+L 594 35.227271 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_optimal_S_line2d_30">
+      <g>
+       <use xlink:href="#fig_optimal_S_md57a98eff0" x="50.54625" y="35.227271" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_optimal_S_text_16">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="41.04625" y="39.164068" transform="rotate(-0 41.04625 39.164068)">1.3</text>
+     </g>
+    </g>
+    <g id="fig_optimal_S_text_17">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="19.230625" y="168.17" transform="rotate(-90 19.230625 168.17)">speedup over plain merge sort</text>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_31">
+    <path d="M 65.361291 193.617791 
+L 128.547802 144.909395 
+L 165.509541 117.107841 
+L 191.734313 113.602899 
+L 228.696052 74.240788 
+L 254.920824 68.945173 
+L 291.882563 41.397273 
+L 318.107334 41.397273 
+L 355.069074 56.422459 
+L 381.293845 66.74576 
+L 418.255584 143.809266 
+L 444.480356 123.503323 
+L 481.442095 239.044916 
+L 507.666867 238.678712 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_optimal_S_mc8ae8652e9" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="65.361291" y="193.617791" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="128.547802" y="144.909395" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="165.509541" y="117.107841" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="191.734313" y="113.602899" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="228.696052" y="74.240788" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="254.920824" y="68.945173" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="291.882563" y="41.397273" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="318.107334" y="41.397273" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="355.069074" y="56.422459" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="381.293845" y="66.74576" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="418.255584" y="143.809266" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="444.480356" y="123.503323" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="481.442095" y="239.044916" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_mc8ae8652e9" x="507.666867" y="238.678712" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_32">
+    <defs>
+     <path id="fig_optimal_S_m9025a81554" d="M 0 5.5 
+C 1.458617 5.5 2.857689 4.920485 3.889087 3.889087 
+C 4.920485 2.857689 5.5 1.458617 5.5 0 
+C 5.5 -1.458617 4.920485 -2.857689 3.889087 -3.889087 
+C 2.857689 -4.920485 1.458617 -5.5 0 -5.5 
+C -1.458617 -5.5 -2.857689 -4.920485 -3.889087 -3.889087 
+C -4.920485 -2.857689 -5.5 -1.458617 -5.5 0 
+C -5.5 1.458617 -4.920485 2.857689 -3.889087 3.889087 
+C -2.857689 4.920485 -1.458617 5.5 0 5.5 
+z
+" style="stroke: var(--viz-series); stroke-width: 1.8"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m9025a81554" x="291.882563" y="41.397273" style="fill-opacity: 0; stroke: var(--viz-series); stroke-width: 1.8"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_33">
+    <path d="M 65.361291 190.397433 
+L 128.547802 160.359095 
+L 165.509541 120.180172 
+L 191.734313 117.613713 
+L 228.696052 99.363366 
+L 254.920824 93.338021 
+L 291.882563 84.681456 
+L 318.107334 88.488836 
+L 355.069074 103.417705 
+L 381.293845 111.301762 
+L 418.255584 118.103785 
+L 444.480356 169.25663 
+L 481.442095 168.894195 
+L 507.666867 272.455461 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-series2); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_optimal_S_me80cd261c8" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="65.361291" y="190.397433" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="128.547802" y="160.359095" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="165.509541" y="120.180172" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="191.734313" y="117.613713" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="228.696052" y="99.363366" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="254.920824" y="93.338021" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="291.882563" y="84.681456" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="318.107334" y="88.488836" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="355.069074" y="103.417705" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="381.293845" y="111.301762" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="418.255584" y="118.103785" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="444.480356" y="169.25663" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="481.442095" y="168.894195" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_me80cd261c8" x="507.666867" y="272.455461" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_34">
+    <defs>
+     <path id="fig_optimal_S_m7e3858958e" d="M 0 5.5 
+C 1.458617 5.5 2.857689 4.920485 3.889087 3.889087 
+C 4.920485 2.857689 5.5 1.458617 5.5 0 
+C 5.5 -1.458617 4.920485 -2.857689 3.889087 -3.889087 
+C 2.857689 -4.920485 1.458617 -5.5 0 -5.5 
+C -1.458617 -5.5 -2.857689 -4.920485 -3.889087 -3.889087 
+C -4.920485 -2.857689 -5.5 -1.458617 -5.5 0 
+C -5.5 1.458617 -4.920485 2.857689 -3.889087 3.889087 
+C -2.857689 4.920485 -1.458617 5.5 0 5.5 
+z
+" style="stroke: var(--viz-series2); stroke-width: 1.8"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m7e3858958e" x="291.882563" y="84.681456" style="fill-opacity: 0; stroke: var(--viz-series2); stroke-width: 1.8"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_35">
+    <path d="M 65.361291 192.916906 
+L 128.547802 156.676539 
+L 191.734313 132.49721 
+L 228.696052 129.861565 
+L 254.920824 116.066575 
+L 291.882563 109.902127 
+L 318.107334 115.49001 
+L 355.069074 115.612811 
+L 381.293845 138.08248 
+L 418.255584 137.283506 
+L 444.480356 198.137388 
+L 507.666867 294.942727 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-series3); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_optimal_S_m565a9fd3af" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="65.361291" y="192.916906" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="128.547802" y="156.676539" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="191.734313" y="132.49721" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="228.696052" y="129.861565" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="254.920824" y="116.066575" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="291.882563" y="109.902127" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="318.107334" y="115.49001" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="355.069074" y="115.612811" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="381.293845" y="138.08248" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="418.255584" y="137.283506" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="444.480356" y="198.137388" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m565a9fd3af" x="507.666867" y="294.942727" style="fill: var(--viz-series3); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_36">
+    <defs>
+     <path id="fig_optimal_S_mae6684e02a" d="M 0 5.5 
+C 1.458617 5.5 2.857689 4.920485 3.889087 3.889087 
+C 4.920485 2.857689 5.5 1.458617 5.5 0 
+C 5.5 -1.458617 4.920485 -2.857689 3.889087 -3.889087 
+C 2.857689 -4.920485 1.458617 -5.5 0 -5.5 
+C -1.458617 -5.5 -2.857689 -4.920485 -3.889087 -3.889087 
+C -4.920485 -2.857689 -5.5 -1.458617 -5.5 0 
+C -5.5 1.458617 -4.920485 2.857689 -3.889087 3.889087 
+C -2.857689 4.920485 -1.458617 5.5 0 5.5 
+z
+" style="stroke: var(--viz-series3); stroke-width: 1.8"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_mae6684e02a" x="291.882563" y="109.902127" style="fill-opacity: 0; stroke: var(--viz-series3); stroke-width: 1.8"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_37">
+    <path d="M 128.547802 158.470006 
+L 191.734313 147.93119 
+L 254.920824 134.745376 
+L 318.107334 108.479683 
+L 381.293845 117.040992 
+L 444.480356 146.140479 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke: var(--viz-series4); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_optimal_S_m1a05d3991d" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="128.547802" y="158.470006" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="191.734313" y="147.93119" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="254.920824" y="134.745376" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="318.107334" y="108.479683" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="381.293845" y="117.040992" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_optimal_S_m1a05d3991d" x="444.480356" y="146.140479" style="fill: var(--viz-series4); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_38">
+    <defs>
+     <path id="fig_optimal_S_m4846d737c4" d="M 0 5.5 
+C 1.458617 5.5 2.857689 4.920485 3.889087 3.889087 
+C 4.920485 2.857689 5.5 1.458617 5.5 0 
+C 5.5 -1.458617 4.920485 -2.857689 3.889087 -3.889087 
+C 2.857689 -4.920485 1.458617 -5.5 0 -5.5 
+C -1.458617 -5.5 -2.857689 -4.920485 -3.889087 -3.889087 
+C -4.920485 -2.857689 -5.5 -1.458617 -5.5 0 
+C -5.5 1.458617 -4.920485 2.857689 -3.889087 3.889087 
+C -2.857689 4.920485 -1.458617 5.5 0 5.5 
+z
+" style="stroke: var(--viz-series4); stroke-width: 1.8"/>
+    </defs>
+    <g clip-path="url(#fig_optimal_S_pad52077861)">
+     <use xlink:href="#fig_optimal_S_m4846d737c4" x="318.107334" y="108.479683" style="fill-opacity: 0; stroke: var(--viz-series4); stroke-width: 1.8"/>
+    </g>
+   </g>
+   <g id="fig_optimal_S_line2d_39">
+    <path d="M 50.54625 168.77795 
+L 594 168.77795 
+" clip-path="url(#fig_optimal_S_pad52077861)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: var(--viz-base); stroke-width: 1.5"/>
+   </g>
+   <g id="fig_optimal_S_patch_3">
+    <path d="M 50.54625 307.62 
+L 50.54625 28.72 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_optimal_S_patch_4">
+    <path d="M 50.54625 307.62 
+L 594 307.62 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_optimal_S_text_18">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series)" x="516.666867" y="241.678712" transform="rotate(-0 516.666867 241.678712)">n = 10,000</text>
+   </g>
+   <g id="fig_optimal_S_text_19">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series2)" x="516.666867" y="275.455461" transform="rotate(-0 516.666867 275.455461)">n = 100,000</text>
+   </g>
+   <g id="fig_optimal_S_text_20">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series3)" x="516.666867" y="297.942727" transform="rotate(-0 516.666867 297.942727)">n = 1,000,000</text>
+   </g>
+   <g id="fig_optimal_S_text_21">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series4)" x="453.480356" y="149.140479" transform="rotate(-0 453.480356 149.140479)">n = 10,000,000</text>
+   </g>
+   <g id="fig_optimal_S_text_22">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-base)" x="585.311632" y="164.657886" transform="rotate(-0 585.311632 164.657886)">plain merge sort</text>
+   </g>
+   <g id="fig_optimal_S_text_23">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink2)" x="69.808947" y="293.42525" transform="rotate(-0 69.808947 293.42525)">rings mark the fastest S for each n</text>
+   </g>
+   <g id="fig_optimal_S_text_24">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="50.54625" y="18.72" transform="rotate(-0 50.54625 18.72)">The best S lands in the same place at every size</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="fig_optimal_S_pad52077861">
+   <rect x="50.54625" y="28.72" width="543.45375" height="278.9"/>
+  </clipPath>
+ </defs>
+</svg>
+
+<figcaption><b>Figure 3.</b> Speedup over plain merge sort against <i>S</i>, one curve per
+input size; rings mark each curve's fastest point. The optima sit on top of one another
+despite the sizes differing by 1000&times;. The n = 10,000,000 curve was measured on a coarser
+grid because each point costs about 35 seconds.</figcaption>
+</figure>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 4.</b> Fastest <i>S</i> at each size, and the leaf sizes it corresponds
+    to. The optimal <i>S</i> shifts; the optimal leaf size does not.</caption>
+    <thead><tr><th>n</th><th>Best <i>S</i></th><th>Leaf sizes</th><th>Hybrid CPU</th><th>Merge CPU</th><th>Speedup</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">10,000</td><td class="mono">12</td><td class="mono">9&ndash;10</td><td>0.0081 s</td><td>0.0104 s</td><td class="down">1.29&times;</td></tr>
+      <tr><td class="mono">100,000</td><td class="mono">12</td><td class="mono">6, 7, 12</td><td>0.1063 s</td><td>0.1263 s</td><td class="down">1.19&times;</td></tr>
+      <tr><td class="mono">1,000,000</td><td class="mono">12</td><td class="mono">7&ndash;8</td><td>1.3484 s</td><td>1.5267 s</td><td class="down">1.13&times;</td></tr>
+      <tr><td class="mono">10,000,000</td><td class="mono">16</td><td class="mono">9&ndash;10</td><td>16.5645 s</td><td>18.8082 s</td><td class="down">1.14&times;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="key">
+    <p><strong>The optimal leaf size is 7&ndash;10 at every size tested</strong>, even though the
+    <i class="v">S</i> that produces it moves from 12 to 16. This is what the theory predicts:
+    the choice at a subarray of length <i class="v">m</i> compares
+    <i class="v">I</i>(<i class="v">m</i>) against
+    <i class="v">MS</i>(<i class="v">m</i>) plus the per-call overhead, and
+    <em>neither quantity mentions n</em>. The decision is local to the subarray, so its answer
+    cannot depend on how large the whole array is.</p>
+  </div>
+
+  <p>The practical recommendation follows: <strong>report the optimal leaf size, not the
+  optimal <i class="v">S</i></strong>. Quoting "<i class="v">S</i> = 12" is an artefact of
+  which n was tested, since at n = 10<sup>7</sup> that same 12 gives leaves of 4&ndash;5 and
+  costs 5% of the available speedup. Quoting "cut at leaf size &asymp; 8" transfers.</p>
+
+  <p>One further caveat on precision: at n = 1,000,000 the values <i class="v">S</i> = 8, 10,
+  12 and 14 are the same algorithm, and 16, 20 and 24 differ from them by 0.07% in median
+  time over five runs. No amount of extra repetition will separate those two plateaus, because
+  the difference is smaller than the plateau-to-plateau structure is coarse. The honest answer
+  is an interval, not a point.</p>
+</div>
+</section>
+
+<section id="why">
+<div class="col">
+  <h2 class="sec"><span class="num">Section 7</span>Where the time actually goes</h2>
+  <p>Sections 3 and 5 leave an apparent contradiction: the hybrid does more key comparisons
+  yet finishes sooner. The resolution is that key comparisons are not what merge sort spends
+  its time on.</p>
+
+  <h3>7.1&ensp;What each sort actually executes</h3>
+  <p>Instrumenting a single sort of an 8-element array counts the primitive operations
+  behind the comparisons:</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 5.</b> Operations performed by one sort of an array of 8 elements.</caption>
+    <thead><tr><th>Operation</th><th>Merge sort</th><th>Insertion sort</th></tr></thead>
+    <tbody>
+      <tr><td>Recursive calls</td><td>15</td><td>1</td></tr>
+      <tr><td>&hellip; of which sort a single element</td><td>8</td><td>&mdash;</td></tr>
+      <tr><td>Merge steps</td><td>7</td><td>0</td></tr>
+      <tr><td>List slices</td><td>21</td><td>0</td></tr>
+      <tr><td>New lists allocated</td><td>15</td><td>1</td></tr>
+      <tr><td>Appends / extends</td><td>17 / 7</td><td>0</td></tr>
+      <tr class="hl"><td>Key comparisons</td><td>~16</td><td>~19</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>Eight of merge sort's fifteen calls sort a one-element array. They check a length, copy
+  a one-element list, and return. They perform zero comparisons and move zero elements; they
+  exist only because the recursion needs a base case.</p>
+
+  <h3>7.2&ensp;Attributing the time</h3>
+  <p>Stripping merge sort down one layer at a time isolates each cost. All figures are
+  microseconds per sort of an 8-element array, best of 7 passes over 4000 arrays:</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 6.</b> Merge sort's cost, decomposed. The scaffolding is half the total.</caption>
+    <thead><tr><th>Layer</th><th>&micro;s / sort</th><th>Added</th></tr></thead>
+    <tbody>
+      <tr><td>Recursion + 21 slices + 8 leaf copies only</td><td>1.046</td><td>&mdash;</td></tr>
+      <tr><td>&hellip; plus allocating the 7 result lists</td><td>1.340</td><td>+0.294</td></tr>
+      <tr class="plateau-end"><td>&hellip; plus the merging itself &mdash; <b>full merge sort</b></td><td><b>2.810</b></td><td>+1.470</td></tr>
+      <tr class="hl"><td>Insertion sort, complete</td><td>0.980</td><td></td></tr>
+      <tr class="hl"><td><b>Saved by switching at m = 8</b></td><td><b>1.830</b></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>The 1.830&nbsp;&micro;s splits cleanly in two:</p>
+  <ul>
+    <li><strong>1.340&nbsp;&micro;s &mdash; the entire recursion tree disappears.</strong>
+    Fifteen calls collapse to one; 21 slices, 8 leaf copies and 7 result lists collapse to a
+    single <code>list(arr)</code>. This is 47.7% of merge sort's total cost, spent taking the
+    array apart and putting it back together.</li>
+    <li><strong>0.490&nbsp;&micro;s &mdash; merge's inner loop is dearer per element.</strong>
+    Merge's merging step alone costs 1.470&nbsp;&micro;s, which is <strong>1.50&times; the
+    cost of the whole insertion sort</strong> despite performing three fewer comparisons.
+    Placing an element costs <code>new.append(x)</code>, an attribute lookup and a method
+    call, where insertion sort does <code>arr[j+1] = arr[j]</code>, a store. The merge loop
+    also re-evaluates <code>len(a)</code> and <code>len(b)</code> on every iteration.</li>
+  </ul>
+
+  <h3>7.3&ensp;Why the tradeoff is so lopsided</h3>
+  <p>The two costs are distributed differently across the recursion tree, and that asymmetry
+  is the whole explanation.</p>
+
+  <p>Every level of the tree merges n elements in total, so <strong>each level costs about n
+  comparisons</strong>. With log<sub>2</sub>n levels, the comparison work is spread evenly:
+  at n = 10<sup>6</sup> each of the ~20 levels holds about 5% of the total.</p>
+
+  <p>Node counts are not spread evenly. A tree over n elements has n leaves and n&minus;1
+  internal nodes, so <strong>the bottom level alone holds half of all nodes</strong>, and the
+  bottom three levels hold 87.5% of them.</p>
+
+  <div class="key">
+    <p>Cutting at leaf size 8 removes the bottom three levels. That discards
+    <strong>87.5% of all function calls, slices and allocations</strong> in exchange for the
+    comparison work of three levels &mdash; which insertion sort then redoes at a slightly worse
+    rate, costing about 2% more comparisons. Measured at n = 10<sup>6</sup>: +2.1%
+    comparisons, &minus;15% CPU time.</p>
+  </div>
+
+  <h3>7.4&ensp;The two crossovers</h3>
+  <p>Because the metrics measure different things, they cross at different subarray sizes.
+  Measured over 200,000 random arrays per size for comparisons, and best-of-5 timings:</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 7.</b> Which sort wins at a small subarray, by each metric.
+    The comparison crossover is at <i>m</i> &asymp; 3; the CPU crossover is at
+    <i>m</i> &asymp; 48.</caption>
+    <thead><tr><th><i>m</i></th><th>Cheaper on comparisons</th><th>Faster in CPU time</th><th>Merge / insertion time</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">2</td><td>tie</td><td class="down">insertion</td><td>2.32&times;</td></tr>
+      <tr><td class="mono">4</td><td class="up">merge</td><td class="down">insertion</td><td>2.99&times;</td></tr>
+      <tr><td class="mono">8</td><td class="up">merge</td><td class="down">insertion</td><td>2.77&times;</td></tr>
+      <tr><td class="mono">16</td><td class="up">merge</td><td class="down">insertion</td><td>2.30&times;</td></tr>
+      <tr><td class="mono">32</td><td class="up">merge</td><td class="down">insertion</td><td>1.56&times;</td></tr>
+      <tr><td class="mono">64</td><td class="up">merge</td><td class="up">merge</td><td>0.87&times;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>The assignment's own framing anticipates this: it motivates the hybrid by "the overhead
+  of many recursive calls", not by comparison counts. Table 6 is that sentence measured.</p>
+</div>
+</section>
+
+<section id="d">
+<div class="col">
+  <h2 class="sec"><span class="num">Part (d)</span>Against the original merge sort</h2>
+  <p>At n = 10,000,000, using the optimal <i class="v">S</i> = 16 from part (c)(iii), against
+  the textbook merge sort of section 1. Both sorts were checked to produce identical output.</p>
+</div>
+
+<div class="tablewrap col">
+  <table>
+    <caption><b>Table 8.</b> Head to head at 10 million integers. CPU time is the median of
+    the repeated runs; the two algorithms sorted the same array.</caption>
+    <thead><tr><th></th><th>Key comparisons</th><th>vs merge</th><th>CPU time</th><th>vs merge</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>Hybrid, <i>S</i> = 16</td><td>226,423,622</td><td class="up">+2.87%</td><td>16.564 s</td><td class="down">&minus;11.9%</td></tr>
+      <tr><td>Hybrid, <i>S</i> = 8</td><td>221,112,527</td><td class="up">+0.46%</td><td>17.472 s</td><td class="down">&minus;7.1%</td></tr>
+      <tr class="base"><td>Plain merge sort</td><td>220,105,208</td><td>&mdash;</td><td>18.808 s</td><td>&mdash;</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <p>The result is the report's thesis in one row. <strong>The hybrid performs 6.3 million
+  more key comparisons and still finishes 2.24 seconds sooner.</strong> On the metric parts
+  (c)(i) and (c)(ii) ask us to plot, it loses; on the metric part (d) asks us to measure, it
+  wins by 11.9%.</p>
+
+  <p>The <i class="v">S</i> = 8 row shows the quantisation effect from a different angle: it
+  costs far fewer extra comparisons (+0.46%) precisely because its leaves are only 4&ndash;5
+  elements, and it is correspondingly slower, capturing 7.1% instead of 11.9%. Fewer
+  comparisons, less speed &mdash; the two metrics are anticorrelated across the whole useful
+  range of <i class="v">S</i>.</p>
+
+  <div class="note">
+    <span class="tag">Run-to-run variance</span>
+    <p>Plain merge sort at 10 million measured 18.808 s in the part (c)(iii) run and 18.298 s
+    in a separate part (d) run, a 2.7% spread between sessions. Differences below roughly 3%
+    at this size should not be treated as real. The 11.9% gap is comfortably outside that
+    band; the gap between <i class="v">S</i> = 12 and <i class="v">S</i> = 16 is not.</p>
+  </div>
+</div>
+</section>
+
+<section id="validity">
+<div class="col">
+  <h2 class="sec"><span class="num">Section 9</span>Threats to validity</h2>
+
+  <h4>The optimum is an implementation constant, not an algorithm property</h4>
+  <p>Table 6 attributes 47.7% of merge sort's cost to slicing and allocation. An index-based
+  in-place merge sort, using one preallocated buffer and passing (lo, hi) instead of
+  sublists, removes most of that, leaving only the function calls. Its crossover would sit at
+  a smaller <i class="v">m</i> and its optimal leaf size below 8. The figure "leaf size
+  &asymp; 8" is specific to this implementation and this language; the <em>reasoning</em>
+  transfers, the number does not. This was not measured and is stated as expectation, not
+  result.</p>
+
+  <h4>Only uniform random data</h4>
+  <p>Insertion sort's early exit makes it strongly adaptive &mdash; 999 comparisons on sorted
+  input against 499,500 on reversed. On partially ordered data the optimal <i class="v">S</i>
+  would be larger, possibly much larger. Nothing here measures that regime.</p>
+
+  <h4>Nested datasets</h4>
+  <p>With a fixed seed, each size is a prefix of the next. This sharpens part (c)(i) by
+  removing between-size sampling noise, but it means the thirteen points are not independent
+  draws, and confidence intervals across sizes would be optimistic.</p>
+
+  <h4>Timing repetitions thin at the top</h4>
+  <p>10-million-element runs were repeated twice, 5-million three times. Combined with the
+  2.7% between-session variance noted above, the large-n speedups carry roughly &plusmn;3%
+  uncertainty. The comparison counts carry none &mdash; they are exact.</p>
+
+  <h4>Duplicate keys</h4>
+  <p>With values drawn from [1, 10<sup>7</sup>] and n = 10<sup>7</sup>, about 37% of entries
+  are duplicates. The merge uses <code>a[i] &lt;= b[j]</code>, so ties resolve to the left
+  run, which makes the sort stable and fixes the tie cost at one comparison. A different tie
+  convention would shift counts slightly.</p>
+</div>
+</section>
+
+<section id="conc">
+<div class="col">
+  <h2 class="sec"><span class="num">Section 10</span>Conclusion</h2>
+
+  <p>The hybrid is worth using, and the reason is not the reason the metric in parts (c)(i)
+  and (c)(ii) would suggest.</p>
+
+  <ol class="body">
+    <li><strong>On key comparisons the hybrid never wins.</strong> Exactly:
+    <i class="v">I</i>(<i class="v">m</i>) = <i class="v">MS</i>(<i class="v">m</i>) for
+    <i class="v">m</i> &le; 3 and <i class="v">I</i>(<i class="v">m</i>) &gt;
+    <i class="v">MS</i>(<i class="v">m</i>) beyond, so the comparison-optimal threshold is
+    <i class="v">S</i> = 3 and it saves 48 comparisons out of 18.7 million.</li>
+
+    <li><strong>On CPU time it wins by 11.9% at 10 million.</strong> The gain comes from
+    deleting the bottom three levels of the recursion tree, which hold 87.5% of the calls,
+    slices and allocations but only about 15% of the comparison work.</li>
+
+    <li><strong>The optimal leaf size is 7&ndash;10 and does not depend on n</strong>, because
+    the decision at a subarray involves only that subarray's length. Report the leaf size;
+    the <i class="v">S</i> that achieves it is quantised by
+    &lceil;n/2<sup>k</sup>&rceil; and moves with the input size.</li>
+
+    <li><strong>For any fixed <i class="v">S</i> the hybrid remains
+    &Theta;(n&nbsp;log&nbsp;n).</strong> The threshold buys a constant factor, never a
+    complexity class.</li>
+  </ol>
+
+  <p>The broader methodological point is that the two metrics are anticorrelated over the
+  entire useful range of <i class="v">S</i>, so a report that optimises key comparisons and a
+  report that optimises runtime reach opposite conclusions from the same data. Which one is
+  right depends on what the count was ever a proxy for &mdash; and in pure Python, on an
+  8-element subarray, it is a proxy for about half of the work.</p>
+</div>
+</section>
+
+<section id="repro">
+<div class="col">
+  <h2 class="sec"><span class="num">Appendix</span>Reproducing this</h2>
+</div>
+<div class="files">
+  <div class="file"><h4>hybrid.py</h4><p>The three sorts with comparison counting, plus the
+  uncounted twins used for timing. Running it executes the verification suite.</p></div>
+  <div class="file"><h4>datagen.py</h4><p>Seeded array generation and the size ladder.</p></div>
+  <div class="file"><h4>experiments.py</h4><p>Parts (c)(i), (c)(iii) and (d). About 15 minutes;
+  writes three CSVs.</p></div>
+  <div class="file"><h4>bench.py</h4><p>Part (c)(ii): the <i>S</i> sweep, plus the
+  <code>leafsizes</code> helper behind the plateau column.</p></div>
+  <div class="file"><h4>overhead.py</h4><p>Tables 5 and 6. Must run on an otherwise idle
+  machine.</p></div>
+  <div class="file"><h4>plots.py</h4><p>Figures 1&ndash;3, drawn from the CSVs.</p></div>
+</div>
+</section>
+
+<footer>
+  <p>Every number in this report is generated by the scripts above and stored in
+  <code>results/*.csv</code>. Comparison counts are exact and reproducible from the seed;
+  CPU times were measured on an idle Apple Silicon machine under Python 3.13 and will differ
+  on other hardware.</p>
+</footer>
+
+</div>

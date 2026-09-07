@@ -37,8 +37,9 @@ already sorted and is never split, while the right half recurses all the way dow
 | --- | --- | --- |
 | (a) hybrid algorithm | [`hybrid.py`](hybrid.py) | done |
 | (b) input data | [`datagen.py`](datagen.py) | done |
-| (c) comparison counts and plots | [`bench.py`](bench.py), [`plots.py`](plots.py) | (c)(ii) done, (c)(i) and (c)(iii) pending |
-| (d) comparison against original merge sort | [`bench.py`](bench.py) | measurements done, write-up pending |
+| (c) comparison counts and plots | [`bench.py`](bench.py), [`experiments.py`](experiments.py), [`plots.py`](plots.py) | done |
+| (d) comparison against original merge sort | [`experiments.py`](experiments.py) | done |
+| Report | [`report.html`](report.html) | done |
 
 ### (a) `hybrid.py`
 
@@ -83,6 +84,17 @@ CPU time comes from `time.process_time()`, which is what part (d) asks for.
 activity on the machine can be spotted. Small inputs are timed several times and the
 fastest run is kept; inputs above 200,000 are timed once because they are slow enough
 that startup noise does not matter.
+
+### Report - `report.html`
+
+Built by `python3 build_report.py`, which inlines the figures from `results/*.svg` into
+`report_body.html`. Covers the implementation, the average-case derivations, all of part (c),
+the head-to-head at 10 million, and a decomposition of where merge sort's time actually goes.
+
+### Timing decomposition - `overhead.py`
+
+Counts the primitive operations behind one 8-element sort and peels merge sort apart layer by
+layer to attribute its cost. Run it on an otherwise idle machine.
 
 ### Figures - `plots.py`
 

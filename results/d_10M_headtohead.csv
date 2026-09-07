@@ -1,0 +1,3 @@
+algorithm,S,key_comparisons,cpu_median_s,cpu_min_s
+hybrid,8,221112527,16.327546,16.309628
+mergesort,,220105208,18.297775,18.170175

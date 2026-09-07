@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg class="viz" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 604.8 532.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-07T14:59:26.304678</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="fig_over_n_figure_1">
+  <g id="fig_over_n_patch_1">
+   <path d="M 0 532.8 
+L 604.8 532.8 
+L 604.8 0 
+L 0 0 
+z
+" style="fill: var(--viz-surface)"/>
+  </g>
+  <g id="fig_over_n_axes_1">
+   <g id="fig_over_n_patch_2">
+    <path d="M 50.45625 237.588844 
+L 574.703359 237.588844 
+L 574.703359 28.72 
+L 50.45625 28.72 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_over_n_matplotlib.axis_1">
+    <g id="fig_over_n_xtick_1">
+     <g id="fig_over_n_line2d_1">
+      <path d="M 74.285664 237.588844 
+L 74.285664 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_2">
+      <defs>
+       <path id="fig_over_n_m5f1dd69f58" d="M 0 0 
+L 0 6 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="74.285664" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_2">
+     <g id="fig_over_n_line2d_3">
+      <path d="M 193.432734 237.588844 
+L 193.432734 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_4">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="193.432734" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_3">
+     <g id="fig_over_n_line2d_5">
+      <path d="M 312.579804 237.588844 
+L 312.579804 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_6">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="312.579804" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_4">
+     <g id="fig_over_n_line2d_7">
+      <path d="M 431.726875 237.588844 
+L 431.726875 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_8">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="431.726875" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_5">
+     <g id="fig_over_n_line2d_9">
+      <path d="M 550.873945 237.588844 
+L 550.873945 28.72 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_10">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="550.873945" y="237.588844" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="fig_over_n_matplotlib.axis_2">
+    <g id="fig_over_n_ytick_1">
+     <g id="fig_over_n_line2d_11">
+      <path d="M 50.45625 209.780741 
+L 574.703359 209.780741 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_12">
+      <defs>
+       <path id="fig_over_n_m497db97409" d="M 0 0 
+L -6 0 
+" style="stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </defs>
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="209.780741" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_1">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="213.717538" transform="rotate(-0 40.95625 213.717538)">10</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_2">
+     <g id="fig_over_n_line2d_13">
+      <path d="M 50.45625 181.448956 
+L 574.703359 181.448956 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_14">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="181.448956" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_2">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="185.385753" transform="rotate(-0 40.95625 185.385753)">12</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_3">
+     <g id="fig_over_n_line2d_15">
+      <path d="M 50.45625 153.117171 
+L 574.703359 153.117171 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_16">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="153.117171" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_3">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="157.053968" transform="rotate(-0 40.95625 157.053968)">14</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_4">
+     <g id="fig_over_n_line2d_17">
+      <path d="M 50.45625 124.785387 
+L 574.703359 124.785387 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_18">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="124.785387" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_4">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="128.722183" transform="rotate(-0 40.95625 128.722183)">16</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_5">
+     <g id="fig_over_n_line2d_19">
+      <path d="M 50.45625 96.453602 
+L 574.703359 96.453602 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_20">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="96.453602" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_5">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="100.390399" transform="rotate(-0 40.95625 100.390399)">18</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_6">
+     <g id="fig_over_n_line2d_21">
+      <path d="M 50.45625 68.121817 
+L 574.703359 68.121817 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_22">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="68.121817" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_6">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="72.058614" transform="rotate(-0 40.95625 72.058614)">20</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_7">
+     <g id="fig_over_n_line2d_23">
+      <path d="M 50.45625 39.790032 
+L 574.703359 39.790032 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_24">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="39.790032" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_7">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="43.726829" transform="rotate(-0 40.95625 43.726829)">22</text>
+     </g>
+    </g>
+    <g id="fig_over_n_text_8">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="22.196563" y="133.154422" transform="rotate(-90 22.196563 133.154422)">key comparisons per element,  C(n) / n</text>
+    </g>
+   </g>
+   <g id="fig_over_n_line2d_25">
+    <path d="M 74.285664 222.127457 
+L 110.152506 207.975716 
+L 157.565892 193.479941 
+L 193.432734 179.316881 
+L 229.299576 165.152405 
+L 276.712962 144.911461 
+L 312.579804 130.745851 
+L 348.446647 116.580101 
+L 395.860033 95.425149 
+L 431.726875 81.259285 
+L 467.593717 67.093407 
+L 515.007103 52.385768 
+L 550.873945 38.219879 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="fig_over_n_line2d_26">
+    <path d="M 74.285664 228.094805 
+L 110.152506 213.943065 
+L 157.565892 194.973593 
+L 193.432734 180.810533 
+L 229.299576 166.646057 
+L 276.712962 147.965228 
+L 312.579804 133.799619 
+L 348.446647 119.633868 
+L 395.860033 101.068239 
+L 431.726875 86.902375 
+L 467.593717 72.736497 
+L 515.007103 53.813273 
+L 550.873945 39.647384 
+" clip-path="url(#fig_over_n_pa513085107)" style="fill: none; stroke: var(--viz-series2); stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="fig_over_n_patch_3">
+    <path d="M 50.45625 237.588844 
+L 50.45625 28.72 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_over_n_patch_4">
+    <path d="M 50.45625 237.588844 
+L 574.703359 237.588844 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_over_n_line2d_27">
+    <defs>
+     <path id="fig_over_n_md15fe8f50d" d="M 0 3.5 
+C 0.928211 3.5 1.81853 3.131218 2.474874 2.474874 
+C 3.131218 1.81853 3.5 0.928211 3.5 0 
+C 3.5 -0.928211 3.131218 -1.81853 2.474874 -2.474874 
+C 1.81853 -3.131218 0.928211 -3.5 0 -3.5 
+C -0.928211 -3.5 -1.81853 -3.131218 -2.474874 -2.474874 
+C -3.131218 -1.81853 -3.5 -0.928211 -3.5 0 
+C -3.5 0.928211 -3.131218 1.81853 -2.474874 2.474874 
+C -1.81853 3.131218 -0.928211 3.5 0 3.5 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.4"/>
+    </defs>
+    <g clip-path="url(#fig_over_n_pa513085107)">
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="74.285664" y="222.700035" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="110.152506" y="208.243742" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="157.565892" y="193.444634" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="193.432734" y="179.369403" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="229.299576" y="165.097975" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="276.712962" y="144.789327" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="312.579804" y="130.665365" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="348.446647" y="116.569736" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="395.860033" y="95.407649" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="431.726875" y="81.247735" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="467.593717" y="67.072216" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="515.007103" y="52.378881" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+     <use xlink:href="#fig_over_n_md15fe8f50d" x="550.873945" y="38.214038" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.4"/>
+    </g>
+   </g>
+   <g id="fig_over_n_line2d_28">
+    <defs>
+     <path id="fig_over_n_m80eb975349" d="M -3.25 3.25 
+L 3.25 3.25 
+L 3.25 -3.25 
+L -3.25 -3.25 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+    </defs>
+    <g clip-path="url(#fig_over_n_pa513085107)">
+     <use xlink:href="#fig_over_n_m80eb975349" x="74.285664" y="227.955581" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="110.152506" y="213.874684" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="157.565892" y="194.943385" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="193.432734" y="180.838406" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="229.299576" y="166.61585" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="276.712962" y="147.899307" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="312.579804" y="133.772229" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="348.446647" y="119.618873" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="395.860033" y="101.06613" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="431.726875" y="86.897843" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="467.593717" y="72.73047" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="515.007103" y="53.807656" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+     <use xlink:href="#fig_over_n_m80eb975349" x="550.873945" y="39.640996" style="fill: var(--viz-series2); stroke: var(--viz-surface); stroke-width: 1.4; stroke-linejoin: miter"/>
+    </g>
+   </g>
+   <g id="fig_over_n_text_9">
+    <text style="font-size: 9.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-series)" x="544.873945" y="31.219879" transform="rotate(-0 544.873945 31.219879)">hybrid, S=8</text>
+   </g>
+   <g id="fig_over_n_text_10">
+    <text style="font-size: 9.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-series2)" x="519.007103" y="68.813273" transform="rotate(-0 519.007103 68.813273)">plain merge sort</text>
+   </g>
+   <g id="fig_over_n_text_11">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink2)" x="74.285664" y="47.436217" transform="rotate(-0 74.285664 47.436217)">lines = average-case model    markers = measured</text>
+   </g>
+   <g id="fig_over_n_text_12">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="50.45625" y="18.72" transform="rotate(-0 50.45625 18.72)">Comparisons per element grow linearly in log n, so C(n) = Θ(n log n)</text>
+   </g>
+  </g>
+  <g id="fig_over_n_axes_2">
+   <g id="fig_over_n_patch_5">
+    <path d="M 50.45625 481.177688 
+L 574.703359 481.177688 
+L 574.703359 272.308844 
+L 50.45625 272.308844 
+z
+" style="fill: var(--viz-surface)"/>
+   </g>
+   <g id="fig_over_n_matplotlib.axis_3">
+    <g id="fig_over_n_xtick_6">
+     <g id="fig_over_n_line2d_29">
+      <path d="M 74.285664 481.177688 
+L 74.285664 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_30">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="74.285664" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_13">
+      <!-- $\mathdefault{10^{3}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(65.650664 502.021438)">
+       <text>
+        <tspan x="0" y="-0.799313" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.799313" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.465625" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">3</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_7">
+     <g id="fig_over_n_line2d_31">
+      <path d="M 193.432734 481.177688 
+L 193.432734 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_32">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="193.432734" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_14">
+      <!-- $\mathdefault{10^{4}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(184.797734 501.911438)">
+       <text>
+        <tspan x="0" y="-0.821188" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.821188" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.4875" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">4</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_8">
+     <g id="fig_over_n_line2d_33">
+      <path d="M 312.579804 481.177688 
+L 312.579804 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_34">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="312.579804" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_15">
+      <!-- $\mathdefault{10^{5}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(303.944804 501.911438)">
+       <text>
+        <tspan x="0" y="-0.89775" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.89775" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.564063" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">5</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_9">
+     <g id="fig_over_n_line2d_35">
+      <path d="M 431.726875 481.177688 
+L 431.726875 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_36">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="431.726875" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_16">
+      <!-- $\mathdefault{10^{6}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(423.091875 502.021438)">
+       <text>
+        <tspan x="0" y="-0.799313" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.799313" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.465625" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">6</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_xtick_10">
+     <g id="fig_over_n_line2d_37">
+      <path d="M 550.873945 481.177688 
+L 550.873945 272.308844 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_38">
+      <g>
+       <use xlink:href="#fig_over_n_m5f1dd69f58" x="550.873945" y="481.177688" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_17">
+      <!-- $\mathdefault{10^{7}}$ -->
+      <g style="fill: var(--viz-ink2)" transform="translate(542.238945 501.911438)">
+       <text>
+        <tspan x="0" y="-0.89775" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">1</tspan>
+        <tspan x="6.117676" y="-0.89775" style="font-size: 11px; font-family: 'Arial'; fill: var(--viz-ink2)">0</tspan>
+        <tspan x="12.427009" y="-8.564063" style="font-size: 7.7px; font-family: 'Arial'; fill: var(--viz-ink2)">7</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="fig_over_n_text_18">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="312.579804" y="516.797063" transform="rotate(-0 312.579804 516.797063)">n</text>
+    </g>
+   </g>
+   <g id="fig_over_n_matplotlib.axis_4">
+    <g id="fig_over_n_ytick_8">
+     <g id="fig_over_n_line2d_39">
+      <path d="M 50.45625 472.289652 
+L 574.703359 472.289652 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_40">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="472.289652" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_19">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="476.226448" transform="rotate(-0 40.95625 476.226448)">1.0</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_9">
+     <g id="fig_over_n_line2d_41">
+      <path d="M 50.45625 427.849472 
+L 574.703359 427.849472 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_42">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="427.849472" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_20">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="431.786269" transform="rotate(-0 40.95625 431.786269)">1.1</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_10">
+     <g id="fig_over_n_line2d_43">
+      <path d="M 50.45625 383.409293 
+L 574.703359 383.409293 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_44">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="383.409293" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_21">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="387.346089" transform="rotate(-0 40.95625 387.346089)">1.2</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_11">
+     <g id="fig_over_n_line2d_45">
+      <path d="M 50.45625 338.969113 
+L 574.703359 338.969113 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_46">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="338.969113" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_22">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="342.90591" transform="rotate(-0 40.95625 342.90591)">1.3</text>
+     </g>
+    </g>
+    <g id="fig_over_n_ytick_12">
+     <g id="fig_over_n_line2d_47">
+      <path d="M 50.45625 294.528934 
+L 574.703359 294.528934 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-grid); stroke-width: 0.8; stroke-linecap: round"/>
+     </g>
+     <g id="fig_over_n_line2d_48">
+      <g>
+       <use xlink:href="#fig_over_n_m497db97409" x="50.45625" y="294.528934" style="fill: var(--viz-ink2); stroke: var(--viz-ink2); stroke-width: 1.25"/>
+      </g>
+     </g>
+     <g id="fig_over_n_text_23">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-ink2)" x="40.95625" y="298.46573" transform="rotate(-0 40.95625 298.46573)">1.4</text>
+     </g>
+    </g>
+    <g id="fig_over_n_text_24">
+     <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: middle; fill: var(--viz-ink2)" x="19.28125" y="376.743266" transform="rotate(-90 19.28125 376.743266)">speedup in CPU time</text>
+    </g>
+   </g>
+   <g id="fig_over_n_line2d_49">
+    <path d="M 74.285664 312.67464 
+L 110.152506 326.962211 
+L 157.565892 363.573333 
+L 193.432734 375.537771 
+L 229.299576 371.886285 
+L 276.712962 389.644054 
+L 312.579804 389.055071 
+L 348.446647 394.746563 
+L 395.860033 400.727512 
+L 431.726875 399.990709 
+L 467.593717 407.491212 
+L 515.007103 417.552166 
+L 550.873945 436.461112 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke: var(--viz-series); stroke-width: 2; stroke-linecap: round"/>
+    <defs>
+     <path id="fig_over_n_m2b32753dce" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </defs>
+    <g clip-path="url(#fig_over_n_pe07b37ab7b)">
+     <use xlink:href="#fig_over_n_m2b32753dce" x="74.285664" y="312.67464" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="110.152506" y="326.962211" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="157.565892" y="363.573333" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="193.432734" y="375.537771" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="229.299576" y="371.886285" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="276.712962" y="389.644054" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="312.579804" y="389.055071" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="348.446647" y="394.746563" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="395.860033" y="400.727512" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="431.726875" y="399.990709" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="467.593717" y="407.491212" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="515.007103" y="417.552166" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+     <use xlink:href="#fig_over_n_m2b32753dce" x="550.873945" y="436.461112" style="fill: var(--viz-series); stroke: var(--viz-surface); stroke-width: 1.3"/>
+    </g>
+   </g>
+   <g id="fig_over_n_line2d_50">
+    <path d="M 50.45625 472.289652 
+L 574.703359 472.289652 
+" clip-path="url(#fig_over_n_pe07b37ab7b)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: var(--viz-base); stroke-width: 1.5"/>
+   </g>
+   <g id="fig_over_n_patch_6">
+    <path d="M 50.45625 481.177688 
+L 50.45625 272.308844 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_over_n_patch_7">
+    <path d="M 50.45625 481.177688 
+L 574.703359 481.177688 
+" style="fill: none; stroke: var(--viz-grid); stroke-width: 1.25; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="fig_over_n_text_25">
+    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: end; fill: var(--viz-base)" x="550.873945" y="468.173424" transform="rotate(-0 550.873945 468.173424)">no gain</text>
+   </g>
+   <g id="fig_over_n_text_26">
+    <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', 'Bitstream Vera Sans', sans-serif; text-anchor: start; fill: var(--viz-ink)" x="50.45625" y="262.308844" transform="rotate(-0 50.45625 262.308844)">The CPU-time advantage shrinks as n grows</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="fig_over_n_pa513085107">
+   <rect x="50.45625" y="28.72" width="524.247109" height="208.868844"/>
+  </clipPath>
+  <clipPath id="fig_over_n_pe07b37ab7b">
+   <rect x="50.45625" y="272.308844" width="524.247109" height="208.868844"/>
+  </clipPath>
+ </defs>
+</svg>
