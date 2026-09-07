@@ -39,7 +39,7 @@ already sorted and is never split, while the right half recurses all the way dow
 | (b) input data | [`datagen.py`](datagen.py) | done |
 | (c) comparison counts and plots | [`bench.py`](bench.py), [`experiments.py`](experiments.py), [`plots.py`](plots.py) | done |
 | (d) comparison against original merge sort | [`experiments.py`](experiments.py) | done |
-| Report | [`report.html`](report.html) | done |
+| Report | [`report.md`](report.md) / [`report_zh.md`](report_zh.md) | done |
 
 ### (a) `hybrid.py`
 
@@ -85,11 +85,31 @@ activity on the machine can be spotted. Small inputs are timed several times and
 fastest run is kept; inputs above 200,000 are timed once because they are slow enough
 that startup noise does not matter.
 
-### Report - `report.html`
+### Report
 
-Built by `python3 build_report.py`, which inlines the figures from `results/*.svg` into
-`report_body.html`. Covers the implementation, the average-case derivations, all of part (c),
-the head-to-head at 10 million, and a decomposition of where merge sort's time actually goes.
+Three renderings of the same document:
+
+| File | Notes |
+|---|---|
+| [`report.md`](report.md) | English, Markdown with LaTeX math. GitHub renders the math inline. |
+| [`report_zh.md`](report_zh.md) | Chinese translation. Same numbers, same figures. |
+| [`report.html`](report.html) | Standalone HTML with the SVG figures inlined, built by `python3 build_report.py`. |
+
+It covers the implementation, the average-case derivations, all of part (c), the head-to-head
+at 10 million, and a decomposition of where merge sort's time actually goes.
+
+`./build_pdf.sh` turns either Markdown file into a PDF through pandoc and xelatex:
+
+```bash
+./build_pdf.sh              # report.md    -> report.pdf
+./build_pdf.sh report_zh.md # report_zh.md -> report_zh.pdf
+```
+
+The Chinese build needs xeCJK, installed into TinyTeX with `tlmgr install xecjk ctex
+zhnumber`, and uses Songti SC for the body text. `-f markdown-implicit_figures` keeps the
+image alt text in the Markdown for GitHub while stopping pandoc from turning each figure into
+a float that drifts away from its caption. Figure axis labels stay in English in both
+versions, matching the column names in the CSVs.
 
 ### Timing decomposition - `overhead.py`
 
