@@ -96,115 +96,80 @@ standard library otherwise.
 
 ## 3. Theoretical analysis
 
-Everything below is average-case over uniformly random permutations, since that is what the
-generated data is. Worst-case results are stated where they differ in kind.
+Every count below is **worst case**. That is what admits a closed form, and it is what the
+$\Theta$ classification rests on. Average-case behaviour is reported from measurement instead,
+in sections 4 and 5.
 
 ### 3.1 Insertion sort
 
-Consider inserting $a[i]$ into the sorted prefix of length $i$. Let $t$ be the number of
-prefix elements greater than the key. Under a random permutation the key is equally likely to
-belong in any of the $i+1$ gaps, so $t$ is uniform on $\{0, \dots, i\}$. If $t < i$ the loop
-performs $t$ successful comparisons plus one that fails, so $t+1$ in all. If $t = i$ the key
-is smaller than everything and the loop runs off the left end after only $i$ comparisons, with
-no failing test. Hence
+Inserting $a[i]$ into the sorted prefix of length $i$ compares the key against prefix elements
+from the right until one is smaller. That is at most $i$ comparisons, and at least one when the
+key is already in place. Summing over $i = 1, \dots, m-1$:
 
 $$
-\mathbb{E}[C_i] \;=\; \frac{1}{i+1}\left(\sum_{t=0}^{i-1}(t+1) \;+\; i\right)
-\;=\; \frac{1}{i+1}\left(\frac{i(i+1)}{2} + i\right)
-\;=\; \frac{i}{2} + \frac{i}{i+1}
+I_{\text{worst}}(m) \;=\; \sum_{i=1}^{m-1} i \;=\; \frac{m(m-1)}{2},
+\qquad\qquad
+I_{\text{best}}(m) \;=\; m-1
 $$
 
-Summing over $i = 1, \dots, m-1$ and collapsing the harmonic tail gives a closed form:
+The early exit is what separates the two. Without it every insertion would scan its whole
+prefix and even a sorted array would cost $m(m-1)/2$.
 
-$$
-\boxed{\;I(m) \;=\; \frac{m(m-1)}{4} \;+\; m \;-\; H_m\;}
-$$
+### 3.2 Merge sort
 
-where $H_m = \sum_{k=1}^{m} 1/k$ is the $m$-th harmonic number. The worst case is
-$m(m-1)/2$ and the best case is $m-1$.
-
-Note that the average is **not** simply half the worst case. The $m - H_m$ term is the extra
-cost of keys that fall off the left end, and at $m = 8$ it contributes 5.28 of the 19.28
-total.
-
-### 3.2 The merge step
-
-Merging sorted runs of lengths $a$ and $b$ costs $a+b$ minus the length of the trailing block
-copied out once one run empties. Writing $T$ for that block,
-
-$$
-\Pr[T \geq k \text{ from run } A] \;=\; \frac{\binom{a+b-k}{b}}{\binom{a+b}{b}}
-$$
-
-and summing over $k$ telescopes by the hockey-stick identity
-$\sum_{j=b}^{a+b-1}\binom{j}{b} = \binom{a+b}{b+1}$,
-to give $\mathbb{E}[T] = \frac{a}{b+1} + \frac{b}{a+1}$. Therefore
-
-$$
-\boxed{\;M(a,b) \;=\; a + b \;-\; \frac{a}{b+1} \;-\; \frac{b}{a+1}\;}
-$$
-
-The worst case is $a+b-1$. Merge sort's average cost follows the obvious recurrence, with
-$\mathit{MS}(1) = 0$:
+Merging sorted runs of lengths $a$ and $b$ removes one element per comparison, and the final
+element is copied out with no comparison at all, so a merge costs at most $a+b-1$. A subarray
+of length $m$ therefore satisfies, with $\mathit{MS}(1) = 0$,
 
 $$
 \mathit{MS}(m) \;=\; \mathit{MS}\!\left(\left\lfloor \tfrac{m}{2} \right\rfloor\right)
-\;+\; \mathit{MS}\!\left(\left\lceil \tfrac{m}{2} \right\rceil\right)
-\;+\; M\!\left(\left\lfloor \tfrac{m}{2} \right\rfloor, \left\lceil \tfrac{m}{2} \right\rceil\right)
+\;+\; \mathit{MS}\!\left(\left\lceil \tfrac{m}{2} \right\rceil\right) \;+\; (m-1)
 $$
 
-### 3.3 The decision at a single subarray
+For $m$ a power of two this solves level by level. Level $k$ holds $m/2^k$ merges of two runs
+of length $2^{k-1}$, each costing at most $2^k - 1$, so the level costs $m - m/2^k$. Summing
+over $k = 1, \dots, \log_2 m$:
 
-This is the heart of the matter. At a subarray of length $m$, the algorithm chooses between
-paying $I(m)$ and paying $\mathit{MS}(m)$. Evaluating both in exact rational arithmetic:
+$$
+\mathit{MS}(m) \;=\; \sum_{k=1}^{\log_2 m}\left(m - \frac{m}{2^k}\right)
+\;=\; m\log_2 m \;-\; m \;+\; 1
+$$
 
-| $m$ | $I(m)$ | $\mathit{MS}(m)$ | $I(m) - \mathit{MS}(m)$ | Cheaper |
-|---:|---:|---:|---:|:---|
-| 2 | 1 | 1 | $0$ | tie |
-| 3 | 2.667 | 2.667 | $0$ | tie |
-| 4 | 4.917 | 4.667 | $+1/4$ | merge |
-| 5 | 7.717 | 7.167 | $+11/20$ | merge |
-| 6 | 11.050 | 9.833 | $+73/60$ | merge |
-| 7 | 14.907 | 12.733 | $+913/420$ | merge |
-| 8 | 19.282 | 15.733 | $+2981/840$ | merge |
-| 16 | 72.619 | 45.689 | $+26.93$ | merge |
-| 32 | 275.942 | 121.495 | $+154.45$ | merge |
-| 64 | 1067.256 | 305.051 | $+762.21$ | merge |
+### 3.3 The hybrid
 
-**Table 1.** Average key comparisons at a single subarray, exact values.
-
-> **$I(m) = \mathit{MS}(m)$ exactly for $m = 2$ and $m = 3$, and $I(m) > \mathit{MS}(m)$ for every $m \geq 4$.**
-> The differences are exact rationals, not rounding. So on key comparisons the hybrid can never
-> beat plain merge sort, and can only tie it by cutting at leaf size 3 or below.
-
-An independent Monte-Carlo run of 200,000 random arrays per size reproduces every value in
-Table 1 to within 0.2%, which is the expected sampling error at that trial count.
-
-### 3.4 The hybrid as a whole
-
-Take $n$ and $S$ both powers of two, so all $n/S$ leaves have length exactly $S$. Worst case,
-the leaves cost $\frac{n}{S}\cdot\frac{S(S-1)}{2}$ and the $\log_2(n/S)$ merge levels above
-them cost $n\log_2(n/S) - n/S + 1$:
+Take $n$ and $S$ both powers of two, so all $n/S$ leaves have length exactly $S$. Each leaf
+costs at most $S(S-1)/2$, and the $\log_2(n/S)$ merge levels above them cost
+$n\log_2(n/S) - n/S + 1$ by the same sum as in 3.2. Hence
 
 $$
 \boxed{\;C(n,S) \;=\; \frac{n(S-1)}{2} \;+\; n\log_2\!\frac{n}{S} \;-\; \frac{n}{S} \;+\; 1\;}
 $$
 
-Setting $S = 1$ recovers the familiar $n\log_2 n - n + 1$. Subtracting the two gives the price
-of the threshold, linear in $n$ with a coefficient depending only on $S$:
+Setting $S = 1$ recovers $\mathit{MS}(n) = n\log_2 n - n + 1$, as it must. Subtracting the two
+gives the price of the threshold — linear in $n$, with a coefficient depending only on $S$:
 
 $$
-\Delta(S) \;=\; n\left[\frac{S-1}{2} \;-\; \log_2 S \;+\; 1 \;-\; \frac{1}{S}\right]
+\Delta(S) \;=\; C(n,S) - C(n,1) \;=\; n\left[\frac{S-1}{2} \;-\; \log_2 S \;+\; 1 \;-\; \frac{1}{S}\right]
 $$
 
-$\Delta$ is exactly zero at $S = 1$ and $S = 2$, then $+0.25n$ at $S=4$, $+1.375n$ at $S=8$,
-$+4.44n$ at $S=16$ and $+11.47n$ at $S=32$. The worst-case picture agrees with the
-average-case one in Table 1: no threshold above the smallest ever reduces the comparison
-count.
+| $S$ | 1 | 2 | 4 | 8 | 16 | 32 | 64 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| $\Delta(S)/n$ | 0 | 0 | 0.250 | 1.375 | 4.438 | 11.469 | 26.484 |
 
-### 3.5 Asymptotics
+**Table 1.** The worst-case cost of the threshold, per element.
 
-For any *fixed* $S$, the insertion term is $\Theta(nS) = \Theta(n)$, which the $n\log n$ term
+> $\Delta(S)$ is zero at $S = 1$ and $S = 2$ and strictly increasing thereafter. **No threshold
+> above the smallest ever reduces the worst-case comparison count** — the hybrid can only tie
+> plain merge sort, never beat it. Sections 5 and 8 confirm this holds for the measured
+> average case too.
+
+The intuition is visible in the formula: raising $S$ trades $\log_2 S$ merge levels, each
+costing about $n$, for leaves that cost about $nS/4$. The first term saves logarithmically and
+the second spends linearly, so the exchange is unfavourable from the start.
+
+### 3.4 Asymptotics
+
+For any *fixed* $S$ the leaf term is $\Theta(nS) = \Theta(n)$, which the $n \log n$ term
 dominates:
 
 $$
@@ -212,11 +177,32 @@ C(n,S) \;=\; n\log_2 n \;+\; n\left[\frac{S-1}{2} - \log_2 S\right] \;-\; \frac{
 \;=\; \Theta(n\log n)
 $$
 
-The threshold changes the constant, never the complexity class. Only if $S$ were allowed to
-grow with $n$ would this break: at $S = \Theta(n)$ the whole array goes to insertion sort and
-the cost becomes $\Theta(n^2)$.
+**The threshold changes the constant, never the complexity class.** This only breaks if $S$ is
+allowed to grow with $n$: at $S = \Theta(n)$ the whole array goes to insertion sort and the
+cost becomes $\Theta(n^2)$.
 
----
+### 3.5 What happens at one subarray
+
+The worst-case formula says the threshold costs comparisons. Measurement says the same for the
+average case. Over 200,000 random arrays per size:
+
+| $m$ | Insertion, measured avg | Merge, measured avg | Cheaper |
+|---:|---:|---:|:---|
+| 2 | 1.00 | 1.00 | tie |
+| 3 | 2.66 | 2.67 | insertion |
+| 4 | 4.92 | 4.67 | merge |
+| 6 | 11.06 | 9.83 | merge |
+| 8 | 19.28 | 15.74 | merge |
+| 16 | 72.46 | 45.70 | merge |
+| 32 | 275.39 | 121.49 | merge |
+| 64 | 1067.44 | 305.17 | merge |
+
+**Table 2.** Average key comparisons for one subarray, measured.
+
+Insertion sort ties at $m = 2$, wins at $m = 3$ by 0.01 comparisons, and loses at every larger
+size with the gap widening fast. This is the average-case counterpart of Table 1 and it points
+the same way: **on key comparisons, cutting the recursion short is never an improvement.**
+Whatever the hybrid is buying, it is not fewer comparisons — section 7 identifies what it is.
 
 ## 4. Comparisons against $n$ (part c(i))
 
@@ -225,12 +211,12 @@ directly against $n$ on log–log axes is a poor test, because almost any superl
 looks straight there. Plotting $C(n)/n$ against $\log n$ is sharper: the theory says this
 quantity is *linear*, so anything other than a straight line falsifies the model.
 
-![Comparisons per element against n, measured against the average-case model; and the CPU-time speedup against n](results/fig2_over_n.png)
+![Comparisons per element against n, measured against the worst-case bound; and the CPU-time speedup against n](results/fig2_over_n.png)
 
 **Figure 1.** Top: comparisons per element against $n$. Markers are measured, lines are the
-average-case model of section 3 evaluated exactly — they coincide across four orders of
-magnitude, confirming $\Theta(n\log n)$ and the constant in front of it. Bottom: the CPU-time
-advantage, decaying from 1.36× to 1.08× as $n$ grows.
+worst-case bound $C(n,S)/n$ of section 3.3 evaluated over the actual splits. Measurement sits
+just below the bound and both rise linearly in $\log n$, which is what $\Theta(n\log n)$
+predicts. Bottom: the CPU-time advantage, decaying from 1.36× to 1.08× as $n$ grows.
 
 | $n$ | Hybrid comparisons | Merge comparisons | Excess | Hybrid CPU | Merge CPU | Speedup |
 |---:|---:|---:|---:|---:|---:|---:|
@@ -248,7 +234,7 @@ advantage, decaying from 1.36× to 1.08× as $n$ grows.
 | 5,000,000 | 105,556,634 | 105,052,333 | +0.48% | 7.9996 s | 8.9849 s | 1.12× |
 | 10,000,000 | 221,112,527 | 220,105,208 | +0.46% | 17.576 s | 18.994 s | 1.08× |
 
-**Table 2.** Part (c)(i), $S = 8$. Comparison counts are exact; CPU times are medians of 7 runs
+**Table 3.** Part (c)(i), $S = 8$. Comparison counts are exact; CPU times are medians of 7 runs
 at the small sizes falling to 2 at 10 million.
 
 The excess column does not fall smoothly, and the reason recurs throughout part (c). At
@@ -257,9 +243,12 @@ or below 8. At $n = 10^6$ that is 7–8, but at $n = 10^7$ it is 4–5, much clo
 sort, which is why the excess there is only 0.46%. **The same $S$ means different things at
 different $n$.**
 
-The agreement in Figure 1 answers "compare with your theoretical analysis": across every size
-the model of section 3 predicts the measured count to better than 0.1%, and comparisons per
-element track $\log_2 n$ with the slope the derivation demands.
+Figure 1 answers "compare with your theoretical analysis". Measured counts sit just under the
+worst-case bound of section 3.3 — 1.4% to 2.9% below it for plain merge sort, 2.6% to 5.9% for
+the hybrid. The hybrid's gap is the wider one because its leaf term charges insertion sort at
+$S(S-1)/2$, the worst case, while random data costs roughly half that. Both curves are straight
+in $\log n$ with the slope $C(n,S)/n \sim \log_2 n$ demands, which is the $\Theta(n\log n)$
+claim of section 3.4 confirmed over four orders of magnitude.
 
 ---
 
@@ -309,18 +298,20 @@ timings is measurement noise, nothing else.
 | 256 | 244–245 | 73,735,430 | 3.95× | 3.5532 s | 0.47× |
 | 512 | 488–489 | 133,829,093 | 7.17× | 6.6962 s | 0.25× |
 
-**Table 3.** Part (c)(ii), $n = 1{,}000{,}000$. The **leaf sizes** column gives the subarray
+**Table 4.** Part (c)(ii), $n = 1{,}000{,}000$. The **leaf sizes** column gives the subarray
 lengths insertion sort actually receives, and explains every plateau. Bold rows are within 1%
 of the fastest. Plain merge sort: 18,674,561 comparisons, 1.6713 s.
 
-Comparing against theory: the average-case model of section 3.4, evaluated over the actual
-(uneven) subarray lengths rather than the power-of-two idealisation, predicts every one of
-these twenty-two counts to within **0.07%**. The largest error is at $S = 64$ ($+0.064\%$),
-where the leaves are least uniform.
+Comparing against theory: every measured count lies below the worst-case bound of section 3.3,
+and the two track closely over the range of $S$ that matters — 1.5% apart at $S \leq 3$, 5.6% at
+$S = 8$, 12.3% at $S = 16$. The gap then widens to 47% by $S = 512$, because the bound charges
+the leaves at insertion sort's worst case $S(S-1)/2$ while random data costs about half of it,
+and at large $S$ that leaf term is nearly the whole cost. **The bound is tight where the
+algorithm is useful and loose where it is not.**
 
 > The comparison curve has its minimum at $S = 3$, where it undercuts plain merge sort by 48
-> comparisons out of 18.7 million — a 0.0003% improvement, which is the predicted tie of
-> Table 1 showing up as measurement. **If part (c)(ii) is read strictly as an optimisation
+> comparisons out of 18.7 million — a 0.0003% improvement, which is the near-tie at $m = 3$ in
+> Table 2 showing up at full scale. **If part (c)(ii) is read strictly as an optimisation
 > over key comparisons, the answer is $S = 3$ and the hybrid is pointless.** The CPU-time
 > curve is where the algorithm justifies itself, and section 7 explains why the two disagree.
 
@@ -344,13 +335,13 @@ each curve's fastest point. The optima sit on top of one another despite the siz
 | 1,000,000 | 12 | 7–8 | 1.3484 s | 1.5267 s | 1.13× |
 | 10,000,000 | 16 | 9–10 | 16.5645 s | 18.8082 s | 1.14× |
 
-**Table 4.** Fastest $S$ at each size, and the leaf sizes it corresponds to. The optimal $S$
+**Table 5.** Fastest $S$ at each size, and the leaf sizes it corresponds to. The optimal $S$
 shifts; the optimal leaf size does not.
 
 > **The optimal leaf size is 7–10 at every size tested**, even though the $S$ producing it
 > moves from 12 to 16. This is what the theory predicts: the choice at a subarray of length
-> $m$ compares $I(m)$ against $\mathit{MS}(m)$ plus the per-call overhead, and *neither quantity
-> mentions $n$*. The decision is local to the subarray, so its answer cannot depend on how
+> $m$ weighs the cost of insertion-sorting it against the cost of splitting it further, plus
+> the per-call overhead, and *none of those quantities mentions $n$*. The decision is local to the subarray, so its answer cannot depend on how
 > large the whole array is.
 
 The practical recommendation follows: **report the optimal leaf size, not the optimal $S$.**
@@ -383,7 +374,7 @@ on.
 | Appends / extends | 17 / 7 | 0 |
 | **Key comparisons** | **~16** | **~19** |
 
-**Table 5.** Operations performed by one sort of an array of 8 elements.
+**Table 6.** Operations performed by one sort of an array of 8 elements.
 
 Eight of merge sort's fifteen calls sort a one-element array. They check a length, copy a
 one-element list, and return. They perform zero comparisons and move zero elements; they exist
@@ -402,7 +393,7 @@ Stripping merge sort down one layer at a time isolates each cost. Microseconds p
 | **Insertion sort, complete** | **0.980** | |
 | **Saved by switching at $m = 8$** | **1.830** | |
 
-**Table 6.** Merge sort's cost, decomposed. The scaffolding is half the total.
+**Table 7.** Merge sort's cost, decomposed. The scaffolding is half the total.
 
 The 1.830 µs splits cleanly in two:
 
@@ -454,11 +445,11 @@ over 200,000 random arrays per size for comparisons, and best-of-5 timings:
 | 32 | merge | insertion | 1.56× |
 | 64 | merge | **merge** | 0.87× |
 
-**Table 7.** Which sort wins at a small subarray, by each metric. The comparison crossover is
+**Table 8.** Which sort wins at a small subarray, by each metric. The comparison crossover is
 at $m \approx 3$; the CPU crossover is at $m \approx 48$.
 
 The assignment's own framing anticipates this: it motivates the hybrid by "the overhead of many
-recursive calls", not by comparison counts. Table 6 is that sentence measured.
+recursive calls", not by comparison counts. Table 7 is that sentence measured.
 
 ---
 
@@ -473,7 +464,7 @@ merge sort of section 1. Both sorts were checked to produce identical output.
 | Hybrid, $S = 8$ | 221,112,527 | +0.46% | 17.472 s | −7.1% |
 | *Plain merge sort* | *220,105,208* | — | *18.808 s* | — |
 
-**Table 8.** Head to head at 10 million integers. Both algorithms sorted the same array.
+**Table 9.** Head to head at 10 million integers. Both algorithms sorted the same array.
 
 The result is the report's thesis in one row. **The hybrid performs 6.3 million more key
 comparisons and still finishes 2.24 seconds sooner.** On the metric parts (c)(i) and (c)(ii)
@@ -493,7 +484,7 @@ two metrics are anticorrelated across the whole useful range of $S$.
 
 ## 9. Threats to validity
 
-**The optimum is an implementation constant, not an algorithm property.** Table 6 attributes
+**The optimum is an implementation constant, not an algorithm property.** Table 7 attributes
 47.7% of merge sort's cost to slicing and allocation. An index-based in-place merge sort, using
 one preallocated buffer and passing $(lo, hi)$ instead of sublists, removes most of that,
 leaving only the function calls. Its crossover would sit at a smaller $m$ and its optimal leaf
@@ -525,9 +516,9 @@ slightly.
 The hybrid is worth using, and not for the reason the metric in parts (c)(i) and (c)(ii) would
 suggest.
 
-1. **On key comparisons the hybrid never wins.** Exactly: $I(m) = \mathit{MS}(m)$ for $m \leq 3$ and
-   $I(m) > \mathit{MS}(m)$ beyond, so the comparison-optimal threshold is $S = 3$ and it saves 48
-   comparisons out of 18.7 million.
+1. **On key comparisons the hybrid never wins.** In the worst case $\Delta(S) = 0$ only at
+   $S = 1, 2$ and grows from there; in the measured average case the best threshold is $S = 3$,
+   saving 48 comparisons out of 18.7 million. Both say the same thing.
 
 2. **On CPU time it wins by 11.9% at 10 million.** The gain comes from deleting the bottom
    three levels of the recursion tree, which hold 87.5% of the calls, slices and allocations

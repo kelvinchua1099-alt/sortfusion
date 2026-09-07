@@ -93,16 +93,30 @@ Three renderings of the same document:
 |---|---|
 | [`report.md`](report.md) | English, Markdown with LaTeX math. GitHub renders the math inline. |
 | [`report_zh.md`](report_zh.md) | Chinese translation. Same numbers, same figures. |
-| [`report.html`](report.html) | Standalone HTML with the SVG figures inlined, built by `python3 build_report.py`. |
+| [`report.html`](report.html) | Standalone HTML, generated from `report.md` with its figures and math embedded. |
 
-It covers the implementation, the average-case derivations, all of part (c), the head-to-head
-at 10 million, and a decomposition of where merge sort's time actually goes.
+It covers the implementation, the worst-case comparison counts and the $\Theta(n\log n)$
+argument, all of part (c), the head-to-head at 10 million, and a decomposition of where merge
+sort's time actually goes.
+
+The theory section is deliberately kept to what the assignment asks for: counting worst-case
+key comparisons and classifying the growth. Average-case behaviour is reported from
+measurement rather than derived. An earlier draft carried the full average-case derivations -
+harmonic numbers for insertion sort, the merge tail distribution via the hockey-stick identity
+- and is preserved in commit `997b70c` if it is ever wanted.
 
 `./build_pdf.sh` turns either Markdown file into a PDF through pandoc and xelatex:
 
 ```bash
 ./build_pdf.sh              # report.md    -> report.pdf
 ./build_pdf.sh report_zh.md # report_zh.md -> report_zh.pdf
+```
+
+`report.html` comes from the same source:
+
+```bash
+pandoc report.md -o report.html --standalone --toc --toc-depth=2 \
+  --mathml --self-contained --resource-path=.
 ```
 
 The Chinese build needs xeCJK, installed into TinyTeX with `tlmgr install xecjk ctex

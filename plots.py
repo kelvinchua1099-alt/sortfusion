@@ -112,17 +112,16 @@ def plot_S(path="results/S_sweep_n1000000.csv",out="results/S_sweep_n1000000.png
 if __name__=="__main__":
     plot_S()
 
-def _model():
+def _worst():
+    # exact worst-case key comparisons over the actual (uneven) splits:
+    # a leaf of length m costs m(m-1)/2, and merging a and b costs a+b-1.
     from functools import lru_cache
-    def H(m): return sum(1.0/k for k in range(1,m+1))
-    def I(m): return m*(m-1)/4.0+m-H(m)
-    def M(a,b): return a+b-a/(b+1.0)-b/(a+1.0)
     @lru_cache(None)
-    def HYB(m,S):
-        if m<=S: return I(m)
+    def W(m,S):
+        if m<=S: return m*(m-1)//2
         lo=m//2
-        return HYB(lo,S)+HYB(m-lo,S)+M(lo,m-lo)
-    return HYB
+        return W(lo,S)+W(m-lo,S)+m-1
+    return W
 
 def plot_n(path="results/c_i_comparisons_over_n.csv",out="results/c_i_over_n.svg",S=8):
     rows=list(csv.DictReader(open(path)))
@@ -131,9 +130,9 @@ def plot_n(path="results/c_i_comparisons_over_n.csv",out="results/c_i_over_n.svg
     mc=[int(r["merge_cmps"]) for r in rows]
     ht=[float(r["hybrid_cpu_med"]) for r in rows]
     mt=[float(r["merge_cpu_med"]) for r in rows]
-    HYB=_model()
-    mh=[HYB(x,S)/x for x in n]
-    mm=[HYB(x,1)/x for x in n]
+    W=_worst()
+    mh=[W(x,S)/x for x in n]
+    mm=[W(x,1)/x for x in n]
 
     style()
     fig,(ax1,ax2)=plt.subplots(2,1,figsize=(8.4,7.4),sharex=True)
@@ -153,10 +152,10 @@ def plot_n(path="results/c_i_comparisons_over_n.csv",out="results/c_i_over_n.svg
     ax1.set_title("Comparisons per element grow linearly in log n, so C(n) = Θ(n log n)",
                   loc="left",color=INK,pad=10)
     ax1.annotate("hybrid, S=%d"%S,(n[-1],mh[-1]),textcoords="offset points",
-                 xytext=(-6,7),ha="right",fontsize=9.5,color=SERIES)
+                 xytext=(-6,6),ha="right",fontsize=9.5,color=SERIES)
     ax1.annotate("plain merge sort",(n[-2],mm[-2]),textcoords="offset points",
-                 xytext=(4,-15),ha="left",fontsize=9.5,color=SERIES2)
-    ax1.text(n[0],max(mh)*0.99,"lines = average-case model    markers = measured",
+                 xytext=(6,-4),ha="left",fontsize=9.5,color=SERIES2)
+    ax1.text(n[0],max(mh)*0.99,"lines = worst-case bound    markers = measured",
              fontsize=8.5,color=INK2,va="top")
 
     ax2.plot(n,[a/b for a,b in zip(mt,ht)],color=SERIES,lw=2,marker="o",ms=6,
